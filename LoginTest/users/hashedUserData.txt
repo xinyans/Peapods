@@ -1,0 +1,6 @@
+Username:Password
+Email:Real_Name
+
+
+Sam:$2y$10$InD1L8OcP3f9BrTqyF7tO.nh1FcszQIXhS67h.KJIVlN8nS0whp.a
+schantz.samuel@gmail.com:$2y$10$LUHafDGzLLkSKzaWNKrM6uZjOosBSCfUMcpp9PCFcmnCs04ckS2a.
