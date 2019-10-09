@@ -1,0 +1,114 @@
+:root {
+    --navbarColor: #3581b8;
+    --lowerNavColor: #f3f8f2;
+    --mainColor: #ffffff;
+    --searchColor: #c9c9c9;
+    --testColor: red;
+    --sidePadding: 16%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: var(--mainColor);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+        "top"
+        "bottom"
+    ;
+}
+
+body>nav {
+    grid-area: top;
+    width: auto;
+    min-height: 140px;
+    background-color: var(--testColor);
+}
+
+body>nav>header {
+    height: 80px;
+    padding-left: var(--sidePadding);
+    padding-right: var(--sidePadding);
+    background-color: var(--navbarColor);
+}
+
+body>nav>header>img {
+    height: 50px;
+    margin-top: 15px;
+}
+
+@media (max-width: 900px) {
+    body>nav>section {
+        min-height: 60px;
+        padding-left: var(--sidePadding);
+        padding-right: var(--sidePadding);
+        background-color: var(--lowerNavColor);
+        display: flex;
+        justify-content: center;
+        align-content: space-around;
+        flex-flow: row wrap;
+    }
+}
+
+@media (min-width: 900px) {
+    body>nav>section {
+        min-height: 60px;
+        padding-left: var(--sidePadding);
+        padding-right: var(--sidePadding);
+        background-color: var(--lowerNavColor);
+        display: flex;
+        justify-content: space-between;
+        align-content: space-around;
+        flex-flow: row wrap;
+    }
+}
+
+
+
+body>nav>section>nav {
+    display: flex;
+    min-width: 350px;
+    width: 420px;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-content: center;
+}
+
+body>nav>section>nav>a {
+    color: black;
+    line-height: 60px;
+    font-size: 22px;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+
+body>nav>section>nav>a:hover {
+    border-top: 2px solid black;
+    line-height: 56px;
+}
+
+body>nav>section>input {
+    width: 220px;
+    height: 24px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 24px;
+    border: none;
+    background-color: var(--searchColor);
+}
+
+body>main {
+    padding-left: var(--sidePadding);
+    padding-right: var(--sidePadding);
+    min-height: 100%;
+    background-color: var(--mainColor);
+}
