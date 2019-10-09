@@ -1,6 +1,6 @@
 :root {
     --navbarColor: #3581b8;
-    --lowerNavColor: #f3f8f2;
+    --lowerNavColor: #eaf4e8;
     --mainColor: #ffffff;
     --searchColor: #c9c9c9;
     --testColor: red;
@@ -42,7 +42,7 @@ body>nav>header>img {
     margin-top: 15px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     body>nav>section {
         min-height: 60px;
         padding-left: var(--sidePadding);
@@ -53,9 +53,19 @@ body>nav>header>img {
         align-content: space-around;
         flex-flow: row wrap;
     }
+
+    
+    body>nav>section>nav {
+        display: flex;
+        min-width: 350px;
+        width: 100%;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-content: center;
+    }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
     body>nav>section {
         min-height: 60px;
         padding-left: var(--sidePadding);
@@ -66,16 +76,17 @@ body>nav>header>img {
         align-content: space-around;
         flex-flow: row wrap;
     }
+    body>nav>section>nav {
+        display: flex;
+        min-width: 350px;
+        width: 420px;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-content: center;
+    }
+    
 }
 
-body>nav>section>nav {
-    display: flex;
-    min-width: 350px;
-    width: 420px;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-content: center;
-}
 
 body>nav>section>nav>a {
     color: black;
