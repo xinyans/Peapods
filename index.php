@@ -30,6 +30,6 @@
                     individual items
                 </section>
             </article>
-        </main>
+		</main>
     </body>
 </html>
