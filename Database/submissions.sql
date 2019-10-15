@@ -1,0 +1,1 @@
+CREATE TABLE `mysql`.`matching` ( `form_uuid` VARCHAR NOT NULL, `submission_uuid` VARCHAR NOT NULL , `user_data` JSON NOT NULL , `cluster` VARCHAR NOT NULL , `similarities` JSON NOT NULL ) ENGINE = InnoDB; 
