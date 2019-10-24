@@ -8,7 +8,7 @@
     <body>
         <nav>
             <header>
-                <img src="Resources/Peapods.png">
+				<img src="Resources/Peapods.png">
             </header>
             <section>
 				<nav>
@@ -21,11 +21,11 @@
             </section>
         </nav>
         <main>
-            <header>
-                stuff for top of page goes here
-            </header>
-            <article>
-                remainder goes header
+			<article>
+				<header>
+					stuff for top of page goes here
+				</header>
+                	remainder goes header
                 <section>
                     individual items
                 </section>
