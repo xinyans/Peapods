@@ -1,0 +1,118 @@
+/*
+    General Settings, HTML native tags
+*/
+html {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    background-color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif
+}
+/*
+    Header and Navigation Bar
+*/
+.siteHeader {
+    width: 100%;
+    background-color: rgb(99, 185, 104);
+}
+
+.logoWrapper {
+    vertical-align: middle;
+    height: 80px;
+    float: left;
+}
+
+#logo {
+    height: 80px;
+}
+
+    #logo:hover {
+        cursor: pointer;
+    }
+
+.navBtn {
+    font-size: 30px;
+    padding: 35px 20px;
+    float: left;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+}
+
+    .navBtn:hover {
+        background-color: rgb(132, 165, 167);
+    }
+/*
+    Main Content
+*/
+
+.mainContent {
+    width: 50%;
+    margin-left: 25%;
+    float: left;
+}
+
+.formList {
+    list-style: none;
+    padding: 0;
+}
+
+.formList li {
+    padding: 10px 5px;
+}
+
+.formList li:nth-child(even) {
+    background-color: rgb(245, 250, 245);
+    transition: 0.3s;
+}
+
+.formList li:nth-child(odd) {
+    transition: 0.3s;
+}
+
+    .formList li:nth-child(even):hover {
+        background-color: rgb(225, 237, 226);
+    }
+
+    .formList li:nth-child(odd):hover {
+        background-color: rgb(225, 237, 226);
+    }
+
+/*
+    Side Bar
+*/
+.sideBar {
+    width: 25%;
+    float: left;
+}
+
+.bodyLeft {
+    text-align: left;
+    font-size: 1.5em;
+}
+.bodyRight {
+    float: right;
+    font-size: 1.5em;
+}
+.bodyCenter {
+    text-align: center;
+    font-size: 1.5em;
+}
+.error {
+    float: left;
+    font-style: italic;
+    font-variant: small-caps;
+    font-size: 1.8em;
+}
+/*
+    Unversal Style
+*/
+.clearfix {
+    content: "Something";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
