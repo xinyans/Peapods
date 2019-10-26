@@ -16,6 +16,7 @@ body {
 .siteHeader {
     width: 100%;
     background-color: rgb(99, 185, 104);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 .logoWrapper {
@@ -47,11 +48,14 @@ body {
 /*
     Main Content
 */
-
+/* For Homepage */
 .mainContent {
     width: 50%;
-    margin-left: 25%;
     float: left;
+}
+
+.noLeftSidebar {
+    margin-left: 25%;
 }
 
 .formList {
@@ -79,11 +83,20 @@ body {
     .formList li:nth-child(odd):hover {
         background-color: rgb(225, 237, 226);
     }
+/* For Form Creation */
+.formCreationForm {
+
+}
 
 /*
-    Side Bar
+    Sidebar
 */
-.sideBar {
+.leftSidebar {
+    width: 25%;
+    float: left;
+}
+
+.rightSidebar {
     width: 25%;
     float: left;
 }
