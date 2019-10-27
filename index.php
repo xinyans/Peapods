@@ -22,7 +22,7 @@
 					<a href="https:\\www.google.com">Create</a>
 					<a href="https:\\www.google.com">Dashboard</a>
 				</nav>
-				<input type="text" name="search" value ="Search">
+				<input type="text" name="search" placeholder="Search">
             </section>
         </nav>
         <main>
