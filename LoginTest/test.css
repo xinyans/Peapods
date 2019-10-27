@@ -1,0 +1,22 @@
+body {
+    background-color: rgb(220, 240, 255);
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif
+}
+.bodyLeft {
+    text-align: left;
+    font-size: 1.5em;
+}
+.bodyRight {
+    float: right;
+    font-size: 1.5em;
+}
+.bodyCenter {
+    text-align: center;
+    font-size: 1.5em;
+}
+.error {
+    float: left;
+    font-style: italic;
+    font-variant: small-caps;
+    font-size: 1.8em;
+}
