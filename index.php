@@ -16,6 +16,15 @@
             <header>
 				<img src="Resources/Peapods.png">
                 <img src="Resources/loginguy.png">
+                <h3>Your username is:</h3>
+                <p>
+                    <?php
+                    session_start();
+                    if($_SESSION) {
+                        echo $_SESSION['yourUserName'];
+                    }
+                    ?>
+                </p>
                 <a href="LoginTest/logout.php"><img src="Resources/door.png"></a>
             </header>
             <section>
@@ -39,9 +48,8 @@
                     <p id="aboutText"> Peapods is a professional <span style="color:#1561ad;">matching service</span><br />that <span style="color:#fc5226;">streamlines</span> creating <span style="color:green;">meaningful groups</span><br />for classes based on <span style="color:#1dbab4;">data profiles</span>. </p>
 
                 </section>
-                <h3>Your username is:</h3>
-                <p><?php session_start(); echo $_SESSION['yourUserName']; ?></p>
+
             </article>
-		</main>
+        </main>
     </body>
 </html>
