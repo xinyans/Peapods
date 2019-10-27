@@ -4,7 +4,35 @@ var exampleData = {
         {
             "members" : [
                 {
-                    "name" : "Nick Meyer",
+                    "name" : "Nisdfsdfsdfsdck Meyer",
+                    "contact" : "meyern4@rpi.edu"
+                }
+            ]
+        },
+        {
+            "members" : [
+                {
+                    "name" : "Nsdfsdfsdfsdfick",
+                    "contact" : "meyern4@rpi.edu"
+                },
+                {
+                    "name" : "Nick",
+                    "contact" : "meyern4@rpi.edu"
+                }
+            ]
+        },
+        {
+            "members" : [
+                {
+                    "name" : "Nick",
+                    "contact" : "meyern4@rpi.edu"
+                }
+            ]
+        },
+        {
+            "members" : [
+                {
+                    "name" : "Nsdfsdfsdfsdfsdfsdfick",
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
@@ -46,13 +74,9 @@ var exampleData = {
                 {
                     "name" : "Nick",
                     "contact" : "meyern4@rpi.edu"
-                }
-            ]
-        },
-        {
-            "members" : [
+                },
                 {
-                    "name" : "Nick",
+                    "name" : "Nicksdf sfddsf",
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
@@ -60,7 +84,7 @@ var exampleData = {
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
+                    "name" : "Nsdfsdfsdfick",
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
@@ -68,31 +92,7 @@ var exampleData = {
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                }
-            ]
-        },
-        {
-            "members" : [
-                {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nick",
+                    "name" : "Nicksdfsdfsd",
                     "contact" : "meyern4@rpi.edu"
                 }
             ]
@@ -112,31 +112,7 @@ var exampleData = {
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                }
-            ]
-        },
-        {
-            "members" : [
-                {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nick",
+                    "name" : "Nick dsfsdfsdfsdf",
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
