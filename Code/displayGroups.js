@@ -4,144 +4,228 @@ var exampleData = {
         {
             "members" : [
                 {
-                    "name" : "Nisdfsdfsdfsdck Meyer",
+                    "name" : "Nick Meyer",
                     "contact" : "meyern4@rpi.edu"
+                },
+                {
+                    "name" : "Jolee McCluskey",
+                    "contact" : "mcclusk@rpi.edu"
+                },
+                {
+                    "name" : "Xinyuan Sun",
+                    "contact" : "sunxi5@rpi.edu"
+                },
+                {
+                    "name" : "Sam Schants",
+                    "contact" : "schants@rpi.edu"
+                },
+                {
+                    "name" : "Peter Gramenides",
+                    "contact" : "gramenp@rpi.edu"
                 }
             ]
         },
         {
             "members" : [
                 {
-                    "name" : "Nsdfsdfsdfsdfick",
+                    "name" : "Nick Meyer",
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Jolee McCluskey",
+                    "contact" : "mcclusk@rpi.edu"
+                },
+                {
+                    "name" : "Xinyuan Sun",
+                    "contact" : "sunxi5@rpi.edu"
+                },
+                {
+                    "name" : "Sam Schants",
+                    "contact" : "schants@rpi.edu"
+                },
+                {
+                    "name" : "Peter Gramenides",
+                    "contact" : "gramenp@rpi.edu"
                 }
             ]
         },
         {
             "members" : [
                 {
-                    "name" : "Nick",
+                    "name" : "Nick Meyer",
                     "contact" : "meyern4@rpi.edu"
+                },
+                {
+                    "name" : "Jolee McCluskey",
+                    "contact" : "mcclusk@rpi.edu"
+                },
+                {
+                    "name" : "Xinyuan Sun",
+                    "contact" : "sunxi5@rpi.edu"
+                },
+                {
+                    "name" : "Sam Schants",
+                    "contact" : "schants@rpi.edu"
+                },
+                {
+                    "name" : "Peter Gramenides",
+                    "contact" : "gramenp@rpi.edu"
                 }
             ]
         },
         {
             "members" : [
                 {
-                    "name" : "Nsdfsdfsdfsdfsdfsdfick",
+                    "name" : "Nick Meyer",
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Jolee McCluskey",
+                    "contact" : "mcclusk@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Xinyuan Sun",
+                    "contact" : "sunxi5@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Sam Schants",
+                    "contact" : "schants@rpi.edu"
                 }
             ]
         },
         {
             "members" : [
                 {
-                    "name" : "Nick",
+                    "name" : "Nick Meyer",
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Jolee McCluskey",
+                    "contact" : "mcclusk@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Xinyuan Sun",
+                    "contact" : "sunxi5@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Sam Schants",
+                    "contact" : "schants@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nicksdf sfddsf",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nsdfsdfsdfick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
-                },
-                {
-                    "name" : "Nicksdfsdfsd",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Peter Gramenides",
+                    "contact" : "gramenp@rpi.edu"
                 }
             ]
         },
         {
             "members" : [
                 {
-                    "name" : "Nick",
+                    "name" : "Nick Meyer",
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Jolee McCluskey",
+                    "contact" : "mcclusk@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Xinyuan Sun",
+                    "contact" : "sunxi5@rpi.edu"
                 },
                 {
-                    "name" : "Nick dsfsdfsdfsdf",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Sam Schants",
+                    "contact" : "schants@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Peter Gramenides",
+                    "contact" : "gramenp@rpi.edu"
                 }
             ]
         },
         {
             "members" : [
                 {
-                    "name" : "Nick",
+                    "name" : "Nick Meyer",
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
+                    "name" : "Jolee McCluskey",
+                    "contact" : "mcclusk@rpi.edu"
+                },
+                {
+                    "name" : "Xinyuan Sun",
+                    "contact" : "sunxi5@rpi.edu"
+                },
+                {
+                    "name" : "Sam Schants",
+                    "contact" : "schants@rpi.edu"
+                }
+            ]
+        },
+        {
+            "members" : [
+                {
+                    "name" : "Nick Meyer",
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
+                    "name" : "Jolee McCluskey",
+                    "contact" : "mcclusk@rpi.edu"
+                },
+                {
+                    "name" : "Xinyuan Sun",
+                    "contact" : "sunxi5@rpi.edu"
+                },
+                {
+                    "name" : "Sam Schants",
+                    "contact" : "schants@rpi.edu"
+                },
+                {
+                    "name" : "Peter Gramenides",
+                    "contact" : "gramenp@rpi.edu"
+                }
+            ]
+        },
+        {
+            "members" : [
+                {
+                    "name" : "Nick Meyer",
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
+                    "name" : "Jolee McCluskey",
+                    "contact" : "mcclusk@rpi.edu"
+                },
+                {
+                    "name" : "Xinyuan Sun",
+                    "contact" : "sunxi5@rpi.edu"
+                },
+                {
+                    "name" : "Sam Schants",
+                    "contact" : "schants@rpi.edu"
+                },
+                {
+                    "name" : "Peter Gramenides",
+                    "contact" : "gramenp@rpi.edu"
+                }
+            ]
+        },
+        {
+            "members" : [
+                {
+                    "name" : "Nick Meyer",
                     "contact" : "meyern4@rpi.edu"
                 },
                 {
-                    "name" : "Nick",
-                    "contact" : "meyern4@rpi.edu"
+                    "name" : "Jolee McCluskey",
+                    "contact" : "mcclusk@rpi.edu"
+                },
+                {
+                    "name" : "Xinyuan Sun",
+                    "contact" : "sunxi5@rpi.edu"
+                },
+                {
+                    "name" : "Sam Schants",
+                    "contact" : "schants@rpi.edu"
                 }
             ]
         }
