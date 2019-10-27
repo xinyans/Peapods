@@ -5,7 +5,69 @@
     --searchColor: #c9c9c9;
     --testColor: red;
     --sidePadding: 16%;
+    --loginColor: #eee;
     --footerColor: #96939b;
+}
+
+/**
+For the popup login form
+**/
+aside[class = login] {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    position: fixed;
+    background-color: rgba(025,025,025,0.2);
+}
+
+aside[class=login]>form  {
+    width: 400px;
+    height: 205px;
+    margin: auto;
+    background-color: var(--loginColor);
+    border-radius: 10px;
+}
+
+aside[class=login]>form button:nth-child(1){
+    border: none;
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    text-align: center;
+    color: black;
+}
+
+aside[class=login]>form input:nth-child(2) {
+    margin-top: 50px;
+}
+
+aside[class=login]>form>input {
+    display: block;
+    border: none;
+    border-radius: 10px;
+    clear: both;
+    width: 300px;
+    height: 30px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 0;
+    padding-left: 10px;
+
+}
+
+aside[class=login]>form button:nth-child(4){
+    margin-top: 30px;
+    border-radius: 10px;
+    border: none;
+    float: right;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    color: black;
 }
 
 body {
@@ -23,10 +85,14 @@ body {
     ;
 }
 
+/**
+End of login form styling
+**/
+
 body>nav {
     grid-area: top;
     width: auto;
-    min-height: 140px;
+    min-height: 130px;
     background-color: var(--testColor);
 }
 
@@ -46,7 +112,7 @@ body>nav>header>img {
 
 @media (max-width: 1000px) {
     body>nav>section {
-        min-height: 60px;
+        min-height: 50px;
         padding-left: var(--sidePadding);
         padding-right: var(--sidePadding);
         background-color: var(--lowerNavColor);
@@ -59,7 +125,7 @@ body>nav>header>img {
     
     body>nav>section>nav {
         display: flex;
-        min-width: 350px;
+        min-width: 250px;
         width: 100%;
         flex-flow: row nowrap;
         justify-content: space-between;
@@ -69,7 +135,7 @@ body>nav>header>img {
 
 @media (min-width: 1000px) {
     body>nav>section {
-        min-height: 60px;
+        min-height: 50px;
         padding-left: var(--sidePadding);
         padding-right: var(--sidePadding);
         background-color: var(--lowerNavColor);
@@ -80,8 +146,8 @@ body>nav>header>img {
     }
     body>nav>section>nav {
         display: flex;
-        min-width: 350px;
-        width: 420px;
+        min-width: 250px;
+        width: 300px;
         flex-flow: row nowrap;
         justify-content: space-between;
         align-content: center;
@@ -92,22 +158,22 @@ body>nav>header>img {
 
 body>nav>section>nav>a {
     color: black;
-    line-height: 60px;
-    font-size: 22px;
+    line-height: 50px;
+    font-size: 20px;
     font-family: sans-serif;
     text-decoration: none;
 }
 
 body>nav>section>nav>a:hover {
     border-top: 2px solid black;
-    line-height: 56px;
+    line-height: 46px;
 }
 
 body>nav>section>input {
     width: 220px;
-    height: 24px;
-    margin-top: 13px;
-    margin-bottom: 13px;
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border-radius: 15px;
     font-size: 20px;
     padding: 5px;
