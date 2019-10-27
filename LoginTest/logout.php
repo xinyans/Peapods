@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+  
   <head>
     <title>RoundAboutMe: Home</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="test.css" type="text/css" />
   </head>
 
-  <body class="bodyLeft">
+  <body>
     <p>Logging out...</p>
   </body>
+
 </html>
 
 <?php
-  session_set_cookie_params(0);
   session_start();
   unset($_SESSION['yourUserName']);
   unset($_SESSION['saveList']);
   session_destroy();
-  header ("Location: home.html");
-  exit();
+  header ("Location: ../index.php");
 ?>
