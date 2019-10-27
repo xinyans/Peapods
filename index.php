@@ -14,7 +14,6 @@
 				<nav>
 					<a href="https:\\www.google.com">Groups</a>
 					<a href="https:\\www.google.com">Create</a>
-					<a href="https:\\www.google.com">Find</a>
 					<a href="https:\\www.google.com">Dashboard</a>
 				</nav>
 				<input type="text" name="search" value ="Search">
