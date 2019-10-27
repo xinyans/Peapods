@@ -13,6 +13,7 @@
             <header>
 				<img src="Resources/Peapods.png">
                 <img src="Resources/loginguy.png">
+                <a href="LoginTest/logout.php"><img src="Resources/door.png"></a>
             </header>
             <section>
 				<nav>
@@ -32,6 +33,8 @@
                 <section>
                     individual items
                 </section>
+                <h3>Your username is:</h3>
+                <p><?php session_start(); echo $_SESSION['yourUserName']; ?></p>
             </article>
 		</main>
     </body>

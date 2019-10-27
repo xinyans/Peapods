@@ -12,11 +12,9 @@
 </html>
 
 <?php
-  session_set_cookie_params(0);
   session_start();
   unset($_SESSION['yourUserName']);
   unset($_SESSION['saveList']);
   session_destroy();
-  header ("Location: home.html");
-  exit();
+  header ("Location: ../index.php");
 ?>
