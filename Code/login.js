@@ -1,10 +1,11 @@
 var login = `
 <aside class = "login">
-    <form onsubmit="false">
+    <form action="LoginTest/login.php" method="post">
         <button type="button">X</button>
-        <input type="text" placeholder = "Username">
-        <input type="password" placeholder = "Password">
-        <button type="button">Submit</button>
+        <input type="text" name="username" id="username" placeholder="Username">
+        <input type="password" name="password" id="password" placeholder="Password">
+        <span><?php echo $error; ?></span>
+        <input type="submit" value="Login" id="Login" name="Login"/>
     </form>
 </aside>
 `;
@@ -25,13 +26,14 @@ function loginClick(){
         if(!(loginData["user"] == "" || loginData["pass"] == "")){
             $("body").html(temp);
             $("nav>header>img:nth-child(2)").attr("src", "Resources/door.png");
+            $("nav>header>img:nth-child(2)").attr("href", "LoginTest/logout.php");
             $("nav>header>img:nth-child(2)").click(logoutClick);
         }
     });
 }
 
 function logoutClick(){
-    
+
 }
 
 function addLoginListeners(){
