@@ -4,17 +4,19 @@
         <meta charset = "UTF-8">
         <title>Prototype</title>
         <link rel="stylesheet" type="text/css" href="Stylesheets/stylesheets.css">
+        <script src="code/jquery-3.4.1.min.js"></script>
+        <script src="code/login.js"></script>
     </head>
     <body>
         <nav>
             <header>
 				<img src="Resources/Peapods.png">
+                <img src="Resources/loginguy.png">
             </header>
             <section>
 				<nav>
 					<a href="https:\\www.google.com">Groups</a>
 					<a href="https:\\www.google.com">Create</a>
-					<a href="https:\\www.google.com">Find</a>
 					<a href="https:\\www.google.com">Dashboard</a>
 				</nav>
 				<input type="text" name="search" value ="Search">
