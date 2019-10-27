@@ -2,8 +2,8 @@ var login = `
 <aside class = "login">
     <form onsubmit="false">
         <button type="button">X</button>
-        <input type="text" value = "Username">
-        <input type="password" value = "Password">
+        <input type="text" placeholder = "Username">
+        <input type="password" placeholder = "Password">
         <button type="button">Submit</button>
     </form>
 </aside>
