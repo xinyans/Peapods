@@ -1,0 +1,34 @@
+{
+    "name": "Websys Groups",
+    "dateCreated": "2009-02-15T00:00:00Z",
+    "dateDue": "20010-02-15T00:00:00Z",
+    "questions": [
+        {
+            "prompt": "Do you like front-end or back-end",
+            "typeOfQuestion": "multiple choice",
+            "numOfChoices": 3,
+            "choices": [
+                {
+                    "choiceContent": "Front End"
+                },
+                {
+                    "choiceContent": "Back End"
+                },
+                {
+                    "choiceContent": "Do not know"
+                }
+            ]
+        },
+        {
+            "prompt": "Estimate your experience in web development (5 for max)",
+            "typeOfQuestion": "slider",
+            "sliderMin": 1,
+            "sliderMax": 5
+        },
+        {
+            "prompt": "Any Comments?",
+            "typeOfQuestion": "textInput",
+            "maxCharacters": 200
+        }
+    ]
+}
