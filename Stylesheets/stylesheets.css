@@ -31,6 +31,8 @@ body>nav {
 }
 
 body>nav>header {
+    display: flex;
+    justify-content: space-between;
     height: 80px;
     padding-left: var(--sidePadding);
     padding-right: var(--sidePadding);

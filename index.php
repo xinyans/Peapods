@@ -9,6 +9,7 @@
         <nav>
             <header>
 				<img src="Resources/Peapods.png">
+                <img src="Resources/loginguy.png">
             </header>
             <section>
 				<nav>
