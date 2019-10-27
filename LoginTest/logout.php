@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+  
   <head>
     <title>RoundAboutMe: Home</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="test.css" type="text/css" />
   </head>
 
-  <body class="bodyLeft">
+  <body>
     <p>Logging out...</p>
   </body>
+
 </html>
 
 <?php

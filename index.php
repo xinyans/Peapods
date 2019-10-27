@@ -15,6 +15,15 @@
             <header>
 				<img src="Resources/Peapods.png">
                 <img src="Resources/loginguy.png">
+                <h3>Your username is:</h3>
+                <p>
+                    <?php
+                    session_start();
+                    if($_SESSION) {
+                        echo $_SESSION['yourUserName'];
+                    }
+                    ?>
+                </p>
                 <a href="LoginTest/logout.php"><img src="Resources/door.png"></a>
             </header>
             <section>
@@ -33,13 +42,7 @@
                     <h1 id="startText">We help people</h1>
                     <h1 id="slideText">organize courses.</h1>
 				</header>
- 
-                <section>
-
-                </section>
-                <h3>Your username is:</h3>
-                <p><?php session_start(); echo $_SESSION['yourUserName']; ?></p>
             </article>
-		</main>
+        </main>
     </body>
 </html>
