@@ -14,7 +14,6 @@
     flex-flow: row wrap;
     align-content: space-between;
     justify-content: space-between;
-    
 }
 
 .group {
@@ -27,6 +26,7 @@
     background: linear-gradient(to right, rgb(240, 240, 240,0.5) 0%,rgba(240,240,240,0) 100%);
     margin-top: 20px;
     width: 380px;
+    min-height: 200px;
     font-size: 20px;
     font-family: sans-serif;
     padding: 10px;
@@ -237,4 +237,11 @@ body>main {
     padding-right: var(--sidePadding);
     min-height: 1000px;
     background-color: var(--mainColor);
+}
+
+body>main>article>header {
+    font-size: 50px;
+    text-align: center;
+    padding: 10px;
+    font-family: sans-serif;
 }
