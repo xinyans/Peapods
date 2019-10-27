@@ -4,6 +4,8 @@
         <meta charset = "UTF-8">
         <title>Prototype</title>
         <link rel="stylesheet" type="text/css" href="Stylesheets/stylesheets.css">
+        <script src="code/jquery-3.4.1.min.js"></script>
+        <script src="code/login.js"></script>
     </head>
     <body>
         <nav>
