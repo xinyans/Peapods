@@ -25,11 +25,11 @@
         <main>
 			<article>
 				<header>
-					stuff for top of page goes here
+					<img src="Resources/homeBackground.jpg">
 				</header>
-                	remainder goes header
+                	
                 <section>
-                    individual items
+                    
                 </section>
             </article>
 		</main>
