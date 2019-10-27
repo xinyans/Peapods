@@ -9,6 +9,9 @@
     --footerColor: #96939b;
 }
 
+/**
+For the popup login form
+**/
 aside[class = login] {
     width: 100%;
     height: 100%;
@@ -85,7 +88,7 @@ body {
 body>nav {
     grid-area: top;
     width: auto;
-    min-height: 140px;
+    min-height: 130px;
     background-color: var(--testColor);
 }
 
@@ -105,7 +108,7 @@ body>nav>header>img {
 
 @media (max-width: 1000px) {
     body>nav>section {
-        min-height: 60px;
+        min-height: 50px;
         padding-left: var(--sidePadding);
         padding-right: var(--sidePadding);
         background-color: var(--lowerNavColor);
@@ -128,7 +131,7 @@ body>nav>header>img {
 
 @media (min-width: 1000px) {
     body>nav>section {
-        min-height: 60px;
+        min-height: 50px;
         padding-left: var(--sidePadding);
         padding-right: var(--sidePadding);
         background-color: var(--lowerNavColor);
@@ -151,7 +154,7 @@ body>nav>header>img {
 
 body>nav>section>nav>a {
     color: black;
-    line-height: 60px;
+    line-height: 50px;
     font-size: 22px;
     font-family: sans-serif;
     text-decoration: none;
@@ -159,14 +162,14 @@ body>nav>section>nav>a {
 
 body>nav>section>nav>a:hover {
     border-top: 2px solid black;
-    line-height: 56px;
+    line-height: 46px;
 }
 
 body>nav>section>input {
     width: 220px;
-    height: 24px;
-    margin-top: 13px;
-    margin-bottom: 13px;
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border-radius: 15px;
     font-size: 20px;
     padding: 5px;
