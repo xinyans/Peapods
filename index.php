@@ -3,6 +3,7 @@
     <head>
         <meta charset = "UTF-8">
         <title>Prototype</title>
+        <link rel="icon" type="image/png" href="resources/favicon.png">
         <link rel="stylesheet" type="text/css" href="Stylesheets/stylesheets.css">
         <script src="code/jquery-3.4.1.min.js"></script>
         <script src="code/login.js"></script>
@@ -19,7 +20,7 @@
 					<a href="https:\\www.google.com">Create</a>
 					<a href="https:\\www.google.com">Dashboard</a>
 				</nav>
-				<input type="text" name="search" value ="Search">
+				<input type="text" name="search" placeholder ="Search">
             </section>
         </nav>
         <main>

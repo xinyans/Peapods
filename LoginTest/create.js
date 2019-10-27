@@ -1,25 +1,39 @@
 $(window).ready(function() {
     $("#addQuestion").click(function() {
 
-    })
+    });
+
     $('input:radio[name="question1Type"]').change(function(){
         if($(this).val() == 'multipleChoice'){
-            $(".question1Extra").remove();
+            $(".question1Extra.slider").hide();
+            $(".question1Extra.textInput").hide();
             console.log("multiple Choice");
-            var child = '<input type="text" class="question1Extra" placeholder="multiple choice stuff">';
-            $("#question1").append(child);
+            $(".question1Extra.multipleChoice").show();
         }
-        if($(this).val() == 'slidebar'){
-            $(".question1Extra").remove();
-            console.log("slidebar");
-            var child = '<input type="text" class="question1Extra" placeholder="slidebar stuff">';
-            $("#question1").append(child);
+        if($(this).val() == 'slider'){
+            $(".question1Extra.multipleChoice").hide();
+            $(".question1Extra.textInput").hide();
+            console.log("slider");
+            $(".question1Extra.slider").show();
         }
         if($(this).val() == 'textInput'){
-            $(".question1Extra").remove();
-            console.log("slidebar");
-            var child = '<input type="text" class="question1Extra" placeholder="text input stuff">';
-            $("#question1").append(child);
+            $(".question1Extra.multipleChoice").hide();
+            $(".question1Extra.slider").hide();
+            console.log("textInput");
+            $(".question1Extra.textInput").show();
+        }
+    });
+
+    $('select.question1Extra.multipleChoice').change(function() {
+        var required_choices = this.options[ this.selectedIndex ].value;
+        var choices = $('.question1Extra.multipleChoice.multipleChoiceChoices').children();
+        for(var i=0; i<required_choices; i++){
+            choices[i].style.display = "inline";
+            console.log("changed")
+        }
+        for(var i=required_choices; i<choices.length; i++){
+            choices[i].style.display = "none";
+            console.log("changed")
         }
     });
 });
