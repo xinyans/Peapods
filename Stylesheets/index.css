@@ -16,9 +16,9 @@
 	color: white;
 	font-family: 'Poppins', sans-serif;
 	position: absolute;
-	top: 90px;
-	left: 400px;
-	font-size: 100px;
+	top: 120px;
+	left: 380px;
+	font-size: 50px;
 }
 
 #slideText
@@ -26,7 +26,18 @@
 	color: white;
 	font-family: 'Poppins', sans-serif;
 	position: absolute;
-	top: 260px;
-	left: 420px;
-	font-size: 80px;
+	top: 120px;
+	left: 780px;
+	font-size: 50px;
+}
+
+#aboutText
+{
+	color: black;
+	font-family: 'Poppins', sans-serif;
+	position: absolute;
+	top: 270px;
+	left: 400px;
+	font-size: 35px;
+	text-align: center;
 }
