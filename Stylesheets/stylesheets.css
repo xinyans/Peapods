@@ -85,6 +85,10 @@ body {
     ;
 }
 
+/**
+End of login form styling
+**/
+
 body>nav {
     grid-area: top;
     width: auto;
@@ -121,7 +125,7 @@ body>nav>header>img {
     
     body>nav>section>nav {
         display: flex;
-        min-width: 350px;
+        min-width: 250px;
         width: 100%;
         flex-flow: row nowrap;
         justify-content: space-between;
@@ -142,8 +146,8 @@ body>nav>header>img {
     }
     body>nav>section>nav {
         display: flex;
-        min-width: 350px;
-        width: 420px;
+        min-width: 250px;
+        width: 300px;
         flex-flow: row nowrap;
         justify-content: space-between;
         align-content: center;
@@ -155,7 +159,7 @@ body>nav>header>img {
 body>nav>section>nav>a {
     color: black;
     line-height: 50px;
-    font-size: 22px;
+    font-size: 20px;
     font-family: sans-serif;
     text-decoration: none;
 }
