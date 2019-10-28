@@ -47,7 +47,6 @@
         <script src="code/index.js"></script>
     </head>
     <body>
-        <?php session_start(); ?>
         <nav>
             <header>
                 <a href = "index.php"><img src="Resources/Peapods.png"></a>
@@ -70,7 +69,8 @@
         <main>
 			<article>
 				<header>
-
+                    <canvas id = "contentCanvas">
+                    </canvas>
 				</header>
                 <section>
                 </section>
