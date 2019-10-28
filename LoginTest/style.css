@@ -84,9 +84,91 @@ body {
         background-color: rgb(225, 237, 226);
     }
 /* For Form Creation */
-.formCreationForm {
-
+form {
+    max-width: 700px;
 }
+
+h2 {
+    text-align: center;
+}
+
+input[type="text"], input[type="number"] {
+    padding: 12px 20px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    background: rgba(255,255,255,0.1);
+    border: none; 
+    font-size: 16px;
+    height: auto;
+    width: 100%;
+    background-color: #e8eeef;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 20px;
+}
+
+input[type="date"] {
+    background: rgba(255,255,255,0.1);
+    padding: 12px 20px;
+    border: none; 
+    font-size: 16px;
+    height: auto;
+    background-color: #e8eeef;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    padding-bottom: 8px;
+}
+
+input:focus, textarea:focus {
+    box-shadow:  0 0 5px rgba(81,203,238,1);
+    border: 1 px lightblue;
+}
+ legend {
+    display: block;
+    margin-bottom: 8px;
+ }
+
+ fieldset {
+    margin-bottom: 30px;
+    border: none;
+ }
+
+ .section {
+    background-color: #5fcf80;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgb(225, 237, 226);
+    border-radius: 100%;
+ }
+
+#submitButton {
+    padding: 19px 39px 18px 39px;
+    background-color: rgb(225, 237, 226);
+    font-size: 18px;
+    text-align: center;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #3ac162;
+    border-width: 1px 1px 3px;
+    box-shadow: 0 -1px rgb(225, 237, 226);
+    margin-bottom: 10px;
+ }
+
+ button {
+    margin-bottom: 10px;
+ }
 
 /*
     Sidebar
