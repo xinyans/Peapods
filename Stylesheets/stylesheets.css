@@ -147,7 +147,7 @@ body>nav {
 
 /** php data */
 body>nav>header>p {
-    display: visible;
+    display: none;
 }
 
 body>nav>header {
