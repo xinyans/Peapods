@@ -29,6 +29,7 @@
     if($validationPassed) {
       session_set_cookie_params(0);
       session_start();
+      session_regenerate_id(true);
       $_SESSION['yourUserName'] = $username;
     }
     else { $error = "Error logging in: Make sure your username and password are correct"; }

@@ -47,6 +47,7 @@
         <script src="code/index.js"></script>
     </head>
     <body>
+        <?php session_start(); ?>
         <nav>
             <header>
                 <a href = "index.php"><img src="Resources/Peapods.png"></a>
@@ -73,7 +74,6 @@
 				</header>
                 <section>
                 </section>
-
             </article>
         </main>
     </body>
