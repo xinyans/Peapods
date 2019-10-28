@@ -44,7 +44,6 @@
         <link rel="stylesheet" type="text/css" href="Stylesheets/index.css">
         <script src="code/jquery-3.4.1.min.js"></script>
         <script src="code/login.js"></script>
-        <script src="code/index.js"></script>
     </head>
     <body>
         <nav>
