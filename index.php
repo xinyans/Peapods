@@ -8,24 +8,25 @@
         <link rel="stylesheet" type="text/css" href="Stylesheets/stylesheets.css">
         <link rel="stylesheet" type="text/css" href="Stylesheets/index.css">
         <script src="code/jquery-3.4.1.min.js"></script>
-        <script src="code/index.js"></script>
         <script src="code/login.js"></script>
+        <script src="code/index.js"></script>
     </head>
     <body>
         <nav>
             <header>
-				<img src="Resources/Peapods.png">
+                <a href = "index.php"><img src="Resources/Peapods.png"></a>
                 <img src="Resources/loginguy.png">
-                <h3>Your username is:</h3>
                 <p>
                     <?php
                     session_start();
                     if($_SESSION) {
-                        echo $_SESSION['yourUserName'];
+                        echo("true");
+                    }
+                    else {
+                        echo("false");
                     }
                     ?>
                 </p>
-                <a href="LoginTest/logout.php"><img src="Resources/door.png"></a>
             </header>
             <section>
 				<nav>
@@ -39,14 +40,9 @@
         <main>
 			<article>
 				<header>
-					<img id="background" src="Resources/homeBackground.png">
-                    <h1 id="startText" class="disableSelect">We help people</h1>
-                    <h1 id="slideText" class="disableSelect">organize courses.</h1>
-				</header>
- 
-                <section>
-                    <p id="aboutText" class="disableSelect"> Peapods is a professional <span style="color:#1561ad;">matching service</span><br />that <span style="color:#fc5226;">streamlines</span> creating <span style="color:green;">meaningful groups</span><br />for classes based on <span style="color:#1dbab4;">data profiles</span>. </p>
 
+				</header>
+                <section>
                 </section>
 
             </article>
