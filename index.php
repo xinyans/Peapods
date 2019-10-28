@@ -1,3 +1,38 @@
+<?php
+    function validate($item) {
+        $item = trim($item);
+        $item = stripslashes($item);
+        $item = htmlspecialchars($item);
+        return $item;
+    }
+
+    session_start();
+
+    if(!isset($_SESSION['loginUsername'])){
+        $_SESSION['loginUsername'] = "-1";
+    }
+    else if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $password = $error = "";
+
+        $username = validate($_POST['username']);
+        $password = validate($_POST['password']);
+        $data = file_get_contents("users.txt");
+        $data = explode("\n", $data);
+        $validationPassed = FALSE;
+
+        foreach($data as $values) {
+            $loginInfo = explode(":", $values);
+            if((validate($loginInfo[0]) == validate($username)) and (validate($loginInfo[1]) == validate($password))) {
+                    $validationPassed = TRUE;
+                    break;
+            }
+        }
+        if($validationPassed) {
+            $_SESSION['loginUsername'] = $username;
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,27 +43,20 @@
         <link rel="stylesheet" type="text/css" href="Stylesheets/stylesheets.css">
         <link rel="stylesheet" type="text/css" href="Stylesheets/index.css">
         <script src="code/jquery-3.4.1.min.js"></script>
-        <script src="code/index.js"></script>
         <script src="code/login.js"></script>
+        <script src="code/index.js"></script>
     </head>
     <body>
         <?php session_start(); ?>
         <nav>
             <header>
-                <input type="hidden" name="session" id="session">
-				<img src="Resources/Peapods.png">
-                <img src="Resources/loginguy.png">
-                <h3>Your username is:</h3>
+                <a href = "index.php"><img src="Resources/Peapods.png"></a>
+                <a href = "#"><img src="Resources/loginguy.png"></a>
                 <p>
                     <?php
-                    //session_start();
-                    echo session_id();
-                    if($_SESSION) {
-                        echo $_SESSION['yourUserName'];
-                    }
+                        echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
                     ?>
                 </p>
-                <a href="LoginTest/logout.php"><img src="Resources/door.png"></a>
             </header>
             <section>
 				<nav>
@@ -42,13 +70,9 @@
         <main>
 			<article>
 				<header>
-					<img id="background" src="Resources/homeBackground.png">
-                    <h1 id="startText" class="disableSelect">We help people</h1>
-                    <h1 id="slideText" class="disableSelect">organize courses.</h1>
+
 				</header>
- 
                 <section>
-                    <p id="aboutText" class="disableSelect"> Peapods is a professional <span style="color:#1561ad;">matching service</span><br />that <span style="color:#fc5226;">streamlines</span> creating <span style="color:green;">meaningful groups</span><br />for classes based on <span style="color:#1dbab4;">data profiles</span>. </p>
                 </section>
             </article>
         </main>

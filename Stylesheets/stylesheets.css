@@ -118,6 +118,11 @@ aside[class=login]>form button:nth-child(4){
     color: black;
 }
 
+
+/**
+End of login form styling
+**/
+
 body {
     height: 100%;
     width: 100%;
@@ -133,15 +138,16 @@ body {
     ;
 }
 
-/**
-End of login form styling
-**/
-
 body>nav {
     grid-area: top;
     width: auto;
     min-height: 130px;
     background-color: var(--testColor);
+}
+
+/** php data */
+body>nav>header>p {
+    display: none;
 }
 
 body>nav>header {
@@ -153,7 +159,7 @@ body>nav>header {
     background-color: var(--navbarColor);
 }
 
-body>nav>header>img {
+body>nav>header img {
     height: 50px;
     margin-top: 15px;
 }
@@ -202,7 +208,6 @@ body>nav>header>img {
     }
     
 }
-
 
 body>nav>section>nav>a {
     color: black;

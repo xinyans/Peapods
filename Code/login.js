@@ -1,6 +1,6 @@
 var login = `
 <aside class = "login">
-    <form action="LoginTest/login.php" method="post">
+    <form action="index.php" method="post">
         <button type="button">X</button>
         <input type="text" name="username" id="username" placeholder="Username">
         <input type="password" name="password" id="password" placeholder="Password">
@@ -10,39 +10,37 @@ var login = `
 </aside>
 `;
 
+var loginState = false;
+
 function loginClick(){
-    temp = $("body").html();
-    $("body").html(login + temp);
-    $("body>aside>form>button:nth-child(1)").click(function(){
-        $("body").html(temp);
-        $("nav>header>img:nth-child(3)").click(loginClick);
-        $("nav>header>img:nth-child(3)").attr("src", "Resources/loginguy.png");
-    });
-    document.getElementById("session").innerHTML = "<?php echo session_id();?>";
-    var id = document.getElementById("session").innerHTML;
-    alert(id);
-    $("body>aside>form>button:nth-child(4)").click(function(){
-        loginData = {
-            "user" : $("body>aside>form>input:nth-child(2)").val(),
-            "pass" : $("body>aside>form>input:nth-child(3)").val()
-        }
-        if(!(loginData["user"] == "" || loginData["pass"] == "")){
+    console.log("Trying: " + loginState);
+    if(!loginState){
+        temp = $("body").html();
+        $("body").html(login + temp);
+        $("body>aside>form>button:nth-child(1)").click(function(){
             $("body").html(temp);
-            $("nav>header>img:nth-child(2)").attr("src", "Resources/door.png");
-            $("nav>header>img:nth-child(2)").attr("href", "LoginTest/logout.php");
-            $("nav>header>img:nth-child(2)").click(logoutClick);
-        }
-    });
+            $("nav>header>img:nth-child(2)").click(loginClick);
+            $("nav>header>img:nth-child(2)").attr("src", "Resources/loginguy.png");
+        });
+    }
 }
 
 function logoutClick(){
 
 }
 
+/** Call this function from page js file */
 function addLoginListeners(){
-    $("nav>header>img:nth-child(2)").click(loginClick);
-}
-
-window.onload = function() {
-    this.addLoginListeners();
+    if(~$("body>nav>header>p").html().indexOf("true")){
+        console.log("logged in");
+        loginState = true;
+        $("nav>header>a:nth-child(2)").attr("href", "LoginTest/logout.php");
+        $("nav>header>a:nth-child(2) img").attr("src", "Resources/door.png");
+    }
+    else {
+        console.log("logged out");
+        loginState = false;
+        $("nav>header>a:nth-child(2) img").attr("src", "Resources/loginguy.png");
+    }
+    $("nav>header>a:nth-child(2)").click(loginClick);
 }

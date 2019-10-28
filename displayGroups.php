@@ -12,7 +12,7 @@
     <body>
         <nav>
             <header>
-				<img src="Resources/Peapods.png">
+				<a href = "index.php"><img src="Resources/Peapods.png"></a>
                 <img src="Resources/loginguy.png">
             </header>
             <section>
