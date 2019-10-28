@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
   <head>
     <title>Sign In</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -44,6 +44,7 @@
     if($validationPassed) {
       session_set_cookie_params(0);
       session_start();
+      session_regenerate_id(true);
       $_SESSION['yourUserName'] = $username;
     }
     

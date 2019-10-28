@@ -12,14 +12,17 @@
         <script src="code/login.js"></script>
     </head>
     <body>
+        <?php session_start(); ?>
         <nav>
             <header>
+                <input type="hidden" name="session" id="session">
 				<img src="Resources/Peapods.png">
                 <img src="Resources/loginguy.png">
                 <h3>Your username is:</h3>
                 <p>
                     <?php
-                    session_start();
+                    //session_start();
+                    echo session_id();
                     if($_SESSION) {
                         echo $_SESSION['yourUserName'];
                     }
@@ -46,9 +49,7 @@
  
                 <section>
                     <p id="aboutText" class="disableSelect"> Peapods is a professional <span style="color:#1561ad;">matching service</span><br />that <span style="color:#fc5226;">streamlines</span> creating <span style="color:green;">meaningful groups</span><br />for classes based on <span style="color:#1dbab4;">data profiles</span>. </p>
-
                 </section>
-
             </article>
         </main>
     </body>
