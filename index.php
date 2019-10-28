@@ -69,8 +69,7 @@
         <main>
 			<article>
 				<header>
-                    <canvas id = "contentCanvas">
-                    </canvas>
+                    <canvas id = "contentCanvas"></canvas>
 				</header>
                 <section>
                 </section>

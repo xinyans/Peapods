@@ -238,6 +238,7 @@ body>nav>section>input {
 }
 
 body>main {
+    grid-area: bottom;
     padding-left: var(--sidePadding);
     padding-right: var(--sidePadding);
     min-height: 1000px;
