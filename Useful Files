@@ -1,0 +1,18 @@
+Add any files that are going to be used in the final site here
+
+/register.php
+/login.php
+/index.php
+/displayGroups.php
+
+/Stylesheets/*
+
+Resources/door.png
+Resources/loginguy.png
+Resources/Peapods.png
+Resources/favicon.png
+
+/displayGroups.js
+/index.js
+/login.js
+/jquery-3.4.1.min.js
