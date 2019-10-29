@@ -62,7 +62,9 @@
 					<a href="https:\\www.google.com">Create</a>
 					<a href="https:\\www.google.com">Dashboard</a>
 				</nav>
-				<input type="text" name="search" placeholder="Group Code">
+                <form action = "displaygroups.php" method="post">
+				    <input type="text" name="code" placeholder="Group Code">
+                </form>
             </section>
         </nav>
         <main>

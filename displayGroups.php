@@ -12,24 +12,7 @@
         $_SESSION['loginUsername'] = "-1";
     }
     else if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = $password = $error = "";
-
-        $username = validate($_POST['username']);
-        $password = validate($_POST['password']);
-        $data = file_get_contents("users.txt");
-        $data = explode("\n", $data);
-        $validationPassed = FALSE;
-
-        foreach($data as $values) {
-            $loginInfo = explode(":", $values);
-            if((validate($loginInfo[0]) == validate($username)) and (validate($loginInfo[1]) == validate($password))) {
-                    $validationPassed = TRUE;
-                    break;
-            }
-        }
-        if($validationPassed) {
-            $_SESSION['loginUsername'] = $username;
-        }
+        $code = validate($_POST['code']);
     }
 ?>
 
@@ -61,7 +44,9 @@
 					<a href="https:\\www.google.com">Create</a>
 					<a href="https:\\www.google.com">Dashboard</a>
 				</nav>
-				<input type="text" name="search" placeholder ="Search">
+                <form action = "displaygroups.php" method="post">
+				    <input type="text" name="code" placeholder="Group Code">
+                </form>
             </section>
         </nav>
         <main>
