@@ -15,11 +15,10 @@
         $validationPassed = FALSE;
 
         if ($user and $user['password'] == md5($password)) { // if user exists
-          $validationPassed = TRUE;
-        }
-
-        if($validationPassed) {
             $_SESSION['loginUsername'] = $username;
+        }
+        else {
+            $_SESSION['loginUsername'] = "-1";
         }
 
         $db->close();
