@@ -1,11 +1,11 @@
 <?php
     session_start();
-
+    $_SESSION['requestPage'] = $_SERVER['REQUEST_URI'];
     if(!isset($_SESSION['loginUsername'])){
         $_SESSION['loginUsername'] = "-1";
     }
     else if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $code = mysqli_real_escape_string($db, $_POST['code']);
+        $code = mysqli_real_escape_string($_POST['code']);
     }
 ?>
 

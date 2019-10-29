@@ -51,7 +51,7 @@ function loginClick(){
 function addLoginListeners(){
     if(~$("body>nav>header>p").html().indexOf("true")){
         loginState = true;
-        $("nav>header>a:nth-child(2)").attr("href", "LoginTest/logout.php");
+        $("nav>header>a:nth-child(2)").attr("href", "logout.php");
         $("nav>header>a:nth-child(2) img").attr("src", "Resources/door.png");
     }
     else {

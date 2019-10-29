@@ -40,5 +40,10 @@
         }
         $db->close();
       }
-      header('location: ../index.php');
+      if(isset($_SESSION['requestPage'])){
+        header("location: ..".$_SESSION['requestPage']);
+      }
+      else {
+          header("location: ../index.php");
+      }
     ?>
