@@ -15,18 +15,18 @@
         <meta charset = "UTF-8">
         <title>Prototype</title>
         <link rel="icon" type="image/png" href="resources/favicon.png">
-        <link rel="stylesheet" type="text/css" href="Stylesheets/stylesheets.css">
-        <link rel="stylesheet" type="text/css" href="Stylesheets/login.css">
-        <link rel="stylesheet" type="text/css" href="Stylesheets/displayGroups.css">
-        <script src="code/jquery-3.4.1.min.js"></script>
-        <script src="code/login.js"></script>
-        <script src="code/displayGroups.js"></script>
+        <link rel="stylesheet" type="text/css" href="../Stylesheets/stylesheets.css">
+        <link rel="stylesheet" type="text/css" href="../Stylesheets/login.css">
+        <link rel="stylesheet" type="text/css" href="../Stylesheets/displayGroups.css">
+        <script src="../Code/jquery-3.4.1.min.js"></script>
+        <script src="../Code/login.js"></script>
+        <script src="../Code/displayGroups.js"></script>
     </head>
     <body>
         <nav>
             <header>
-                <a href = "index.php"><img src="Resources/Peapods.png"></a>
-                <a href = "#"><img src="Resources/loginguy.png"></a>
+                <a href = "index.php"><img src="../Resources/Peapods.png"></a>
+                <a href = "#"><img src="../Resources/loginguy.png"></a>
                 <p>
                     <?php
                         echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
@@ -34,12 +34,11 @@
                 </p>
             </header>
             <section>
-				<nav>
-					<a href="https:\\www.google.com">Groups</a>
-					<a href="https:\\www.google.com">Create</a>
-					<a href="https:\\www.google.com">Dashboard</a>
+            <nav>
+                <a href="makeForm.php">Create</a>
+                <a href="dashboard.php">Dashboard</a>
 				</nav>
-                <form action = "displaygroups.php" method="post">
+                <form action = "displayGroups.php" method="post">
 				    <input type="text" name="code" placeholder="Group Code">
                 </form>
             </section>
