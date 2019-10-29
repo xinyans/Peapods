@@ -25,7 +25,7 @@
           }
       
           if ($user['email'] === $email) {
-            array_push($errors, "email already exists");
+            array_push($errors, "Email already exists");
           }
         }
       
@@ -39,7 +39,7 @@
             $_SESSION['errors'] = "";
         }
         else {
-          $_SESSION['errors'] = $errors[0];
+          $_SESSION['errors'] = implode("\n", $errors);
         }
         $db->close();
       }
