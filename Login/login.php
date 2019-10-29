@@ -17,15 +17,7 @@
         if ($user and $user['password'] == md5($password)) { // if user exists
           $validationPassed = TRUE;
         }
-        /*
-        foreach($data as $values) {
-            $loginInfo = explode(":", $values);
-            if((validate($loginInfo[0]) == validate($username)) and (validate($loginInfo[1]) == validate($password))) {
-                $validationPassed = TRUE;
-                break;
-            }
-        }
-        */
+
         if($validationPassed) {
             $_SESSION['loginUsername'] = $username;
         }
@@ -33,7 +25,6 @@
         $db->close();
     }
     if(isset($_SESSION['requestPage'])){
-        echo "location: ..".$_SESSION['requestPage'];
         header("location: ..".$_SESSION['requestPage']);
     }
     else {
