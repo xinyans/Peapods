@@ -14,10 +14,10 @@
         
         $validationPassed = FALSE;
 
-        if ($user) { // if user exists
+        if ($user and $user['password'] == md5($password)) { // if user exists
           $validationPassed = TRUE;
         }
-
+        /*
         foreach($data as $values) {
             $loginInfo = explode(":", $values);
             if((validate($loginInfo[0]) == validate($username)) and (validate($loginInfo[1]) == validate($password))) {
@@ -25,6 +25,7 @@
                 break;
             }
         }
+        */
         if($validationPassed) {
             $_SESSION['loginUsername'] = $username;
         }
