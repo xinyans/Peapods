@@ -1,5 +1,5 @@
 function displayData(){
-    exampleData = JSON.parse($("body>nav>header>p:nth-child(4)").text());
+    exampleData = JSON.parse($("body>nav>p:nth-child(5)").text());
     console.log(exampleData);
     returnHTML = "";;
     $("body>main>article>header").html(this.exampleData["formTitle"]);
