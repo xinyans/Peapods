@@ -1,7 +1,7 @@
 <?php
     session_start();
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $db = new mysqli('localhost', 'root', 'cows', 'peapods');
+        $db = new mysqli('localhost', 'root', 'Techie0110', 'peapods');
         $username = mysqli_real_escape_string($db, $_POST['username']);
         $password = mysqli_real_escape_string($db, $_POST['password']);
         
@@ -14,10 +14,10 @@
         
         $validationPassed = FALSE;
 
-        if ($user) { // if user exists
+        if ($user and $user['password'] == md5($password)) { // if user exists
           $validationPassed = TRUE;
         }
-
+        /*
         foreach($data as $values) {
             $loginInfo = explode(":", $values);
             if((validate($loginInfo[0]) == validate($username)) and (validate($loginInfo[1]) == validate($password))) {
@@ -25,11 +25,12 @@
                 break;
             }
         }
+        */
         if($validationPassed) {
             $_SESSION['loginUsername'] = $username;
         }
 
         $db->close();
     }
-    header("location: ../index.php");
+    header("location: index.php");
 ?>
