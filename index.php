@@ -1,11 +1,4 @@
 <?php
-    function validate($item) {
-        $item = trim($item);
-        $item = stripslashes($item);
-        $item = htmlspecialchars($item);
-        return $item;
-    }
-
     session_start();
 
     if(!isset($_SESSION['loginUsername'])){
@@ -39,6 +32,8 @@
         if($validationPassed) {
             $_SESSION['loginUsername'] = $username;
         }
+
+        $db->close();
     }
 ?>
 
