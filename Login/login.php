@@ -8,7 +8,7 @@
         if (empty($username)) { array_push($errors, "Username is required"); }
         if (empty($password)) { array_push($errors, "Password is required"); }
         
-        $user_check_query = "SELECT * FROM userdata WHERE username='$username' OR email='$email' LIMIT 1";
+        $user_check_query = "SELECT * FROM userdata WHERE username='$username' LIMIT 1";
         $result = mysqli_query($db, $user_check_query);
         $user = mysqli_fetch_assoc($result);
         
