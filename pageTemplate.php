@@ -1,39 +1,7 @@
 <?php
     session_start();
-
     if(!isset($_SESSION['loginUsername'])){
         $_SESSION['loginUsername'] = "-1";
-    }
-    else if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $db = new mysqli('localhost', 'root', 'cows', 'userdata');
-        $username = mysqli_real_escape_string($db, $_POST['username']);
-        $password = mysqli_real_escape_string($db, $_POST['password']);
-        
-        if (empty($username)) { array_push($errors, "Username is required"); }
-        if (empty($password)) { array_push($errors, "Password is required"); }
-        
-        $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
-        $result = mysqli_query($db, $user_check_query);
-        $user = mysqli_fetch_assoc($result);
-        
-        $validationPassed = FALSE;
-
-        if ($user) { // if user exists
-          $validationPassed = TRUE;
-        }
-
-        foreach($data as $values) {
-            $loginInfo = explode(":", $values);
-            if((validate($loginInfo[0]) == validate($username)) and (validate($loginInfo[1]) == validate($password))) {
-                $validationPassed = TRUE;
-                break;
-            }
-        }
-        if($validationPassed) {
-            $_SESSION['loginUsername'] = $username;
-        }
-
-        $db->close();
     }
 ?>
 

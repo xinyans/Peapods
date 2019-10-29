@@ -1,7 +1,9 @@
 run the following code in your phpmyadmin to setup the database
+you can use the register function to create your own login information
 
-CREATE DATABASE userdata;
-USE userdata;
+
+CREATE DATABASE peapods;
+USE peapods;
 CREATE TABLE userdata(
     id int NOT NULL AUTO_INCREMENT,
 	lastName varchar(255) NOT NULL,
@@ -11,7 +13,7 @@ CREATE TABLE userdata(
     email varchar(255) NOT NULL,
     PRIMARY KEY(id)
 );
-USE userdata;
+USE peapods;
 CREATE TABLE formdata(
     formid int NOT NULL AUTO_INCREMENT,
     userid int NOT NULL,

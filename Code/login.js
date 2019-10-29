@@ -1,6 +1,6 @@
 var login = `
 <aside class = "login">
-    <form action="index.php" method="post">
+    <form action="login.php" method="post">
         <button type="button">X</button>
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">

@@ -1,18 +1,11 @@
 <?php
-    function validate($item) {
-        $item = trim($item);
-        $item = stripslashes($item);
-        $item = htmlspecialchars($item);
-        return $item;
-    }
-
     session_start();
 
     if(!isset($_SESSION['loginUsername'])){
         $_SESSION['loginUsername'] = "-1";
     }
     else if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $code = validate($_POST['code']);
+        $code = mysqli_real_escape_string($db, $_POST['code']);
     }
 ?>
 
