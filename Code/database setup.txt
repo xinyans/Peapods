@@ -1,0 +1,21 @@
+run the following code in your phpmyadmin to setup the database
+
+CREATE DATABASE userdata;
+USE userdata;
+CREATE TABLE userdata(
+    id int NOT NULL AUTO_INCREMENT,
+	lastName varchar(255) NOT NULL,
+    firstName varchar(255) NOT NULL,
+    username varchar(255) NOT NULL,
+    password varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    PRIMARY KEY(id)
+);
+USE userdata;
+CREATE TABLE formdata(
+    formid int NOT NULL AUTO_INCREMENT,
+    userid int NOT NULL,
+    formjson varchar(3000) NOT NULL,
+    fillform int DEFAULT '1',
+    PRIMARY KEY(formid)
+);
