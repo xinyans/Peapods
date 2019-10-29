@@ -14,6 +14,7 @@
         <link rel="icon" type="image/png" href="resources/favicon.png">
         <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="Stylesheets/stylesheets.css">
+        <link rel="stylesheet" type="text/css" href="Stylesheets/login.css">
         <link rel="stylesheet" type="text/css" href="Stylesheets/index.css">
         <script src="code/jquery-3.4.1.min.js"></script>
         <script src="code/login.js"></script>

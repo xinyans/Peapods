@@ -1,0 +1,47 @@
+.groups {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.group {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "name groups";
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: linear-gradient(to right, rgb(240, 240, 240,0.5) 0%,rgba(240,240,240,0) 100%);
+    margin-top: 20px;
+    width: 380px;
+    min-height: 200px;
+    font-size: 20px;
+    font-family: sans-serif;
+    padding: 10px;
+}
+
+.group>header {
+    float: left;
+    transform: rotate(90deg);
+    grid-area: name;
+    width: 200px;
+    margin-left: -80px;
+    margin-top: 95px;
+    height: 30px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.group>table {
+    grid-area: groups;
+    width: 300px;
+    float: right;
+    text-align: center;
+}
+
+.group>table tr {
+    width: 100%;
+    border: none;
+    height: 40px;
+}
