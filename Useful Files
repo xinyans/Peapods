@@ -1,19 +1,11 @@
 Add any files that are going to be used in the final site here
 
-Login/register.php
-Login/login.php
-/index.php
-Login/logout.php
-/displayGroups.php
-
-/Stylesheets/*
-
-Resources/door.png
-Resources/loginguy.png
-Resources/Peapods.png
-Resources/favicon.png
-
-/displayGroups.js
-/index.js
-/login.js
-/jquery-3.4.1.min.js
+\Pages\*
+\Login\*
+\Code\*
+\Stylesheets\*
+\Resources\door.png
+\Resources\loginguy.png
+\Resources\Peapods.png
+\Resources\favicon.png
+\index.php
