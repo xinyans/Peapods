@@ -4,7 +4,7 @@
       $errors = array();
 
       if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $db = new mysqli('localhost', 'root', 'cows', 'peapods');
+        $db = new mysqli('localhost', 'root', 'Techie0110', 'peapods');
         $username = mysqli_real_escape_string($db, $_POST['username']);
         $password = mysqli_real_escape_string($db, $_POST['password']);
         $firstName = mysqli_real_escape_string($db, $_POST['firstname']);
@@ -36,7 +36,10 @@
             $query = "INSERT INTO userdata (lastName, firstName, username, password, email) 
                       VALUES('$lastName', '$firstName', '$username', '$password', '$email')";
             $db->query($query);
-
+            $_SESSION['errors'] = "";
+        }
+        else {
+          $_SESSION['errors'] = $errors[0];
         }
         $db->close();
       }

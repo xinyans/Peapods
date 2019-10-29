@@ -10,8 +10,8 @@
 <html lang="en">
     <head>
         <meta charset = "UTF-8">
-        <title>Prototype</title>
-        <link rel="icon" type="image/png" href="resources/favicon.png">
+        <title>Peapods-Home (Beta)</title>
+        <link rel="icon" type="image/png" href="../Resources/favicon.png">
         <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../Stylesheets/stylesheets.css">
         <link rel="stylesheet" type="text/css" href="../Stylesheets/login.css">
@@ -39,6 +39,7 @@
 				    <input type="text" name="code" placeholder="Group Code">
                 </form>
             </section>
+            <?php echo $_SESSION['errors']; ?>
         </nav>
         <main>
 			<article>
