@@ -19,7 +19,12 @@
         }
         else {
             if(isset($_SESSION['requestPage'])){
-                header("location: ..".$_SESSION['requestPage']);
+                if($_SESSION['requestPage'] == '/Pages/displayGroups.php'){
+                    header("location: ../index.php");                
+                }
+                else{
+                    header("location: ..".$_SESSION['requestPage']);                    
+                }
             }
             else {
                 header("location: ../index.php");
