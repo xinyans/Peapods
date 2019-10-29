@@ -1,9 +1,9 @@
 Add any files that are going to be used in the final site here
 
-/register.php
-/login.php
+Login/register.php
+Login/login.php
 /index.php
-/logout.php
+Login/logout.php
 /displayGroups.php
 
 /Stylesheets/*
