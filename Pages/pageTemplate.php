@@ -34,6 +34,9 @@
                     echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
                 ?>
             </p>
+            <p>
+                <?php echo $_SESSION['errors']; ?>
+            </p>
         </nav>
         <main>
 			<article>
