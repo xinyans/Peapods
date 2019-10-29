@@ -49,16 +49,16 @@ function loginClick(){
 
 /** Call this function from page js file */
 function addLoginListeners(){
-    if(~$("body>nav>header>p:nth-child(3)").html().indexOf("true")){
+    if(~$("body>nav>p:nth-child(3)").html().indexOf("true")){
         loginState = true;
-        $("nav>header>a:nth-child(2)").attr("href", "../Login/logout.php");
-        $("nav>header>a:nth-child(2) img").attr("src", "../Resources/door.png");
+        $("nav>section>a:nth-child(4)").attr("href", "../Login/logout.php");
+        $("nav>section>a:nth-child(4) img").attr("src", "../Resources/door.png");
     }
     else {
         loginState = false;
-        $("nav>header>a:nth-child(2) img").attr("src", "../Resources/loginguy.png");
+        $("nav>section>a:nth-child(4) img").attr("src", "../Resources/loginguy.png");
     }
-    $("nav>header>a:nth-child(2)").click(loginClick);
+    $("nav>section>a:nth-child(4)").click(loginClick);
 }
 
 window.onload = function(){

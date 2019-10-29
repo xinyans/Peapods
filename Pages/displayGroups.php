@@ -40,29 +40,25 @@
     </head>
     <body>
         <nav>
-            <header>
-                <a href = "index.php"><img src="../Resources/Peapods.png"></a>
-                <a href = "#"><img src="../Resources/loginguy.png"></a>
-                <p>
-                    <?php
-                        echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
-                    ?>
-                </p>
-                <p>
-                    <?php
-                        echo $printData['groupjson'];
-                    ?>  
-                </p>
-            </header>
+            <a href = "../index.php"><img src="../Resources/Peapods.png"></a>
             <section>
-            <nav>
-                <a href="makeForm.php">Create</a>
-                <a href="dashboard.php">Dashboard</a>
-				</nav>
                 <form action = "displayGroups.php" method="post">
-				    <input type="text" name="code" placeholder="Group Code">
+                    <input type="text" name="code" placeholder="Group Code">
                 </form>
+            <a href="createForm.php"><img src="../Resources/createform.png"></a>
+            <a href="dashboard.php"><img src="../Resources/dashboard.png"></a>
+            <a href = "#"><img src="../Resources/loginguy.png"></a>
             </section>
+            <p>
+                <?php
+                    echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
+                ?>
+            </p>
+            <p>
+                <?php
+                    echo $printData['groupjson'];
+                ?>  
+            </p>
         </nav>
         <main>
 			<article>

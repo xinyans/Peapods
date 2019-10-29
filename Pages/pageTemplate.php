@@ -12,7 +12,6 @@
         <meta charset = "UTF-8">
         <title>Prototype</title>
         <link rel="icon" type="image/png" href="resources/favicon.png">
-        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../Stylesheets/stylesheets.css">
         <link rel="stylesheet" type="text/css" href="../Stylesheets/login.css">
         <link rel="stylesheet" type="text/css" href="../Stylesheets/index.css">
@@ -21,24 +20,20 @@
     </head>
     <body>
         <nav>
-            <header>
-                <a href = "../index.php"><img src="../Resources/Peapods.png"></a>
-                <a href = "#"><img src="../Resources/loginguy.png"></a>
-                <p>
-                    <?php
-                        echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
-                    ?>
-                </p>
-            </header>
+            <a href = "../index.php"><img src="../Resources/Peapods.png"></a>
             <section>
-				<nav>
-					<a href="makeForm.php">Create</a>
-					<a href="dashboard.php">Dashboard</a>
-				</nav>
                 <form action = "displayGroups.php" method="post">
-				    <input type="text" name="code" placeholder="Group Code">
+                    <input type="text" name="code" placeholder="Group Code">
                 </form>
+            <a href="createForm.php"><img src="../Resources/createform.png"></a>
+            <a href="dashboard.php"><img src="../Resources/dashboard.png"></a>
+            <a href = "#"><img src="../Resources/loginguy.png"></a>
             </section>
+            <p>
+                <?php
+                    echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
+                ?>
+            </p>
         </nav>
         <main>
 			<article>
