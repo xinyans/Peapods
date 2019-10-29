@@ -49,7 +49,7 @@ function loginClick(){
 
 /** Call this function from page js file */
 function addLoginListeners(){
-    if(~$("body>nav>header>p").html().indexOf("true")){
+    if(~$("body>nav>header>p:nth-child(3)").html().indexOf("true")){
         loginState = true;
         $("nav>header>a:nth-child(2)").attr("href", "../Login/logout.php");
         $("nav>header>a:nth-child(2) img").attr("src", "../Resources/door.png");

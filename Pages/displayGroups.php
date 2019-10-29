@@ -4,8 +4,24 @@
     if(!isset($_SESSION['loginUsername'])){
         $_SESSION['loginUsername'] = "-1";
     }
-    else if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $code = mysqli_real_escape_string($_POST['code']);
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $data = $username = $password = $firstName = $lastName = $email = "";
+        $errors = array();
+        $db = new mysqli('localhost', 'root', 'cows', 'peapods');
+        $code = mysqli_real_escape_string($db, $_POST['code']);
+        
+        if (empty($code)) {
+            array_push($errors, "No code was included");
+        }
+        $code_query = "SELECT * FROM groupdata WHERE usercode = '$code' LIMIT 1";
+        $result = mysqli_query($db, $code_query);
+        if($result){
+            $printData = mysqli_fetch_assoc($result);
+        }
+        else {
+            $printData = "";
+        }
+        $db->close();
     }
 ?>
 
@@ -31,6 +47,11 @@
                     <?php
                         echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
                     ?>
+                </p>
+                <p>
+                    <?php
+                        echo $printData['groupjson'];
+                    ?>  
                 </p>
             </header>
             <section>
