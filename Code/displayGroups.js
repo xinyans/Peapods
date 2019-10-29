@@ -249,5 +249,6 @@ function displayData(){
 }
 
 window.onload = function(){
+    this.addLoginListeners();
     this.displayData();
 }

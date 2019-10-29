@@ -1,3 +1,38 @@
+<?php
+    function validate($item) {
+        $item = trim($item);
+        $item = stripslashes($item);
+        $item = htmlspecialchars($item);
+        return $item;
+    }
+
+    session_start();
+
+    if(!isset($_SESSION['loginUsername'])){
+        $_SESSION['loginUsername'] = "-1";
+    }
+    else if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $password = $error = "";
+
+        $username = validate($_POST['username']);
+        $password = validate($_POST['password']);
+        $data = file_get_contents("users.txt");
+        $data = explode("\n", $data);
+        $validationPassed = FALSE;
+
+        foreach($data as $values) {
+            $loginInfo = explode(":", $values);
+            if((validate($loginInfo[0]) == validate($username)) and (validate($loginInfo[1]) == validate($password))) {
+                    $validationPassed = TRUE;
+                    break;
+            }
+        }
+        if($validationPassed) {
+            $_SESSION['loginUsername'] = $username;
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,8 +47,13 @@
     <body>
         <nav>
             <header>
-				<a href = "index.php"><img src="Resources/Peapods.png"></a>
-                <img src="Resources/loginguy.png">
+                <a href = "index.php"><img src="Resources/Peapods.png"></a>
+                <a href = "#"><img src="Resources/loginguy.png"></a>
+                <p>
+                    <?php
+                        echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
+                    ?>
+                </p>
             </header>
             <section>
 				<nav>
