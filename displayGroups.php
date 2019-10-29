@@ -1,11 +1,11 @@
 <?php
     session_start();
-
+    $_SESSION['requestPage'] = $_SERVER['REQUEST_URI'];
     if(!isset($_SESSION['loginUsername'])){
         $_SESSION['loginUsername'] = "-1";
     }
     else if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $code = mysqli_real_escape_string($db, $_POST['code']);
+        $code = mysqli_real_escape_string($_POST['code']);
     }
 ?>
 
@@ -16,6 +16,8 @@
         <title>Prototype</title>
         <link rel="icon" type="image/png" href="resources/favicon.png">
         <link rel="stylesheet" type="text/css" href="Stylesheets/stylesheets.css">
+        <link rel="stylesheet" type="text/css" href="Stylesheets/login.css">
+        <link rel="stylesheet" type="text/css" href="Stylesheets/displayGroups.css">
         <script src="code/jquery-3.4.1.min.js"></script>
         <script src="code/login.js"></script>
         <script src="code/displayGroups.js"></script>
