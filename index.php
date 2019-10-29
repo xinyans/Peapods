@@ -23,8 +23,8 @@
         foreach($data as $values) {
             $loginInfo = explode(":", $values);
             if((validate($loginInfo[0]) == validate($username)) and (validate($loginInfo[1]) == validate($password))) {
-                    $validationPassed = TRUE;
-                    break;
+                $validationPassed = TRUE;
+                break;
             }
         }
         if($validationPassed) {
