@@ -14,12 +14,13 @@
     grid-template-areas: "name groups";
     border-radius: 20px;
     margin-top: 20px;
-    width: 360px;
+    min-width: 400px;
+    width: 40%;
     min-height: 200px;
     font-size: 20px;
     font-family: sans-serif;
     padding: 10px;
-    //border: 1px solid black;
+    border: 1px solid black;
     background: linear-gradient(to right, #eaf4e8, #eaf4e8 50px, white 50px, white);
 }
 
@@ -38,7 +39,7 @@
 
 .group>table {
     grid-area: groups;
-    width: 300px;
+    width: calc(100% - 40px);
     border: collapse;
     float: right;
     text-align: center;

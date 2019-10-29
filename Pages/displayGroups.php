@@ -33,7 +33,7 @@
                 }
             }
             else {
-                header("location: ../index.php");
+                header("location: ../Pages/index.php");
             }
         }
         $db->close();
