@@ -8,7 +8,6 @@
         $errors = array();
         $db = new mysqli('localhost', 'root', 'cows', 'peapods');
         $code = mysqli_real_escape_string($db, $_POST['code']);
-        
         if (empty($code)) {
             array_push($errors, "No code was included");
         }
@@ -16,9 +15,16 @@
         $result = mysqli_query($db, $code_query);
         if($result and $result->num_rows == 1){
             $printData = mysqli_fetch_assoc($result);
+            $_SESSION['code'] = $_POST['code'];
         }
         else {
-            if(isset($_SESSION['requestPage'])){
+            if(isset($_SESSION['requestPage']) and $_SESSION['requestPage'] == '/Pages/displayGroups.php' and isset($_SESSION['code'])){
+                $code = $_SESSION['code'];
+                $code_query = "SELECT * FROM groupdata WHERE usercode = '$code' LIMIT 1";
+                $result = mysqli_query($db, $code_query);
+                $printData = mysqli_fetch_assoc($result);
+            }
+            else if(isset($_SESSION['requestPage'])){
                 if($_SESSION['requestPage'] == '/Pages/displayGroups.php'){
                     header("location: ../index.php");                
                 }

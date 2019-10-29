@@ -34,7 +34,7 @@ body>nav {
     justify-content: space-between;
     grid-area: top;
     width: auto;
-    height: 80px;
+    height: 70px;
     padding-left: var(--sidePadding);
     padding-right: var(--sidePadding);
     background-color: var(--navbarColor);
@@ -44,16 +44,20 @@ body>nav>section {
     display: flex;
     justify-content: space-around;
     width: 340px;
-    height: 80px;
 }
 
 body>nav a img {
     height: 50px;
-    margin-top: 12px;
+    margin-top: 10px;
+}
+
+body>nav>section a img{
+    height: 40px;
+    margin-top: 15px;
 }
 
 body>nav>section>form>input {
-    margin-top: 25px;
+    margin-top: 20px;
     width: 180px;
     height: 20px;
     border-radius: 15px;
