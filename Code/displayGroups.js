@@ -9,7 +9,7 @@ function displayData(){
         returnHTML += (group + 1) + "</header><table>";
         subData = data[group]["members"];
         for(member = 0; member < subData.length; member++){
-            returnHTML += "<tr style = \"background-color: " + ((member % 2 > 0) ? "#fff" : "rgba(1,1,1,0)") + "\"><td>" + subData[member]["name"] + "</td><td>" + subData[member]["contact"] + "</td></tr>";
+            returnHTML += "<tr style = \"border-bottom: 1px solid" + ((member % 2 > 0) ? "#fff" : "#eee") + "\"><td>" + subData[member]["name"] + "</td><td>" + subData[member]["contact"] + "</td></tr>";
         }
         returnHTML += "</table></section>"
     }

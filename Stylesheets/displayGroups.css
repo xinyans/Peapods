@@ -1,28 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 .groups {
     display: flex;
     flex-flow: row wrap;
-    align-content: space-between;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .group {
+    border-collapse: collapse;
     display: grid;
     grid-template-columns: 40px 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "name groups";
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    background: linear-gradient(to right, rgb(240, 240, 240,0.5) 0%,rgba(240,240,240,0) 100%);
+    border-radius: 20px;
     margin-top: 20px;
-    width: 380px;
+    width: 360px;
     min-height: 200px;
     font-size: 20px;
     font-family: sans-serif;
     padding: 10px;
+    //border: 1px solid black;
+    background: linear-gradient(to right, #eaf4e8, #eaf4e8 50px, white 50px, white);
 }
 
 .group>header {
     float: left;
+    font-family: 'Montserrat', sans-serif;
     transform: rotate(90deg);
     grid-area: name;
     width: 200px;
@@ -36,12 +39,31 @@
 .group>table {
     grid-area: groups;
     width: 300px;
+    border: collapse;
     float: right;
     text-align: center;
+    background-color: white;
 }
 
 .group>table tr {
     width: 100%;
-    border: none;
     height: 40px;
+}
+
+.group td {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+body>main>article>header {
+    min-height: 150px;
+    line-height: 150px;
+    font-size: 70px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    background-color: #eaf4e8;
+}
+
+body>main>article>section {
+    padding: 5px;
 }

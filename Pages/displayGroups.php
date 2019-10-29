@@ -82,7 +82,7 @@
         <main>
 			<article>
 				<header>
-					stuff for top of page goes here
+                    No group code loaded.
 				</header>
                 <section class = "groups">
                 </section>

@@ -17,7 +17,7 @@ body {
     background-color: var(--mainColor);
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: 70px 1fr;
     grid-template-areas: 
         "top"
         "bottom"
@@ -30,10 +30,12 @@ body>nav>p {
 }
 
 body>nav {
+    position: fixed;
+    z-index: 99;
     display: flex;
     justify-content: space-between;
     grid-area: top;
-    width: auto;
+    width: calc(68%);
     height: 70px;
     padding-left: var(--sidePadding);
     padding-right: var(--sidePadding);
