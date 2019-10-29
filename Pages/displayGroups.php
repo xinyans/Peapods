@@ -34,9 +34,13 @@
             }
             else {
                 header("location: ../Pages/index.php");
+                echo "randdadasdad";
             }
         }
         $db->close();
+    }
+    else {
+        header("location: ../Pages/index.php");
     }
     $_SESSION['requestPage'] = $_SERVER['REQUEST_URI'];
 ?>
