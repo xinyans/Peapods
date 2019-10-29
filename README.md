@@ -1,6 +1,12 @@
 # websys
 Group 2 - Peapods
 
+Development Notes:
+    Make sure to add files that will be in the final site in the useful-files text file.
+
+    Keep things organized, css files etc can be comined at the end for efficiency.
+
+
 Reference:
 Development of Main Page
 1. https://brandpalettes.com/twitter-colors/
