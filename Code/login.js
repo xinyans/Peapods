@@ -1,6 +1,6 @@
 var login = `
 <aside class = "login">
-    <form action="Login/login.php" method="post">
+    <form action="../Login/login.php" method="post">
         <button type="button">X</button>
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
@@ -13,7 +13,7 @@ var login = `
 
 var register =`
 <aside class = "register">
-    <form action="Login/register.php" method="post">
+    <form action="../Login/register.php" method="post">
         <button type="button">X</button>
         <input type="text" name="firstname" placeholder="First Name">
         <input type="text" name="lastname" placeholder="Last Name">
@@ -51,12 +51,16 @@ function loginClick(){
 function addLoginListeners(){
     if(~$("body>nav>header>p").html().indexOf("true")){
         loginState = true;
-        $("nav>header>a:nth-child(2)").attr("href", "Login/logout.php");
-        $("nav>header>a:nth-child(2) img").attr("src", "Resources/door.png");
+        $("nav>header>a:nth-child(2)").attr("href", "../Login/logout.php");
+        $("nav>header>a:nth-child(2) img").attr("src", "../Resources/door.png");
     }
     else {
         loginState = false;
-        $("nav>header>a:nth-child(2) img").attr("src", "Resources/loginguy.png");
+        $("nav>header>a:nth-child(2) img").attr("src", "../Resources/loginguy.png");
     }
     $("nav>header>a:nth-child(2)").click(loginClick);
+}
+
+window.onload = function(){
+    addLoginListeners();
 }
