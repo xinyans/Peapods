@@ -23,6 +23,7 @@
                 $code_query = "SELECT * FROM groupdata WHERE usercode = '$code' LIMIT 1";
                 $result = mysqli_query($db, $code_query);
                 $printData = mysqli_fetch_assoc($result);
+                $_SESSION['errors'] = 'a';
             }
             else if(isset($_SESSION['requestPage'])){
                 if($_SESSION['requestPage'] == '/Pages/displayGroups.php'){

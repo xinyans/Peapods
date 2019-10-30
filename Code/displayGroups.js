@@ -58,6 +58,10 @@ function drawCanvas(text){
 
 
 function displayData(){
+    if(~$("body>nav>p:nth-child(4)").html().indexOf("a")){
+        console.log("ran");
+        $("body>nav>section>form>input").css("border", "1px solid red");      
+    }
     exampleData = JSON.parse($("body>nav>p:nth-child(5)").text());
     returnHTML = "";
     //this.drawCanvas(this.exampleData["formTitle"]);
