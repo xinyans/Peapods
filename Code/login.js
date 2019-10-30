@@ -31,7 +31,6 @@ function loginClick(){
         temp = $("body").html();
         $("body").html(login + temp);
         $("body>aside>form>input:nth-child(4)").click(function(){
-            console.log("clicked");
             $("body").html(register + temp);
             $("body>aside>form>button:nth-child(1)").click(function(){
                 $("body").html(temp);
