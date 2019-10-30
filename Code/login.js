@@ -4,7 +4,6 @@ var login = `
         <button type="button">X</button>
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
-        <span></span>
         <input type="button" value="Register" name="register"/>
         <input type="submit" value="Login" name="Login"/>
     </form>
@@ -20,7 +19,6 @@ var register =`
         <input type="text" name="email" placeholder="Email">
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
-        <span></span>
         <input type="submit" value="Register" name="Register"/>
     </form>
 </aside>
@@ -32,7 +30,7 @@ function loginClick(){
     if(!loginState){
         temp = $("body").html();
         $("body").html(login + temp);
-        $("body>aside>form>input:nth-child(5)").click(function(){
+        $("body>aside>form>input:nth-child(4)").click(function(){
             console.log("clicked");
             $("body").html(register + temp);
             $("body>aside>form>button:nth-child(1)").click(function(){
