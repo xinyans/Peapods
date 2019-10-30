@@ -54,6 +54,7 @@
         <link rel="stylesheet" type="text/css" href="../Stylesheets/stylesheets.css">
         <link rel="stylesheet" type="text/css" href="../Stylesheets/login.css">
         <link rel="stylesheet" type="text/css" href="../Stylesheets/displayGroups.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> 
         <script src="../Code/jquery-3.4.1.min.js"></script>
         <script src="../Code/login.js"></script>
         <script src="../Code/displayGroups.js"></script>
@@ -86,7 +87,7 @@
         <main>
 			<article>
 				<header>
-                    No group code loaded.
+                    <canvas id = "groupcanvas"></canvas>
 				</header>
                 <section class = "groups">
                 </section>
