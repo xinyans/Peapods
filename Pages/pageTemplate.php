@@ -34,6 +34,14 @@
                     echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
                 ?>
             </p>
+            <p> 
+                <?php
+                    if(isset($_SESSION['errors'])){
+                        echo $_SESSION['errors'];
+                        unset($_SESSION['errors']);
+                    }
+                ?>
+            </p>
         </nav>
         <main>
 			<article>

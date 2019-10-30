@@ -80,3 +80,12 @@ body>main {
     min-height: 1000px;
     background-color: var(--mainColor);
 }
+
+/* Dealing with chromes messed up styling */
+input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background-color: #eee;
+}

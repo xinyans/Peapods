@@ -58,7 +58,7 @@ function drawCanvas(text){
 
 
 function displayData(){
-    exampleData = JSON.parse($("body>nav>p:nth-child(4)").text());
+    exampleData = JSON.parse($("body>nav>p:nth-child(5)").text());
     returnHTML = "";
     //this.drawCanvas(this.exampleData["formTitle"]);
     $("article>header").html(this.exampleData["formTitle"]);
@@ -76,6 +76,6 @@ function displayData(){
 }
 
 window.onload = function(){
-    this.addLoginListeners();
+    this.addLoginListeners(true);
     this.displayData();
 }
