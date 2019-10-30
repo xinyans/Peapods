@@ -139,6 +139,10 @@ input:focus, textarea:focus {
     border: none;
  }
 
+ span {
+    border-bottom: 2px solid black;
+ }
+
  .section {
     background-color: #5fcf80;
     color: #fff;
@@ -163,7 +167,7 @@ input:focus, textarea:focus {
     border: 1px solid #3ac162;
     border-width: 1px 1px 3px;
     box-shadow: 0 -1px rgb(225, 237, 226);
-    margin-bottom: 10px;
+    margin-bottom: 50px;
  }
 
  button {
