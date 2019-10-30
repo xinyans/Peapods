@@ -18,12 +18,12 @@
             $_SESSION['code'] = $_POST['code'];
         }
         else {
+            $_SESSION['errors'] += "a";
             if(isset($_SESSION['requestPage']) and $_SESSION['requestPage'] == '/Pages/displayGroups.php' and isset($_SESSION['code'])){
                 $code = $_SESSION['code'];
                 $code_query = "SELECT * FROM groupdata WHERE usercode = '$code' LIMIT 1";
                 $result = mysqli_query($db, $code_query);
                 $printData = mysqli_fetch_assoc($result);
-                $_SESSION['errors'] = 'a';
             }
             else if(isset($_SESSION['requestPage'])){
                 if($_SESSION['requestPage'] == '/Pages/displayGroups.php'){
@@ -35,7 +35,6 @@
             }
             else {
                 header("location: ../Pages/index.php");
-                echo "randdadasdad";
             }
         }
         $db->close();

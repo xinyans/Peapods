@@ -4,7 +4,7 @@ var login = `
         <button type="button">X</button>
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
-        <input type="button" value="Register" name="register"/>
+        <button type="button">Register</button>
         <input type="submit" value="Login" name="Login"/>
     </form>
 </aside>
@@ -30,7 +30,7 @@ function loginClick(){
     if(!loginState){
         temp = $("body").html();
         $("body").html(login + temp);
-        $("body>aside>form>input:nth-child(4)").click(function(){
+        $("body>aside>form>button:nth-child(4)").click(function(){
             $("body").html(register + temp);
             $("body>aside>form>button:nth-child(1)").click(function(){
                 $("body").html(temp);
@@ -62,6 +62,9 @@ function addLoginListeners(check){
             check = false;
             loginClick();
         }
+    }
+    if(~$("body>nav>p:nth-child(4)").html().indexOf("a")){
+        $("body>nav>section>form>input").css("border", "1px solid red");      
     }
     $("nav>section>a:nth-child(4)").click(loginClick);
 }
