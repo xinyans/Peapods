@@ -59,9 +59,9 @@ function drawCanvas(text){
 
 function displayData(){
     exampleData = JSON.parse($("body>nav>p:nth-child(5)").text());
-    console.log(exampleData);
-    returnHTML = "";;
-    this.drawCanvas(this.exampleData["formTitle"]);
+    returnHTML = "";
+    //this.drawCanvas(this.exampleData["formTitle"]);
+    $("article>header").html(this.exampleData["formTitle"]);
     data = this.exampleData["groups"]
     for(group = 0; group < data.length; group++){
         returnHTML += "<section class = \"group\"><header> Group ";
