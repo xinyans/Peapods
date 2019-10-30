@@ -1,45 +1,68 @@
 var login = `
 <aside class = "login">
-    <form action="LoginTest/login.php" method="post">
+    <?php session_start(); ?>
+    <form action="../Login/login.php" method="post">
         <button type="button">X</button>
-        <input type="text" name="username" id="username" placeholder="Username">
-        <input type="password" name="password" id="password" placeholder="Password">
-        <span><?php echo $error; ?></span>
-        <input type="submit" value="Login" id="Login" name="Login"/>
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <span></span>
+        <input type="button" value="Register" name="register"/>
+        <input type="submit" value="Login" name="Login"/>
     </form>
 </aside>
 `;
 
+var register =`
+<aside class = "register">
+    <?php session_start(); ?>
+    <form action="../Login/register.php" method="post">
+        <button type="button">X</button>
+        <input type="text" name="firstname" placeholder="First Name">
+        <input type="text" name="lastname" placeholder="Last Name">
+        <input type="text" name="email" placeholder="Email">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <span></span>
+        <input type="submit" value="Register" name="Register"/>
+    </form>
+</aside>
+`;
+
+var loginState = false;
+
 function loginClick(){
-    temp = $("body").html();
-    $("body").html(login + temp);
-    $("body>aside>form>button:nth-child(1)").click(function(){
-        $("body").html(temp);
-        $("nav>header>img:nth-child(2)").click(loginClick);
-        $("nav>header>img:nth-child(2)").attr("src", "Resources/loginguy.png");
-    });
-    $("body>aside>form>button:nth-child(4)").click(function(){
-        loginData = {
-            "user" : $("body>aside>form>input:nth-child(2)").val(),
-            "pass" : $("body>aside>form>input:nth-child(3)").val()
-        }
-        if(!(loginData["user"] == "" || loginData["pass"] == "")){
+    if(!loginState){
+        temp = $("body").html();
+        $("body").html(login + temp);
+        $("body>aside>form>input:nth-child(5)").click(function(){
+            console.log("clicked");
+            $("body").html(register + temp);
+            $("body>aside>form>button:nth-child(1)").click(function(){
+                $("body").html(temp);
+                addLoginListeners();
+            });
+        });
+        $("body>aside>form>button:nth-child(1)").click(function(){
             $("body").html(temp);
-            $("nav>header>img:nth-child(2)").attr("src", "Resources/door.png");
-            $("nav>header>img:nth-child(2)").attr("href", "LoginTest/logout.php");
-            $("nav>header>img:nth-child(2)").click(logoutClick);
-        }
-    });
+            addLoginListeners();
+        });
+    }
 }
 
-function logoutClick(){
-
-}
-
+/** Call this function from page js file */
 function addLoginListeners(){
-    $("nav>header>img:nth-child(2)").click(loginClick);
+    if(~$("body>nav>p:nth-child(3)").html().indexOf("true")){
+        loginState = true;
+        $("nav>section>a:nth-child(4)").attr("href", "../Login/logout.php");
+        $("nav>section>a:nth-child(4) img").attr("src", "../Resources/door.png");
+    }
+    else {
+        loginState = false;
+        $("nav>section>a:nth-child(4) img").attr("src", "../Resources/loginguy.png");
+    }
+    $("nav>section>a:nth-child(4)").click(loginClick);
 }
 
-window.onload = function() {
-    this.addLoginListeners();
+window.onload = function(){
+    addLoginListeners();
 }

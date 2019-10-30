@@ -1,9 +1,6 @@
-Username:Password
-Email:Real_Name
-
-
 Sam:$2y$10$InD1L8OcP3f9BrTqyF7tO.nh1FcszQIXhS67h.KJIVlN8nS0whp.a
 schantz.samuel@gmail.com:$2y$10$LUHafDGzLLkSKzaWNKrM6uZjOosBSCfUMcpp9PCFcmnCs04ckS2a.
-
 Valid Account:$2y$10$HpxzXAZxVCytzqXCuugPAOR4VyQwXe3Kw7nFi8hCF5eLqDXwcnkxm
 schantz.samuel@gmail.com:$2y$10$dcAEK.27g2mEgIO9iOmXVOFKRsNybqoQVqQ./C6AybqnV4Vl60BWC
+
+noob:$2y$10$RfamtHsp.Emus7GQpwnZKe0e2qL0PGd82S75PnBT3EEhDt7jkFcC2

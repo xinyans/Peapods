@@ -2,120 +2,11 @@
     --navbarColor: #3581b8;
     --lowerNavColor: #eaf4e8;
     --mainColor: #ffffff;
-    --searchColor: #c9c9c9;
+    --searchColor: #eee;
     --testColor: red;
     --sidePadding: 16%;
     --loginColor: #eee;
     --footerColor: #96939b;
-}
-
-.groups {
-    display: flex;
-    flex-flow: row wrap;
-    align-content: space-between;
-    justify-content: space-between;
-    
-}
-
-.group {
-    display: grid;
-    grid-template-columns: 40px 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: "name groups";
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    background: linear-gradient(to right, rgb(240, 240, 240,0.5) 0%,rgba(240,240,240,0) 100%);
-    margin-top: 20px;
-    width: 380px;
-    font-size: 20px;
-    font-family: sans-serif;
-    padding: 10px;
-}
-
-.group>header {
-    float: left;
-    transform: rotate(90deg);
-    grid-area: name;
-    width: 200px;
-    margin-left: -80px;
-    margin-top: 95px;
-    height: 30px;
-    text-align: center;
-    font-size: 30px;
-}
-
-.group>table {
-    grid-area: groups;
-    width: 300px;
-    float: right;
-    text-align: center;
-}
-
-.group>table tr {
-    width: 100%;
-    border: none;
-    height: 40px;
-}
-
-/**
-For the popup login form
-**/
-aside[class = login] {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    flex-flow: column nowrap;
-    position: fixed;
-    background-color: rgba(025,025,025,0.2);
-}
-
-aside[class=login]>form  {
-    width: 400px;
-    height: 205px;
-    margin: auto;
-    background-color: var(--loginColor);
-    border-radius: 10px;
-}
-
-aside[class=login]>form button:nth-child(1){
-    border: none;
-    float: right;
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    text-align: center;
-    color: black;
-}
-
-aside[class=login]>form input:nth-child(2) {
-    margin-top: 50px;
-}
-
-aside[class=login]>form>input {
-    display: block;
-    border: none;
-    border-radius: 10px;
-    clear: both;
-    width: 300px;
-    height: 30px;
-    margin: auto;
-    margin-top: 30px;
-    padding: 0;
-    padding-left: 10px;
-
-}
-
-aside[class=login]>form button:nth-child(4){
-    margin-top: 30px;
-    border-radius: 10px;
-    border: none;
-    float: right;
-    width: 70px;
-    height: 30px;
-    text-align: center;
-    color: black;
 }
 
 body {
@@ -126,102 +17,51 @@ body {
     background-color: var(--mainColor);
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: 70px 1fr;
     grid-template-areas: 
         "top"
         "bottom"
     ;
 }
 
-/**
-End of login form styling
-**/
-
-body>nav {
-    grid-area: top;
-    width: auto;
-    min-height: 130px;
-    background-color: var(--testColor);
+/** php data */
+body>nav>p {
+    display: none;
 }
 
-body>nav>header {
+body>nav {
+    position: fixed;
+    z-index: 99;
     display: flex;
     justify-content: space-between;
-    height: 80px;
+    grid-area: top;
+    width: calc(68%);
+    height: 70px;
     padding-left: var(--sidePadding);
     padding-right: var(--sidePadding);
     background-color: var(--navbarColor);
 }
 
-body>nav>header>img {
+body>nav>section {
+    display: flex;
+    justify-content: space-around;
+    width: 340px;
+}
+
+body>nav a img {
     height: 50px;
+    margin-top: 10px;
+}
+
+body>nav>section a img{
+    height: 40px;
     margin-top: 15px;
 }
 
-@media (max-width: 1000px) {
-    body>nav>section {
-        min-height: 50px;
-        padding-left: var(--sidePadding);
-        padding-right: var(--sidePadding);
-        background-color: var(--lowerNavColor);
-        display: flex;
-        justify-content: center;
-        align-content: space-around;
-        flex-flow: row wrap;
-    }
-
-    
-    body>nav>section>nav {
-        display: flex;
-        min-width: 250px;
-        width: 100%;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-content: center;
-    }
-}
-
-@media (min-width: 1000px) {
-    body>nav>section {
-        min-height: 50px;
-        padding-left: var(--sidePadding);
-        padding-right: var(--sidePadding);
-        background-color: var(--lowerNavColor);
-        display: flex;
-        justify-content: space-between;
-        align-content: space-around;
-        flex-flow: row wrap;
-    }
-    body>nav>section>nav {
-        display: flex;
-        min-width: 250px;
-        width: 300px;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-content: center;
-    }
-    
-}
-
-
-body>nav>section>nav>a {
-    color: black;
-    line-height: 50px;
-    font-size: 20px;
-    font-family: sans-serif;
-    text-decoration: none;
-}
-
-body>nav>section>nav>a:hover {
-    border-top: 2px solid black;
-    line-height: 46px;
-}
-
-body>nav>section>input {
-    width: 220px;
+body>nav>section>form>input {
+    margin-top: 20px;
+    width: 180px;
     height: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
     border-radius: 15px;
     font-size: 20px;
     padding: 5px;
@@ -230,9 +70,11 @@ body>nav>section>input {
     line-height: 24px;
     border: none;
     background-color: var(--searchColor);
+    float: right;
 }
 
 body>main {
+    grid-area: bottom;
     padding-left: var(--sidePadding);
     padding-right: var(--sidePadding);
     min-height: 1000px;

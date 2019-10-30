@@ -1,43 +1,4 @@
-#background
-{
-	width: 100%;
-	height: auto;
-	position: absolute;
-	left: 0px;
-	-webkit-user-drag: none;
-  	-khtml-user-drag: none;
-  	-moz-user-drag: none;
-  	-o-user-drag: none;
-  	user-drag: none;
-}
-
-#startText
-{
-	color: white;
-	font-family: 'Poppins', sans-serif;
-	position: absolute;
-	top: 120px;
-	left: 380px;
-	font-size: 50px;
-}
-
-#slideText
-{
-	color: white;
-	font-family: 'Poppins', sans-serif;
-	position: absolute;
-	top: 120px;
-	left: 780px;
-	font-size: 50px;
-}
-
-#aboutText
-{
-	color: black;
-	font-family: 'Poppins', sans-serif;
-	position: absolute;
-	top: 270px;
-	left: 400px;
-	font-size: 35px;
-	text-align: center;
+body canvas {
+    width: 100%;
+    height: 200px;
 }
