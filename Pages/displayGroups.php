@@ -76,9 +76,6 @@
                 ?>
             </p>
             <p>
-                <?php echo $_SESSION['errors']; ?>
-            </p>
-            <p>
                 <?php
                     echo $printData['groupjson'];
                 ?>  

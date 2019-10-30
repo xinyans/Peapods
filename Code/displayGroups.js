@@ -58,7 +58,7 @@ function drawCanvas(text){
 
 
 function displayData(){
-    exampleData = JSON.parse($("body>nav>p:nth-child(5)").text());
+    exampleData = JSON.parse($("body>nav>p:nth-child(4)").text());
     returnHTML = "";
     //this.drawCanvas(this.exampleData["formTitle"]);
     $("article>header").html(this.exampleData["formTitle"]);

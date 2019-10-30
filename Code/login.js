@@ -1,6 +1,5 @@
 var login = `
 <aside class = "login">
-    <?php session_start(); ?>
     <form action="../Login/login.php" method="post">
         <button type="button">X</button>
         <input type="text" name="username" placeholder="Username">
@@ -14,7 +13,6 @@ var login = `
 
 var register =`
 <aside class = "register">
-    <?php session_start(); ?>
     <form action="../Login/register.php" method="post">
         <button type="button">X</button>
         <input type="text" name="firstname" placeholder="First Name">
@@ -39,18 +37,22 @@ function loginClick(){
             $("body").html(register + temp);
             $("body>aside>form>button:nth-child(1)").click(function(){
                 $("body").html(temp);
-                addLoginListeners();
+                addLoginListeners(false);
             });
         });
         $("body>aside>form>button:nth-child(1)").click(function(){
             $("body").html(temp);
-            addLoginListeners();
+            addLoginListeners(false);
         });
+        if(~$("body>nav>p:nth-child(4)").html().indexOf("1")){
+            $(".login>form>input:nth-child(2)").css("border", "1px solid red");      
+            $(".login>form>input:nth-child(3)").css("border", "1px solid red");      
+        }
     }
 }
 
 /** Call this function from page js file */
-function addLoginListeners(){
+function addLoginListeners(check){
     if(~$("body>nav>p:nth-child(3)").html().indexOf("true")){
         loginState = true;
         $("nav>section>a:nth-child(4)").attr("href", "../Login/logout.php");
@@ -59,10 +61,14 @@ function addLoginListeners(){
     else {
         loginState = false;
         $("nav>section>a:nth-child(4) img").attr("src", "../Resources/loginguy.png");
+        if(check && ~$("body>nav>p:nth-child(4)").html().indexOf("1")){
+            check = false;
+            loginClick();
+        }
     }
     $("nav>section>a:nth-child(4)").click(loginClick);
 }
 
 window.onload = function(){
-    addLoginListeners();
+    addLoginListeners(true);
 }
