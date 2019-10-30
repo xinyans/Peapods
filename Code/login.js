@@ -5,7 +5,6 @@ var login = `
         <button type="button">X</button>
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
-        <span><?php echo $_SESSION['errors']; ?></span>
         <input type="button" value="Register" name="register"/>
         <input type="submit" value="Login" name="Login"/>
     </form>
@@ -22,7 +21,6 @@ var register =`
         <input type="text" name="email" placeholder="Email">
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
-        <span><?php echo $_SESSION['errors']; ?></span>
         <input type="submit" value="Register" name="Register"/>
     </form>
 </aside>
