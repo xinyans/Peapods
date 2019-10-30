@@ -75,6 +75,49 @@ function multipleChoiceChange(){
     }
 }
 
+function validateForm(){
+    var name = document.peapodForm.formName.value;
+    var duedate = document.peapodForm.dueDate.value;
+    var question = document.peapodForm.questionPrompt.value;
+    var type = document.getElementsByName("questionType");
+
+    //make sure a name was entered
+    if (name==""){
+        //alert("Must enter a form name!");
+        document.getElementById("formName").style.backgroundColor = "#FF6666";
+    }
+    else {
+        document.getElementById("formName").style.backgroundColor = "";
+    }
+
+    //make sure date is later than today
+    if (duedate==""){
+        //alert("Must enter a form name!");
+        document.getElementById("dueDate").style.backgroundColor = "#FF6666";
+    }
+    else {
+        document.getElementById("dueDate").style.backgroundColor = "";
+    }
+    
+    //make sure a question prompt was entered
+    if (question==""){
+        //alert("Must enter a question prompt!");
+        document.getElementById("questionPrompt").style.backgroundColor = "#FF6666";
+    }
+    else {
+        document.getElementById("questionPrompt").style.backgroundColor = "";
+    }
+    //make sure a question type was entered
+    var i = 0;
+    var valid = false;
+    while (!valid && i<type.length){
+        if (type[i].checked) valid = true;
+        i++;
+    }
+    if (!valid) alert("Must select question type!");
+
+}
+
 $(window).ready(function() {
     $("#addQuestion").click(function() {
         $("#creationQuestions").append(generateQuestion());
@@ -91,4 +134,10 @@ $(window).ready(function() {
     $('input:radio[name="questionType"]').change(questionTypeChange);
 
     $('select.questionExtra.multipleChoice').change(multipleChoiceChange);
+
+    $("#submitButton").click(function() {
+        validateForm();
+    })
 });
+
+

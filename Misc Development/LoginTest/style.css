@@ -129,21 +129,19 @@ input:focus, textarea:focus {
     box-shadow:  0 0 5px rgba(81,203,238,1);
     border: 1 px lightblue;
 }
- legend {
+
+legend {
     display: block;
     margin-bottom: 8px;
- }
+}
 
- fieldset {
+fieldset {
     margin-bottom: 30px;
     border: none;
- }
+}
 
- span {
-    border-bottom: 2px solid black;
- }
 
- .section {
+.section {
     background-color: #5fcf80;
     color: #fff;
     height: 30px;
