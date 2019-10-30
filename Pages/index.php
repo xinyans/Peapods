@@ -4,7 +4,7 @@
     if(!isset($_SESSION['loginUsername'])){
         $_SESSION['loginUsername'] = "-1";
     }
-    if($_SESSION['errors']) {
+    if(isset($_SESSION['errors']) and $_SESSION['errors']) {
         echo '<script type="text/javascript">alert("' . $_SESSION['errors'] . '");</script>';
     }
 ?>
