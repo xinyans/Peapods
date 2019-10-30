@@ -1,11 +1,12 @@
-var index = 2;
+var index = 1;
+var count = 1;
 
 function generateQuestion() {
     var question_model = `<fieldset id="question${index}">
-        <legend>Question ${index}</legend>
-        <label class="" for="questionPrompt">Prompt of Question ${index}</label>
+        <legend>Question ${count}</legend>
+        <label class="questionPromptLbl" for="questionPrompt">Prompt of Question ${count}</label>
         <input type="text" name="questionPrompt" id="questionPrompt" placeholder="50 characters max">
-        <label class="">Type of Question ${index}</label>
+        <label class="questionTypeLbl">Type of Question ${count}</label>
         <label><input type="radio" name="questionType" value="multipleChoice"> Multiple Choice</label>
         <label><input type="radio" name="questionType" value="slider"> Slider</label>
         <label><input type="radio" name="questionType" value="textInput"> Text Input</label>
@@ -35,8 +36,8 @@ function generateQuestion() {
         <input type="number" placeholder="max charaters">
         </label>
         <button type="button" id="question${index}DeleteBtn">Delete Question</button>
-        <button type="button" class="questionMoveUpBtn">Move Up</button>
-        <button type="button" class="questionMoveDownBtn">Move Down</button>
+        <button type="button" id="question${index}MoveUpBtn">Move Up</button>
+        <button type="button" id="question${index}MoveDownBtn">Move Down</button>
         </fieldset>`
     return question_model;
 }
@@ -61,7 +62,6 @@ function questionTypeChange(n){
         console.log("textInput");
         $(this).parent().parent().find(".questionExtra.textInput").show();
     }
-    console.log(n)
 }
 
 function multipleChoiceChange(){
@@ -75,17 +75,31 @@ function multipleChoiceChange(){
     }
 }
 
+function updateQuestionIndex(){
+    var children = $("#creationQuestions").children();
+    for(var i=1; i<=count; i++){
+        children[i].getElementsByTagName("legend")[0].innerHTML = `Question ${i}`;
+        children[i].getElementsByClassName("questionPromptLbl")[0].innerHTML = `Prompt of Question ${i}`;
+        children[i].getElementsByClassName("questionTypeLbl")[0].innerHTML = `Type of Question ${i}`;
+    }
+}
+
 $(window).ready(function() {
     $("#addQuestion").click(function() {
-        $("#creationQuestions").append(generateQuestion());
-        $('input:radio[name="questionType"]').change(questionTypeChange);
-        $('select.questionExtra.multipleChoice').change(multipleChoiceChange);
-        var id = `#question${index}`;
-        $(`#question${index}DeleteBtn`).click(function(){
-            console.log("Clicked "+id);
-            $(id).remove();
-        })
         index += 1;
+        count += 1;
+        var id = `#question${index}`;
+        $("#creationQuestions").append(generateQuestion());
+        $(`${id} input:radio[name="questionType"]`).change(questionTypeChange);
+        $(`${id} select.questionExtra.multipleChoice`).change(multipleChoiceChange);
+        $(`#question${index}DeleteBtn`).click(function(){
+            $(id).remove();
+            count -= 1;
+            updateQuestionIndex();
+        });
+        $(`#question${index}MoveDownBtn`).click(function(){
+            $(id).remove();
+        });
     });
 
     $('input:radio[name="questionType"]').change(questionTypeChange);
