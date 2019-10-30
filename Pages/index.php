@@ -4,9 +4,6 @@
     if(!isset($_SESSION['loginUsername'])){
         $_SESSION['loginUsername'] = "-1";
     }
-    if(isset($_SESSION['errors']) and $_SESSION['errors']) {
-        echo '<script type="text/javascript">alert("' . $_SESSION['errors'] . '");</script>';
-    }
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +35,13 @@
                     echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
                 ?>
             </p>
-            <p>
-                <?php echo $_SESSION['errors']; ?>
+            <p> 
+                <?php
+                    if(isset($_SESSION['errors'])){
+                        echo $_SESSION['errors'];
+                        unset($_SESSION['errors']);
+                    }
+                ?>
             </p>
         </nav>
         <main>
