@@ -34,13 +34,15 @@ function generateQuestion() {
         <label class="questionExtra textInput" style="display: none">Designate a max character count for your answer
         <input type="number" placeholder="max charaters">
         </label>
+        <button type="button" id="question${index}DeleteBtn">Delete Question</button>
+        <button type="button" class="questionMoveUpBtn">Move Up</button>
+        <button type="button" class="questionMoveDownBtn">Move Down</button>
         </fieldset>`
-    index += 1;
     return question_model;
 }
 
-// Need to traverse to root of single question and search down. No better solution available for present
-function questionTypeChange(){
+// Pass in index n of question into the function
+function questionTypeChange(n){
     if($(this).val() == 'multipleChoice'){
         $(this).parent().parent().find(".questionExtra.slider").hide();
         $(this).parent().parent().find(".questionExtra.textInput").hide();
@@ -59,6 +61,7 @@ function questionTypeChange(){
         console.log("textInput");
         $(this).parent().parent().find(".questionExtra.textInput").show();
     }
+    console.log(n)
 }
 
 function multipleChoiceChange(){
@@ -77,6 +80,12 @@ $(window).ready(function() {
         $("#creationQuestions").append(generateQuestion());
         $('input:radio[name="questionType"]').change(questionTypeChange);
         $('select.questionExtra.multipleChoice').change(multipleChoiceChange);
+        var id = `#question${index}`;
+        $(`#question${index}DeleteBtn`).click(function(){
+            console.log("Clicked "+id);
+            $(id).remove();
+        })
+        index += 1;
     });
 
     $('input:radio[name="questionType"]').change(questionTypeChange);
