@@ -22,14 +22,14 @@
     </head>
     <body>
         <nav>
-            <a title="Home" href = "../index.php"><img src="../Resources/Peapods.png"></a>
+            <a href = "../index.php"><img src="../Resources/Peapods.png"></a>
             <section>
                 <form action = "displayGroups.php" method="post">
-                    <input title="Group Search" type="text" name="code" placeholder="Group Code">
+                    <input type="text" name="code" placeholder="Group Code">
                 </form>
-            <a title="Create Form" href="createForm.php"><img src="../Resources/createform.png"></a>
-            <a title="Dashboard" href="dashboard.php"><img src="../Resources/dashboard.png"></a>
-            <a title="Sign In" href="#"><img src="../Resources/loginguy.png"></a>
+            <a href="createForm.php"><img src="../Resources/createform.png"></a>
+            <a href="dashboard.php"><img src="../Resources/dashboard.png"></a>
+            <a href = "#"><img src="../Resources/loginguy.png"></a>
             </section>
             <p>
                 <?php

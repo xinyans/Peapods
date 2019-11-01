@@ -52,7 +52,6 @@ function loginClick(){
 function addLoginListeners(check){
     if(~$("body>nav>p:nth-child(3)").html().indexOf("true")){
         loginState = true;
-        $("nav>section>a:nth-child(4)").attr("title", "Sign Out");
         $("nav>section>a:nth-child(4)").attr("href", "../Login/logout.php");
         $("nav>section>a:nth-child(4) img").attr("src", "../Resources/door.png");
     }
