@@ -5,12 +5,13 @@ body canvas {
 
 .subHeader
 {
+	height: 50%;
 	padding: 0px;
 	text-align: center;
 	background: #85D266;
 	color: white;
-	font-size: 30px;
-	margin: 0 -9999rem;
+	/* font-size: 30px; */
+	margin: 0 -50rem;
 }
 
 .feature
@@ -50,10 +51,40 @@ body canvas {
 
 #slideText
 {
+	line-height: 120px;
 	color: white;
 	font-family: 'Poppins', sans-serif;
 	font-size: 50px;
 	display: inline-block;
+	-moz-transform:translateY(100%);
+	-webkit-transform: translateY(100%);
+	transform: translateY(100%);
+	-moz-animation: scroll-up 3s linear infinite;
+	-webkit-animation: scroll-up 3s linear infinite;
+	animation: scroll-up 3s linear infinite;
+}
+
+@-moz-keyframes scroll-up {
+	0% { -moz-transform: translateY(100%); }
+	100% { -moz-transform: translateY(-100%); }
+}
+
+@-webkit-keyframes scroll-up {
+	0% { -webkit-transform: translateY(100%); }
+	100% { -webkit-transform: translateY(-100%); }
+}
+
+@keyframes scroll-up {
+	0% {
+		-moz-transform: translateY(100%);
+		-webkit-transform: translateY(100%);
+		transform: translateY(100%);
+	}
+	100% {
+		-moz-transform: translateY(-100%);
+		-webkit-transform: translateY(-100%);
+		transform: translateY(-100%);
+	}
 }
 
 #aboutText
