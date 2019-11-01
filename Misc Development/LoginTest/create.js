@@ -1,5 +1,5 @@
-var index = 0;
-var count = 0;
+var index = 2;
+var count = 1;
 
 function generateQuestion() {
     var question_model = `<fieldset id="question${index}" class="creationQuestion">
@@ -164,4 +164,8 @@ $(window).ready(function() {
         $newQuestion.css("opacity", "1");
         addListenersToQuestion($newQuestion, index);
     });
+
+    $("#submitButton").click(function() {
+        validateForm();
+    })
 });
