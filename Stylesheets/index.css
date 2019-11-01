@@ -10,6 +10,24 @@
 	margin-left: calc(76.5% - 100%);
 }
 
+.copyright
+{
+	font-family: 'Poppins', sans-serif;
+	font-size: 20px;
+}
+
+.subFooter
+{
+	height: 50%;
+	padding: 30px;
+	text-align: center;
+	background: #3581b8;
+	color: white;
+	/* font-size: 30px; */
+	margin-right: calc(76.5% - 100%);
+	margin-left: calc(76.5% - 100%);
+}
+
 .feature
 {
 	height: 50px;

@@ -58,20 +58,24 @@
                     <section class="iconGroup">
                         <div>
                             <img class="feature" src="../Resources/icons/018-magnifying glass.png"/>
-                            <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur pellentesque feugiat. Aenean tristique risus vitae porttitor efficitur. Quisque lobortis sagittis magna, eget molestie ipsum eleifend eu. Morbi commodo nunc ac lacus volutpat consequat. Proin in nunc suscipit, fermentum dui vitae, malesuada dui. </p>
+                            <p>Find the best match for you! It can be a new roommate, an exciting club that fits your interests, or an innovative project group that leads to a successful company. The sky is the limit with PeaPods, the innovative matching service!</p>
                         </div>
                         <div>
                             <img class="feature" src="../Resources/icons/023-lightbulb.png"/>
-                            <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur pellentesque feugiat. Aenean tristique risus vitae porttitor efficitur. Quisque lobortis sagittis magna, eget molestie ipsum eleifend eu. Morbi commodo nunc ac lacus volutpat consequat. Proin in nunc suscipit, fermentum dui vitae, malesuada dui. </p>
+                            <p>Great groups make amazing ideas! Matching is an art and Peadpods has you covered. From pairing students for innovative research projects to finding a new partner for your next IT course, Peapods was made for everyone!</p>
                         </div>
                         <div>
                             <img class="feature" src="../Resources/icons/025-cloud computing.png"/>
-                            <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur pellentesque feugiat. Aenean tristique risus vitae porttitor efficitur. Quisque lobortis sagittis magna, eget molestie ipsum eleifend eu. Morbi commodo nunc ac lacus volutpat consequat. Proin in nunc suscipit, fermentum dui vitae, malesuada dui. </p>
+                            <p>We are powered by cutting-edge technology. Peapods uses innovative machine learning and data profiles made just for you to ensure that you get the results you need to get your project done the right way.</p>
                         </div>
                     </section>
+                    <footer>
+                    <div class="subFooter">
+                        <p class="copyright">© Peapods Group. All rights reserved.</p>
+                    </div>
+                    </footer>
 
                 </section>
-
             </article>
         </main>
     </body>
