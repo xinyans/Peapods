@@ -3,7 +3,7 @@ window.onload = function(){
 }
 
 var actionWords = ["&nbspfind roommates.&nbsp&nbsp", "&nbsporganize groups.&nbsp&nbsp&nbsp", "&nbspfind opportunities."];
-var intervalID = window.setInterval(slideText, 3000);
+var intervalID = window.setInterval(slideText, 3010);
 var index = 0;
 
 function slideText()
