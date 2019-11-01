@@ -55,7 +55,13 @@
                 </header>
  
                 <section>
-                    <p id="aboutText" class="disableSelect"> Peapods is a professional <span style="color:#1561ad;">matching service</span><br />that <span style="color:#fc5226;">streamlines</span> creating <span style="color:green;">meaningful groups</span><br />for classes based on <span style="color:#1dbab4;">data profiles</span>. </p>
+                    <p id="aboutText" class="disableSelect"> Peapods is a professional <span style="color:#1561ad;">matching service</span><br />that <span style="color:#fc5226;">streamlines</span> creating <span style="color:green;">meaningful groups</span><br />for classes based on <span style="color:#1dbab4;">data profiles</span>. </p><br>
+
+                    <div class="iconGroup">
+                        <img class="feature" src="../Resources/icons/018-magnifying glass.png"></img>
+                        <img class="feature" src="../Resources/icons/023-lightbulb.png"></img>
+                        <img class="feature" src="../Resources/icons/025-cloud computing.png"></img>
+                    </div>
 
                 </section>
 

@@ -13,6 +13,23 @@ body canvas {
 	margin: 0 -9999rem;
 }
 
+.feature
+{
+	height: 50px;
+	width: auto;
+	display: inline-block;
+}
+
+.iconGroup
+{
+	width : 100%;
+	height : auto;
+	margin : 0 auto;
+	padding : 5px;
+	display : flex;
+	justify-content : space-between;
+}
+
 #startText
 {
 	color: white;
