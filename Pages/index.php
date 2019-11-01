@@ -50,7 +50,7 @@
                 <header>
                     <div class="subHeader">
                         <h1 id="startText" class="disableSelect">We help people</h1>
-                        <h1 id="slideText" class="disableSelect">organize courses.</h1>
+                        <h1 id="slideText" class="disableSelect">&nbsporganize courses.</h1>
                     </div>
                 </header>
                 <section>

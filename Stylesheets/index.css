@@ -76,13 +76,18 @@
 	animation: scroll-up 3s linear infinite;
 }
 
+
 @-moz-keyframes scroll-up {
 	0% { -moz-transform: translateY(100%); }
+	47% { -moz-transform: translateY(0%); }
+	53% { -moz-transform: translateY(0%); }
 	100% { -moz-transform: translateY(-100%); }
 }
 
 @-webkit-keyframes scroll-up {
 	0% { -webkit-transform: translateY(100%); }
+	47% { -webkit-transform: translateY(0%); }
+	53% { -webkit-transform: translateY(0%); }
 	100% { -webkit-transform: translateY(-100%); }
 }
 
@@ -91,6 +96,13 @@
 		-moz-transform: translateY(100%);
 		-webkit-transform: translateY(100%);
 		transform: translateY(100%);
+	}
+	47% {
+		transform: translateY(0%);
+
+	}
+	53% {
+		transform: translateY(0%);
 	}
 	100% {
 		-moz-transform: translateY(-100%);
