@@ -27,6 +27,12 @@
 	justify-content : space-between;
 }
 
+.iconGroup img {
+	background-color: #3581b8;
+	border-radius: 50%;
+	padding: 10px;
+}
+
 .iconGroup div {
 	width: 30%;
 	display: flex;
