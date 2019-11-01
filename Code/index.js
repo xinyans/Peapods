@@ -1,5 +1,5 @@
 window.onload = function(){
-    this.addLoginListeners();
+    this.addLoginListeners(true);
 }
 
 var actionWords = ["find roommates.", "organize groups.", "find opportunities."];
