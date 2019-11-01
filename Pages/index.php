@@ -70,9 +70,7 @@
                         </div>
                     </section>
                     <footer>
-                    <div class="subFooter">
                         <p class="copyright">© Peapods Group. All rights reserved.</p>
-                    </div>
                     </footer>
 
                 </section>

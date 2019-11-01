@@ -24,6 +24,18 @@ body {
     ;
 }
 
+footer
+{
+	height: 50px;
+	text-align: center;
+	background: #333;
+	color: white;
+	/* font-size: 30px; */
+	margin-top: 30px;
+	margin-right: calc(76.5% - 100%);
+	margin-left: calc(76.5% - 100%);
+}
+
 /** php data */
 body>nav>p {
     display: none;
