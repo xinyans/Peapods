@@ -1,3 +1,13 @@
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+}
+
 .subHeader
 {
 	height: 50%;
@@ -19,11 +29,12 @@
 .subFooter
 {
 	height: 50%;
-	padding: 30px;
+	padding: 35px;
 	text-align: center;
 	background: #3581b8;
 	color: white;
 	/* font-size: 30px; */
+	margin-top: 30px;
 	margin-right: calc(76.5% - 100%);
 	margin-left: calc(76.5% - 100%);
 }
