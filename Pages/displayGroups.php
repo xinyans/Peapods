@@ -19,6 +19,7 @@
         if($result and $result->num_rows == 1){
             $printData = mysqli_fetch_assoc($result);
             $_SESSION['code'] = $_POST['code'];
+            $_SESSION['requestPage'] = $_SERVER['REQUEST_URI'];
         }
         else {
             $_SESSION['errors'] = $_SESSION['errors']."a";
