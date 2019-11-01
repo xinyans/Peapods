@@ -1,4 +1,4 @@
-var index = 2;
+var index = 1;
 var count = 1;
 
 function generateQuestion() {
@@ -119,6 +119,9 @@ function addListenersToQuestion(element, i){
         var predecessor = $(element).prev();
         swapNodes(element[0], predecessor[0]);
     });
+    $("#submitButton").click(function() {
+        validateForm();
+    })
 }
 
 function validateForm(){
