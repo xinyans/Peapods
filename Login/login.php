@@ -22,6 +22,7 @@
     }
     if(isset($_SESSION['requestPage'])){
         header("location: ..".$_SESSION['requestPage']);
+        echo $_SESSION['requestPage'];
     }
     else {
         header("location: ../index.php");

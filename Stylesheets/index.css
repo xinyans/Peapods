@@ -6,7 +6,8 @@
 	background: #85D266;
 	color: white;
 	/* font-size: 30px; */
-	margin: 0 -50rem;
+	margin-right: calc(76.5% - 100%);
+	margin-left: calc(76.5% - 100%);
 }
 
 .feature
