@@ -3,6 +3,9 @@
     if(!isset($_SESSION['loginUsername'])){
         $_SESSION['loginUsername'] = "-1";
     }
+    if(!isset($_SESSION['errors'])){
+        $_SESSION['errors'] = '';
+    }
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $data = $username = $password = $firstName = $lastName = $email = "";
         $errors = array();
@@ -18,7 +21,7 @@
             $_SESSION['code'] = $_POST['code'];
         }
         else {
-            $_SESSION['errors'] += "a";
+            $_SESSION['errors'] = $_SESSION['errors']."a";
             if(isset($_SESSION['requestPage']) and $_SESSION['requestPage'] == '/Pages/displayGroups.php' and isset($_SESSION['code'])){
                 $code = $_SESSION['code'];
                 $code_query = "SELECT * FROM groupdata WHERE usercode = '$code' LIMIT 1";

@@ -60,15 +60,15 @@
                     <section class="iconGroup">
                         <div>
                             <img class="feature" src="../Resources/icons/018-magnifying glass.png"/>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec pulvinar felis. Mauris vulputate lectus ut sapien accumsan pellentesque. Cras id suscipit eros. Sed elementum non augue in maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur pellentesque feugiat. Aenean tristique risus vitae porttitor efficitur. Quisque lobortis sagittis magna, eget molestie ipsum eleifend eu. Morbi commodo nunc ac lacus volutpat consequat. Proin in nunc suscipit, fermentum dui vitae, malesuada dui. </p>
+                            <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur pellentesque feugiat. Aenean tristique risus vitae porttitor efficitur. Quisque lobortis sagittis magna, eget molestie ipsum eleifend eu. Morbi commodo nunc ac lacus volutpat consequat. Proin in nunc suscipit, fermentum dui vitae, malesuada dui. </p>
                         </div>
                         <div>
                             <img class="feature" src="../Resources/icons/023-lightbulb.png"/>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec pulvinar felis. Mauris vulputate lectus ut sapien accumsan pellentesque. Cras id suscipit eros. Sed elementum non augue in maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur pellentesque feugiat. Aenean tristique risus vitae porttitor efficitur. Quisque lobortis sagittis magna, eget molestie ipsum eleifend eu. Morbi commodo nunc ac lacus volutpat consequat. Proin in nunc suscipit, fermentum dui vitae, malesuada dui. </p>
+                            <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur pellentesque feugiat. Aenean tristique risus vitae porttitor efficitur. Quisque lobortis sagittis magna, eget molestie ipsum eleifend eu. Morbi commodo nunc ac lacus volutpat consequat. Proin in nunc suscipit, fermentum dui vitae, malesuada dui. </p>
                         </div>
                         <div>
-                        <img class="feature" src="../Resources/icons/025-cloud computing.png"/>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec pulvinar felis. Mauris vulputate lectus ut sapien accumsan pellentesque. Cras id suscipit eros. Sed elementum non augue in maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur pellentesque feugiat. Aenean tristique risus vitae porttitor efficitur. Quisque lobortis sagittis magna, eget molestie ipsum eleifend eu. Morbi commodo nunc ac lacus volutpat consequat. Proin in nunc suscipit, fermentum dui vitae, malesuada dui. </p>
+                            <img class="feature" src="../Resources/icons/025-cloud computing.png"/>
+                            <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur pellentesque feugiat. Aenean tristique risus vitae porttitor efficitur. Quisque lobortis sagittis magna, eget molestie ipsum eleifend eu. Morbi commodo nunc ac lacus volutpat consequat. Proin in nunc suscipit, fermentum dui vitae, malesuada dui. </p>
                         </div>
                     </section>
 

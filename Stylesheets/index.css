@@ -31,13 +31,15 @@
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
+	align-content: flex-start;
 }
 
 .iconGroup p {
 	width: 100%;
 	padding: 10px;
 	font-family: 'Poppins', sans-serif;
-
+	font-size: 20px;
+	text-align: justify;
 }
 
 #startText
