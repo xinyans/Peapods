@@ -20,20 +20,20 @@ function generateQuestion() {
         </select>
         <!-- Size of the following part resizes according to input above, when size decrease extra elements are hidden instead of lost -->
         <div class="questionExtra multipleChoice multipleChoiceChoices" style="display: none">
-        <label>A. <input type="text" name="choiceA" placeholder="Choice A"></label>
-        <label>B. <input type="text" name="choiceB" placeholder="Choice B"></label>
-        <label>C. <input type="text" name="choiceC" placeholder="Choice C"></label>
-        <label>D. <input type="text" name="choiceD" placeholder="Choice D"></label>
-        <label>E. <input type="text" name="choiceE" placeholder="Choice E"></label>
+        <label>A. <input type="text" name="choiceA" placeholder="Choice A" required></label>
+        <label>B. <input type="text" name="choiceB" placeholder="Choice B" required></label>
+        <label>C. <input type="text" name="choiceC" placeholder="Choice C" required></label>
+        <label>D. <input type="text" name="choiceD" placeholder="Choice D" required></label>
+        <label>E. <input type="text" name="choiceE" placeholder="Choice E" required></label>
         </div>
         <!-- The following part is Slider -->
         <label class="questionExtra slider" style="display: none">What is the min and max value of slider?
-        <input type="number" placeholder="min">
-        <input type="number" placeholder="max">
+        <input type="number" placeholder="min" required>
+        <input type="number" placeholder="max" required>
         </label>
         <!-- The following part is Text Input -->
         <label class="questionExtra textInput" style="display: none">Designate a max character count for your answer
-        <input type="number" placeholder="max charaters">
+        <input type="number" placeholder="max charaters" required>
         </label>
         <button type="button" id="question${index}DeleteBtn">Delete Question</button>
         <button type="button" id="question${index}MoveUpBtn">Move Up</button>
@@ -119,6 +119,38 @@ function addListenersToQuestion(element, i){
         var predecessor = $(element).prev();
         swapNodes(element[0], predecessor[0]);
     });
+}
+
+function validateForm(){
+    var name = document.getElementById("formName");
+    var duedate = document.getElementById("dueDate");
+    var question = document.getElementById("questionPrompt");
+    var type = document.getElementById("questionType");
+
+    if (!name.checkValidity()){
+        document.getElementById("noName").innerHTML = name.validationMessage;
+    } else {
+        document.getElementById("noName").innerHTML = "";
+    }
+
+    if (!question.checkValidity()){
+        document.getElementById("noPrompt").innerHTML = question.validationMessage;
+    } else {
+        document.getElementById("noPrompt").innerHTML = "";
+    }
+
+    if (!type.checkValidity()){
+        document.getElementById("noType").innerHTML = type.validationMessage;
+    } else {
+        document.getElementById("noType").innerHTML = "";
+    }
+
+    if (!duedate.checkValidity()){
+        document.getElementById("noDate").innerHTML = duedate.validationMessage;
+    } else {
+        document.getElementById("noDate").innerHTML = "";
+    }
+
 }
 
 $(window).ready(function() {

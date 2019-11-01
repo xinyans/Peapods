@@ -5,9 +5,6 @@
         $username = mysqli_real_escape_string($db, $_POST['username']);
         $password = mysqli_real_escape_string($db, $_POST['password']);
         
-        if (empty($username)) { array_push($errors, "Username is required"); }
-        if (empty($password)) { array_push($errors, "Password is required"); }
-        
         $user_check_query = "SELECT * FROM userdata WHERE username='$username' LIMIT 1";
         $result = mysqli_query($db, $user_check_query);
         $user = mysqli_fetch_assoc($result);
@@ -16,8 +13,9 @@
             $_SESSION['loginUsername'] = $username;
             $_SESSION['errors'] = "";
         }
+        //Error 1 is check credentials 2... 3 ..
         else {
-            $_SESSION['errors'] = "Error: Please check your credentials and try again";
+            $_SESSION['errors'] = "1";
         }
 
         $db->close();

@@ -1,3 +1,11 @@
+/* Dealing with chromes messed up styling */
+input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    background-color: white;
+}
+
 .login {
     z-index: 98;
     width: 100%;
@@ -37,11 +45,11 @@
     border-radius: 10px;
     width: 300px;
     height: 30px;
+    margin: auto;
     margin-top: 30px;
-    margin-left: 10px;
 }
 
-.login>form input:nth-child(5){
+.login>form button:nth-child(4){
     margin-top: 30px;
     border-radius: 10px;
     display: inline-block;
@@ -53,10 +61,10 @@
     background-color: transparent;
 }
 
-.login>form input:nth-child(6){
+.login>form input:nth-child(5){
     margin-top: 30px;
-    display: inline-block;
     border-radius: 10px;
+    display: inline-block;
     border: none;
     width: 70px;
     height: 30px;
@@ -133,4 +141,16 @@
     height: 30px;
     text-align: center;
     color: black;
+}
+
+.register>form input:nth-child(7){
+    margin-top: 30px;
+    display: inline-block;
+    border-radius: 10px;
+    border: none;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    color: black;
+    background-color: transparent;
 }

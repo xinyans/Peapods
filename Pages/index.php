@@ -4,9 +4,6 @@
     if(!isset($_SESSION['loginUsername'])){
         $_SESSION['loginUsername'] = "-1";
     }
-    if(isset($_SESSION['errors']) and $_SESSION['errors']) {
-        echo '<script type="text/javascript">alert("' . $_SESSION['errors'] . '");</script>';
-    }
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +18,7 @@
         <link rel="stylesheet" type="text/css" href="../Stylesheets/index.css">
         <script src="../Code/jquery-3.4.1.min.js"></script>
         <script src="../Code/login.js"></script>
+        <script src="../Code/index.js"></script>
     </head>
     <body>
         <nav>
@@ -38,16 +36,33 @@
                     echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
                 ?>
             </p>
-            <p>
-                <?php echo $_SESSION['errors']; ?>
+            <p> 
+                <?php
+                    if(isset($_SESSION['errors'])){
+                        echo $_SESSION['errors'];
+                        unset($_SESSION['errors']);
+                    }
+                ?>
             </p>
         </nav>
         <main>
-			<article>
-				<header>
-
-				</header>
+            <article>
+                <header>
+                    <div class="subHeader">
+                        <h1 id="startText" class="disableSelect">We help people</h1>
+                        <h1 id="slideText" class="disableSelect">organize courses.</h1>
+                    </div>
+                </header>
+ 
                 <section>
+                    <p id="aboutText" class="disableSelect"> Peapods is a professional <span style="color:#1561ad;">matching service</span><br />that <span style="color:#fc5226;">streamlines</span> creating <span style="color:green;">meaningful groups</span><br />for classes based on <span style="color:#1dbab4;">data profiles</span>. </p><br>
+
+                    <div class="iconGroup">
+                        <img class="feature" src="../Resources/icons/018-magnifying glass.png"></img>
+                        <img class="feature" src="../Resources/icons/023-lightbulb.png"></img>
+                        <img class="feature" src="../Resources/icons/025-cloud computing.png"></img>
+                    </div>
+
                 </section>
 
             </article>

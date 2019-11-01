@@ -76,6 +76,6 @@ function displayData(){
 }
 
 window.onload = function(){
-    this.addLoginListeners();
+    this.addLoginListeners(true);
     this.displayData();
 }

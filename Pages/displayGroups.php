@@ -18,6 +18,7 @@
             $_SESSION['code'] = $_POST['code'];
         }
         else {
+            $_SESSION['errors'] += "a";
             if(isset($_SESSION['requestPage']) and $_SESSION['requestPage'] == '/Pages/displayGroups.php' and isset($_SESSION['code'])){
                 $code = $_SESSION['code'];
                 $code_query = "SELECT * FROM groupdata WHERE usercode = '$code' LIMIT 1";
@@ -34,7 +35,6 @@
             }
             else {
                 header("location: ../Pages/index.php");
-                echo "randdadasdad";
             }
         }
         $db->close();
@@ -75,8 +75,13 @@
                     echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
                 ?>
             </p>
-            <p>
-                <?php echo $_SESSION['errors']; ?>
+            <p> 
+                <?php
+                    if(isset($_SESSION['errors'])){
+                        echo $_SESSION['errors'];
+                        unset($_SESSION['errors']);
+                    }
+                ?>
             </p>
             <p>
                 <?php
