@@ -69,12 +69,11 @@
                             <p>We are powered by cutting-edge technology. Peapods uses innovative machine learning and data profiles made just for you to ensure that you get the results you need to get your project done the right way!</p>
                         </div>
                     </section>
-                    <footer>
-                        <p class="copyright">© Peapods Group. All rights reserved.</p>
-                    </footer>
-
                 </section>
             </article>
         </main>
+        <footer>
+                        © Peapods Group. All rights reserved.
+        </footer>
     </body>
 </html>

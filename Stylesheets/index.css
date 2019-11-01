@@ -1,13 +1,3 @@
-html {
-    overflow: hidden;
-    height: 100%;
-}
-
-body {
-    height: 100%;
-    overflow: auto;
-}
-
 .subHeader
 {
 	height: 50%;
@@ -18,12 +8,6 @@ body {
 	/* font-size: 30px; */
 	margin-right: calc(76.5% - 100%);
 	margin-left: calc(76.5% - 100%);
-}
-
-.copyright
-{
-	font-family: 'Poppins', sans-serif;
-	font-size: 20px;
 }
 
 .feature
