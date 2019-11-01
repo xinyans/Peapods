@@ -1,8 +1,8 @@
-var index = 1;
-var count = 1;
+var index = 0;
+var count = 0;
 
 function generateQuestion() {
-    var question_model = `<fieldset id="question${index}">
+    var question_model = `<fieldset id="question${index}" class="creationQuestion">
         <legend>Question ${count}</legend>
         <label class="questionPromptLbl" for="questionPrompt">Prompt of Question ${count}</label>
         <input type="text" name="questionPrompt" id="questionPrompt" placeholder="50 characters max">
@@ -75,6 +75,20 @@ function multipleChoiceChange(){
     }
 }
 
+function swapNodes(element1, element2){
+    var clonedElement1 = element1.cloneNode(true);
+    var clonedElement2 = element2.cloneNode(true);
+
+    element2.parentNode.replaceChild(clonedElement1, element2);
+    element1.parentNode.replaceChild(clonedElement2, element1);
+
+    var id1 = $(clonedElement1).attr('id');
+    var id2 = $(clonedElement2).attr('id');
+    addListenersToQuestion($(clonedElement1), parseInt(id1[8], 10));
+    addListenersToQuestion($(clonedElement2), parseInt(id2[8], 10));
+    updateQuestionIndex();
+}
+
 function updateQuestionIndex(){
     var children = $("#creationQuestions").children();
     for(var i=1; i<=count; i++){
@@ -84,25 +98,38 @@ function updateQuestionIndex(){
     }
 }
 
+// Pass in jQuery objects
+function addListenersToQuestion(element, i){
+    $(element).find(`input:radio[name="questionType"]`).change(questionTypeChange);
+    $(element).find(`select.questionExtra.multipleChoice`).change(multipleChoiceChange);
+    $(`#question${i}DeleteBtn`).click(function(){
+        $(element).offsetWidth = $(element).offsetWidth;
+        $(element).addClass("out");
+        setTimeout(() => {
+            $(element).remove();
+            count -= 1;
+            updateQuestionIndex();
+        }, 300); 
+    });
+    $(`#question${i}MoveDownBtn`).click(function(){
+        var successor = $(element).next();
+        swapNodes(element[0], successor[0]);
+    });
+    $(`#question${i}MoveUpBtn`).click(function(){
+        var predecessor = $(element).prev();
+        swapNodes(element[0], predecessor[0]);
+    });
+}
+
 $(window).ready(function() {
     $("#addQuestion").click(function() {
         index += 1;
         count += 1;
         var id = `#question${index}`;
         $("#creationQuestions").append(generateQuestion());
-        $(`${id} input:radio[name="questionType"]`).change(questionTypeChange);
-        $(`${id} select.questionExtra.multipleChoice`).change(multipleChoiceChange);
-        $(`#question${index}DeleteBtn`).click(function(){
-            $(id).remove();
-            count -= 1;
-            updateQuestionIndex();
-        });
-        $(`#question${index}MoveDownBtn`).click(function(){
-            $(id).remove();
-        });
+        var $newQuestion = $(id);
+        $newQuestion[0].offsetWidth = $newQuestion[0].offsetWidth;
+        $newQuestion.css("opacity", "1");
+        addListenersToQuestion($newQuestion, index);
     });
-
-    $('input:radio[name="questionType"]').change(questionTypeChange);
-
-    $('select.questionExtra.multipleChoice').change(multipleChoiceChange);
 });
