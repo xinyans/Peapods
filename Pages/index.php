@@ -57,11 +57,20 @@
                 <section>
                     <p id="aboutText" class="disableSelect"> Peapods is a professional <span style="color:#1561ad;">matching service</span><br />that <span style="color:#fc5226;">streamlines</span> creating <span style="color:green;">meaningful groups</span><br />for classes based on <span style="color:#1dbab4;">data profiles</span>. </p><br>
 
-                    <div class="iconGroup">
-                        <img class="feature" src="../Resources/icons/018-magnifying glass.png"></img>
-                        <img class="feature" src="../Resources/icons/023-lightbulb.png"></img>
-                        <img class="feature" src="../Resources/icons/025-cloud computing.png"></img>
-                    </div>
+                    <section class="iconGroup">
+                        <div>
+                            <img class="feature" src="../Resources/icons/018-magnifying glass.png"/>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec pulvinar felis. Mauris vulputate lectus ut sapien accumsan pellentesque. Cras id suscipit eros. Sed elementum non augue in maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur pellentesque feugiat. Aenean tristique risus vitae porttitor efficitur. Quisque lobortis sagittis magna, eget molestie ipsum eleifend eu. Morbi commodo nunc ac lacus volutpat consequat. Proin in nunc suscipit, fermentum dui vitae, malesuada dui. </p>
+                        </div>
+                        <div>
+                            <img class="feature" src="../Resources/icons/023-lightbulb.png"/>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec pulvinar felis. Mauris vulputate lectus ut sapien accumsan pellentesque. Cras id suscipit eros. Sed elementum non augue in maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur pellentesque feugiat. Aenean tristique risus vitae porttitor efficitur. Quisque lobortis sagittis magna, eget molestie ipsum eleifend eu. Morbi commodo nunc ac lacus volutpat consequat. Proin in nunc suscipit, fermentum dui vitae, malesuada dui. </p>
+                        </div>
+                        <div>
+                        <img class="feature" src="../Resources/icons/025-cloud computing.png"/>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec pulvinar felis. Mauris vulputate lectus ut sapien accumsan pellentesque. Cras id suscipit eros. Sed elementum non augue in maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur pellentesque feugiat. Aenean tristique risus vitae porttitor efficitur. Quisque lobortis sagittis magna, eget molestie ipsum eleifend eu. Morbi commodo nunc ac lacus volutpat consequat. Proin in nunc suscipit, fermentum dui vitae, malesuada dui. </p>
+                        </div>
+                    </section>
 
                 </section>
 
