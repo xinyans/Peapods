@@ -66,7 +66,7 @@
                         </div>
                         <div>
                             <img class="feature" src="../Resources/icons/025-cloud computing.png"/>
-                            <p>We are powered by cutting-edge technology. Peapods uses innovative machine learning and data profiles made just for you to ensure that you get the results you need to get your project done the right way.</p>
+                            <p>We are powered by cutting-edge technology. Peapods uses innovative machine learning and data profiles made just for you to ensure that you get the results you need to get your project done the right way!</p>
                         </div>
                     </section>
                     <footer>
