@@ -1,5 +1,5 @@
-var index = 0;
-var count = 0;
+var index = 1;
+var count = 1;
 
 function generateQuestion() {
     var question_model = `<fieldset id="question${index}" class="creationQuestion">
@@ -119,6 +119,9 @@ function addListenersToQuestion(element, i){
         var predecessor = $(element).prev();
         swapNodes(element[0], predecessor[0]);
     });
+    $("#submitButton").click(function() {
+        validateForm();
+    })
 }
 
 function validateForm(){
@@ -164,4 +167,8 @@ $(window).ready(function() {
         $newQuestion.css("opacity", "1");
         addListenersToQuestion($newQuestion, index);
     });
+
+    $("#submitButton").click(function() {
+        validateForm();
+    })
 });
