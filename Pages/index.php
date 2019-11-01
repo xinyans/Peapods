@@ -18,6 +18,7 @@
         <link rel="stylesheet" type="text/css" href="../Stylesheets/index.css">
         <script src="../Code/jquery-3.4.1.min.js"></script>
         <script src="../Code/login.js"></script>
+        <script src="../Code/index.js"></script>
     </head>
     <body>
         <nav>
@@ -45,11 +46,17 @@
             </p>
         </nav>
         <main>
-			<article>
-				<header>
-
-				</header>
+            <article>
+                <header>
+                    <div class="subHeader">
+                        <h1 id="startText" class="disableSelect">We help people</h1>
+                        <h1 id="slideText" class="disableSelect">organize courses.</h1>
+                    </div>
+                </header>
+ 
                 <section>
+                    <p id="aboutText" class="disableSelect"> Peapods is a professional <span style="color:#1561ad;">matching service</span><br />that <span style="color:#fc5226;">streamlines</span> creating <span style="color:green;">meaningful groups</span><br />for classes based on <span style="color:#1dbab4;">data profiles</span>. </p>
+
                 </section>
 
             </article>

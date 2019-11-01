@@ -2,3 +2,47 @@ body canvas {
     width: 100%;
     height: 200px;
 }
+
+.subHeader
+{
+	padding: 0px;
+	text-align: center;
+	background: #85D266;
+	color: white;
+	font-size: 30px;
+	margin: 0 -9999rem;
+}
+
+#startText
+{
+	color: white;
+	font-family: 'Poppins', sans-serif;
+	font-size: 50px;
+	display: inline-block;
+}
+
+.disableSelect
+{
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+#slideText
+{
+	color: white;
+	font-family: 'Poppins', sans-serif;
+	font-size: 50px;
+	display: inline-block;
+}
+
+#aboutText
+{
+	color: black;
+	font-family: 'Poppins', sans-serif;
+	font-size: 35px;
+	text-align: center;
+}
