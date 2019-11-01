@@ -148,8 +148,10 @@ body {
 
 #aboutText
 {
+	padding-top: 15px;
 	color: black;
 	font-family: 'Poppins', sans-serif;
 	font-size: 35px;
 	text-align: center;
+	padding-bottom: 15px;
 }
