@@ -73,7 +73,7 @@
             </article>
         </main>
         <footer>
-                        © Peapods Group. All rights reserved.
+            © Peapods Group. All rights reserved.
         </footer>
     </body>
 </html>
