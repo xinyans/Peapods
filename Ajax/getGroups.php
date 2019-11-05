@@ -11,7 +11,7 @@
         }
         else {
             //if there is no such code
-            echo "Invalid Group Code";
+            echo "{\"groupTitle\": \"Invalid Code\"}";
         }
         $db->close();
     }
@@ -29,16 +29,7 @@
    *             alert(msg);
    *         }
    *     });
+   * 
+   *    or line of form project.websys/Ajax/getGroups.php?code=testcode
     **/
 ?>
-
-<html>
-<head>
-</head>
-<body>
-<?php
-echo $_REQUEST['code'];
-echo $printData['groupjson'];
-?>
-</body>
-</html>

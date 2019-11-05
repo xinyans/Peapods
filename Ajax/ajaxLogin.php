@@ -11,10 +11,12 @@
 
         if ($user and $user['password'] == md5($password)) {
             $cookie = md5($username.$password);
+            $query = "INSERT INTO logins (loginCookie, username) VALUES ('$cookie', '$username')";
+            mysqli_query($db, $query);
             echo $cookie;       
         }
         else {
-            echo "not logged in";
+            echo "";
         }
 
         $db->close();
@@ -24,7 +26,7 @@
      * $.ajax({
      *      type: "POST",
      *      url: "../Ajax/ajaxLogin.php",
-     *      data: {username: "username", password: "password"},   // <== change is here
+     *      data: {username: "username", password: "password"},
      *      success: function(msg){
      *          alert(msg);
      *      }
