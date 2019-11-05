@@ -13,12 +13,12 @@
             $cookie = md5($username.$password);
             $query = "INSERT INTO logins (loginCookie, username) VALUES ('$cookie', '$username')";
             mysqli_query($db, $query);
-            echo $cookie;       
+            echo $cookie;
+            $_SESSION['loginCookie'] = $cookie;       
         }
         else {
             echo "";
         }
-
         $db->close();
     }
 
