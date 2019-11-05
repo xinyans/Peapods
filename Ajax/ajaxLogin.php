@@ -12,7 +12,6 @@
         if ($user and $user['password'] == md5($password)) {
             $cookie = md5($username.$password);
             echo $cookie;       
-            echo "fun";
         }
         else {
             echo "not logged in";
