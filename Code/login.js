@@ -63,11 +63,11 @@ function loginClick(){
              * Implement form verification here as discussed below for login
              */
             
-
+            
             $.ajax({
                 type: "POST",
                 url: "../Ajax/ajaxRegister.php",
-                data: {password = password, username = username, firstname = firstname, lastname = lastname, email = email},
+                data: {password: password, username: username, firstname: firstname, lastname: lastname, email: email},
                 success: function(msg){
                     if(msg != ""){
                         /** If sucessful login the user */

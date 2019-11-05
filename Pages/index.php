@@ -31,19 +31,6 @@
             <a title="Dashboard" href="dashboard.php"><img src="../Resources/dashboard.png"></a>
             <a title="Sign In" href="#"><img src="../Resources/loginguy.png"></a>
             </section>
-            <p>
-                <?php
-                    echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
-                ?>
-            </p>
-            <p> 
-                <?php
-                    if(isset($_SESSION['errors'])){
-                        echo $_SESSION['errors'];
-                        unset($_SESSION['errors']);
-                    }
-                ?>
-            </p>
         </nav>
         <main>
             <article>
