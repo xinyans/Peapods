@@ -2,7 +2,7 @@
     session_start();
     if($_SERVER["REQUEST_METHOD"] == "POST" or $_SERVER["REQUEST_METHOD"] == "GET") {
         $code = $_REQUEST['code'];
-        $db = new mysqli('localhost', 'root', 'cows', 'peapods');
+        $db = new mysqli('localhost', 'root', 'Techie0110', 'peapods');
         $query = "SELECT * FROM groupdata WHERE usercode = '$code' LIMIT 1";
         $result = mysqli_query($db, $query);
         if($result and $result->num_rows == 1){

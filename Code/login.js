@@ -16,7 +16,7 @@ var register =`
         <button type="button">X</button>
         <input type="text" name="firstname" placeholder="First Name">
         <input type="text" name="lastname" placeholder="Last Name">
-        <input type="text" name="email" placeholder="Email">
+        <input type="email" name="email" placeholder="Email">
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
         <input type="submit" value="Register" name="Register"/>
@@ -71,33 +71,38 @@ function loginClick(){
             /**
              * Implement form verification here as discussed below for login
              */
+            var error = "";
+            if(!username) {error += "1";}
+            if(!password) {error += "2";}
+            if(!email) {error += "3";}
             
-            
-            $.ajax({
-                type: "POST",
-                url: "../Ajax/ajaxRegister.php",
-                data: {password: password, username: username, firstname: firstname, lastname: lastname, email: email},
-                success: function(msg){
-                    if(msg != ""){
-                        /** If sucessful login the user */
-                        $.ajax({
-                            type: "POST",
-                            url: "../Ajax/ajaxLogin.php",
-                            data: {username: username, password: password},
-                            success: function(msg2){
-                                cookie = msg2;
-                                $("body").html(temp);
-                                addLoginListeners();
-                            }
-                        });
+            if(error == "") {
+                $.ajax({
+                    type: "POST",
+                    url: "../Ajax/ajaxRegister.php",
+                    data: {password: password, username: username, firstname: firstname, lastname: lastname, email: email},
+                    success: function(msg){
+                        if(msg != ""){
+                            /** If sucessful login the user */
+                            $.ajax({
+                                type: "POST",
+                                url: "../Ajax/ajaxLogin.php",
+                                data: {username: username, password: password},
+                                success: function(msg2){
+                                    cookie = msg2;
+                                    $("body").html(temp);
+                                    addLoginListeners();
+                                }
+                            });
+                        }
+                        else {
+                            //here is where you would indicate that username was invalid or email or something was reused
+                            addLoginListeners();                    
+                        }
                     }
-                    else {
-                        //here is where you would indicate that username was invalid or email or something was reused
-                        addLoginListeners();                    
-                    }
-                }
-            });
-
+                });
+            }
+            else{alert(error);}
         });
 
     });
