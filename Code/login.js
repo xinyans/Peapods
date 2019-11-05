@@ -45,12 +45,29 @@ function loginClick(){
 
             /**
              * Get data here
+             * 
+             * username = 
+             * password = 
+             * email = 
+             * firstname =  
+             * lastname = 
              */
+
+            password    = $("aside>form>input[name='password'").val();
+            username    = $("aside>form>input[name='username'").val();
+            email       = $("aside>form>input[name='email'").val();
+            firstname   = $("aside>form>input[name='firstname'").val();
+            lastname    = $("aside>form>input[name='lastname'").val();
+
+            /**
+             * Implement form verification here as discussed below for login
+             */
+            
 
             $.ajax({
                 type: "POST",
                 url: "../Ajax/ajaxRegister.php",
-                data: {/** Needs input data here*/},
+                data: {password = password, username = username, firstname = firstname, lastname = lastname, email = email},
                 success: function(msg){
                     if(msg != ""){
                         /** If sucessful login the user */
@@ -82,8 +99,8 @@ function loginClick(){
     });
     $("body>aside>form>input:nth-child(5)").click(function(){
         //get form data
-        username = $("input[name='username'").val();
-        password = $("input[name='password'").val();
+        username = $("aside>form>input[name='username'").val();
+        password = $("aside>form>input[name='password'").val();
 
         /**
          * Implement form verification here
