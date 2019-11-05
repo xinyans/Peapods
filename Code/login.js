@@ -1,25 +1,25 @@
 var login = `
 <aside class = "login">
-    <form>
+    <form src = "#">
         <button type="button">X</button>
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
         <button type="button">Register</button>
-        <input type="button" value="Login" name="Login"/>
+        <input type="submit" value="Login" name="Login"/>
     </form>
 </aside>
 `;
 
 var register =`
 <aside class = "register">
-    <form>
+    <form src="#">
         <button type="button">X</button>
         <input type="text" name="firstname" placeholder="First Name">
         <input type="text" name="lastname" placeholder="Last Name">
         <input type="text" name="email" placeholder="Email">
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
-        <input type="button" value="Register" name="Register"/>
+        <input type="submit" value="Register" name="Register"/>
     </form>
 </aside>
 `;
@@ -42,6 +42,35 @@ function loginClick(){
         $("body>aside>form>input:nth-child(7)").click(function(){
             //if register button is clicked
             //Implement perform ajax register
+
+            /**
+             * Get data here
+             */
+
+            $.ajax({
+                type: "POST",
+                url: "../Ajax/ajaxRegister.php",
+                data: {/** Needs input data here*/},
+                success: function(msg){
+                    if(msg != ""){
+                        /** If sucessful login the user */
+                        $.ajax({
+                            type: "POST",
+                            url: "../Ajax/ajaxLogin.php",
+                            data: {username: username, password: password},
+                            success: function(msg2){
+                                cookie = msg2;
+                                $("body").html(temp);
+                                addLoginListeners();
+                            }
+                        });
+                    }
+                    else {
+                        //here is where you would indicate that username was invalid or email or something was reused
+                    }
+                }
+            });
+
         });
 
     });
@@ -52,10 +81,15 @@ function loginClick(){
         addLoginListeners();
     });
     $("body>aside>form>input:nth-child(5)").click(function(){
+        //get form data
         username = $("input[name='username'").val();
         password = $("input[name='password'").val();
-        console.log(username);
-        console.log(password);
+
+        /**
+         * Implement form verification here
+         *  if(loginverify(...){}) to run code below
+         */
+
         $.ajax({
             type: "POST",
             url: "../Ajax/ajaxLogin.php",
