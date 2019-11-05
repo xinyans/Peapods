@@ -30,16 +30,19 @@ function loginClick(){
     temp = $("body").html();
     //Initial login form is brought up
     $("body").html(login + temp);
-    $("body>aside>form>button:nth-child(4)").click(function(){
+    $(".login>form>button:nth-child(4)").click(function(){
         //If the register button has been clicked
         $("body").html(register + temp);
-        $("body>aside>form>button:nth-child(1)").click(function(){
+        $(".register>form>button:nth-child(1)").click(function(){
+            console.log("xed");
             //reset to body if x is clicked
             $("body").html(temp);
             //re-add listeners for clicking
             addLoginListeners();
         });
-        $("body>aside>form>input:nth-child(7)").click(function(){
+        $(".register>form").submit(function(event){
+            event.preventDefault();
+            console.log("clicked register");
             //if register button is clicked
             //Implement perform ajax register
 
@@ -53,11 +56,17 @@ function loginClick(){
              * lastname = 
              */
 
-            password    = $("aside>form>input[name='password'").val();
-            username    = $("aside>form>input[name='username'").val();
-            email       = $("aside>form>input[name='email'").val();
-            firstname   = $("aside>form>input[name='firstname'").val();
-            lastname    = $("aside>form>input[name='lastname'").val();
+            password    = $("aside>form>input[name='password']").val();
+            username    = $("aside>form>input[name='username']").val();
+            email       = $("aside>form>input[name='email']").val();
+            firstname   = $("aside>form>input[name='firstname']").val();
+            lastname    = $("aside>form>input[name='lastname']").val();
+            
+            console.log(firstname);
+            console.log(lastname);
+            console.log(email);
+            console.log(username);
+            console.log(password);
 
             /**
              * Implement form verification here as discussed below for login
@@ -84,6 +93,7 @@ function loginClick(){
                     }
                     else {
                         //here is where you would indicate that username was invalid or email or something was reused
+                        addLoginListeners();                    
                     }
                 }
             });
@@ -97,10 +107,12 @@ function loginClick(){
         //re-add listeners for clicking
         addLoginListeners();
     });
-    $("body>aside>form>input:nth-child(5)").click(function(){
+    $(".login>form").submit(function(event){
+        event.preventDefault();
+
         //get form data
-        username = $("aside>form>input[name='username'").val();
-        password = $("aside>form>input[name='password'").val();
+        username = $("aside>form>input[name='username']").val();
+        password = $("aside>form>input[name='password']").val();
 
         /**
          * Implement form verification here
@@ -114,7 +126,7 @@ function loginClick(){
             success: function(msg){
                 cookie = msg;
                 if(msg != ""){
-                    $("body").html(temp);
+                    $("body").html(temp);  
                     addLoginListeners();
                 }
                 else {
@@ -123,7 +135,6 @@ function loginClick(){
                 }
             }
         });
-
     });
 
 }
