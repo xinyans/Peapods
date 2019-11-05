@@ -7,7 +7,7 @@
         $query = "DELETE FROM logins WHERE loginCookie='$cookie'";
         $result = mysqli_query($db, $query);
 
-        echo "LoggedOut";
+        echo "";
 
         $db->close();
     }
