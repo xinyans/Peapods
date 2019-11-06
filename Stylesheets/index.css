@@ -10,6 +10,10 @@
 	margin-left: calc(76.5% - 100%);
 }
 
+@media only screen and (max-width: 900px) {
+	.subHeader {display: none;}
+}
+
 .feature
 {
 	height: 50px;
