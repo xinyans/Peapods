@@ -245,6 +245,7 @@ function groupSearch(){
             success: function(msg){
                 if(msg != ""){
                     $("#groupSearch>input").css("border", "none");
+                    $(location).attr('href',"../Pages/displayGroups.php?code=" + code);
                 }
                 else {
                     $("#groupSearch>input").css("border", "1px solid red");
