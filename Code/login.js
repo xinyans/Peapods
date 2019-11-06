@@ -61,43 +61,69 @@ function loginClick(){
             email       = $("aside>form>input[name='email']").val();
             firstname   = $("aside>form>input[name='firstname']").val();
             lastname    = $("aside>form>input[name='lastname']").val();
-            
-            console.log(firstname);
-            console.log(lastname);
-            console.log(email);
-            console.log(username);
-            console.log(password);
 
-            /**
-             * Implement form verification here as discussed below for login
-             */
-            
-            
-            $.ajax({
-                type: "POST",
-                url: "../Ajax/ajaxRegister.php",
-                data: {password: password, username: username, firstname: firstname, lastname: lastname, email: email},
-                success: function(msg){
-                    if(msg != ""){
-                        /** If sucessful login the user */
-                        $.ajax({
-                            type: "POST",
-                            url: "../Ajax/ajaxLogin.php",
-                            data: {username: username, password: password},
-                            success: function(msg2){
-                                cookie = msg2;
-                                $("body").html(temp);
-                                addLoginListeners();
-                            }
-                        });
+            cont = true;
+            if(username == ""){
+                $("aside>form>input[name='username']").css("border", "1px solid red");
+                cont = false;
+            }
+            else {
+                $("aside>form>input[name='username']").css("border", "none");
+            }
+            if(password == ""){
+                $("aside>form>input[name='password']").css("border", "1px solid red");
+                cont = false;
+            }
+            else {
+                $("aside>form>input[name='password']").css("border", "none");
+            }
+            if(email == ""){
+                $("aside>form>input[name='email']").css("border", "1px solid red");
+                cont = false;
+            }
+            else {
+                $("aside>form>input[name='email']").css("border", "none");
+            }
+            if(lastname == ""){
+                $("aside>form>input[name='lastname']").css("border", "1px solid red");
+                cont = false;
+            }
+            else {
+                $("aside>form>input[name='lastname']").css("border", "none");
+            }
+            if(firstname == ""){
+                $("aside>form>input[name='firstname']").css("border", "1px solid red");
+                cont = false;
+            }
+            else {
+                $("aside>form>input[name='firstname']").css("border", "none");
+            }
+            if(cont){
+                $.ajax({
+                    type: "POST",
+                    url: "../Ajax/ajaxRegister.php",
+                    data: {password: password, username: username, firstname: firstname, lastname: lastname, email: email},
+                    success: function(msg){
+                        if(msg != ""){
+                            /** If sucessful login the user */
+                            $.ajax({
+                                type: "POST",
+                                url: "../Ajax/ajaxLogin.php",
+                                data: {username: username, password: password},
+                                success: function(msg2){
+                                    cookie = msg2;
+                                    $("body").html(temp);
+                                    addLoginListeners();
+                                }
+                            });
+                        }
+                        else {
+                            //here is where you would indicate that username was invalid or email or something was reused
+                            $("aside>form>input[name='username']").css("border", "1px solid red");                
+                        }
                     }
-                    else {
-                        //here is where you would indicate that username was invalid or email or something was reused
-                        addLoginListeners();                    
-                    }
-                }
-            });
-
+                });
+            }
         });
 
     });
@@ -118,23 +144,40 @@ function loginClick(){
          * Implement form verification here
          *  if(loginverify(...){}) to run code below
          */
+        cont = true;
+        if(username == ""){
+            $("body>aside>form>input:nth-child(2)").css("border", "1px solid red");
+            cont = false;
+        }
+        else {
+            $("body>aside>form>input:nth-child(2)").css("border", "none");
 
-        $.ajax({
-            type: "POST",
-            url: "../Ajax/ajaxLogin.php",
-            data: {username: username, password: password},
-            success: function(msg){
-                cookie = msg;
-                if(msg != ""){
-                    $("body").html(temp);  
-                    addLoginListeners();
+        }
+        if(password == ""){
+            $("body>aside>form>input:nth-child(3)").css("border", "1px solid red");
+            cont = false;
+        }
+        else {
+            $("body>aside>form>input:nth-child(3)").css("border", "none");
+        }
+        if(cont){
+            $.ajax({
+                type: "POST",
+                url: "../Ajax/ajaxLogin.php",
+                data: {username: username, password: password},
+                success: function(msg){
+                    cookie = msg;
+                    if(msg != ""){
+                        $("body").html(temp);  
+                        addLoginListeners();
+                    }
+                    else {
+                        $("body>aside>form>input:nth-child(2)").css("border", "1px solid red");
+                        $("body>aside>form>input:nth-child(3)").css("border", "1px solid red");
+                    }
                 }
-                else {
-                    $("body>aside>form>input:nth-child(2)").css("border", "1px solid red");
-                    $("body>aside>form>input:nth-child(3)").css("border", "1px solid red");
-                }
-            }
-        });
+            });
+        }
     });
 
 }

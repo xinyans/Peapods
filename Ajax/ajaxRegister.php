@@ -10,11 +10,20 @@
         $email = mysqli_real_escape_string($db, $_POST['email']);
         
         $password = md5($password);//encrypt the password before saving in the database
-      
-        $querys = "INSERT INTO userdata (lastName, firstName, username, password, email) 
-                  VALUES('$lastName', '$firstName', '$username', '$password', '$email')";
-        $db->query($querys);
-        echo md5($username.$password);
+        
+        $user_check_query = "SELECT * FROM userdata WHERE username='$username' LIMIT 1";
+        $result = mysqli_query($db, $user_check_query);
+        $user = mysqli_fetch_assoc($result);
+        
+        if ($user) { // if user exists
+          echo "";
+        }
+        else {
+          $querys = "INSERT INTO userdata (lastName, firstName, username, password, email) 
+          VALUES('$lastName', '$firstName', '$username', '$password', '$email')";
+          $db->query($querys); 
+          echo md5($username.$password);
+        }
         $db->close();
       }
     ?>
