@@ -201,7 +201,7 @@ function addLoginListeners(){
                     $.ajax({
                         type: "POST",
                         url: "../Ajax/ajaxLogout.php",
-                        data: {cookie: "cookiedata"}, 
+                        data: {cookie: cookie}, 
                         success: function(msg){
                             addLoginListeners();
                         }
