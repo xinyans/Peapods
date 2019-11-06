@@ -34,7 +34,6 @@ function loginClick(){
         //If the register button has been clicked
         $("body").html(register + temp);
         $(".register>form>button:nth-child(1)").click(function(){
-            console.log("xed");
             //reset to body if x is clicked
             $("body").html(temp);
             //re-add listeners for clicking
@@ -42,7 +41,6 @@ function loginClick(){
         });
         $(".register>form").submit(function(event){
             event.preventDefault();
-            console.log("clicked register");
             //if register button is clicked
             //Implement perform ajax register
 
@@ -112,6 +110,7 @@ function loginClick(){
                                 data: {username: username, password: password},
                                 success: function(msg2){
                                     cookie = msg2;
+                                    sessionStorage.setItem("code", cookie);
                                     $("body").html(temp);
                                     addLoginListeners();
                                 }
@@ -167,6 +166,7 @@ function loginClick(){
                 success: function(msg){
                     cookie = msg;
                     if(msg != ""){
+                        sessionStorage.setItem('code', msg);
                         $("body").html(temp);  
                         addLoginListeners();
                     }
@@ -198,6 +198,8 @@ function addLoginListeners(){
                 //logged in
                 $("nav>section>a:nth-child(4)").attr("title", "Sign Out");
                 $("nav>section>a:nth-child(4)").click(function(){
+                    cookie = sessionStorage.getItem("code");
+                    console.log(cookie);
                     $.ajax({
                         type: "POST",
                         url: "../Ajax/ajaxLogout.php",
