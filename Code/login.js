@@ -125,7 +125,6 @@ function loginClick(){
                 });
             }
         });
-
     });
     $("body>aside>form>button:nth-child(1)").click(function(){
         //Reset to body if x is clicked
