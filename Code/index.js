@@ -1,5 +1,6 @@
 window.onload = function(){
     this.addLoginListeners();
+    this.groupSearch();
 }
 
 var actionWords = ["&nbspfind roommates.&nbsp&nbsp", "&nbsporganize groups.&nbsp&nbsp&nbsp", "&nbspfind opportunities."];

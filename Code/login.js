@@ -234,6 +234,27 @@ function addLoginListeners(){
     */
 }
 
+function groupSearch(){
+    $("#groupSearch").submit(function(event){
+        event.preventDefault();
+        code = $("#groupSearch>input").val();
+        $.ajax({
+            type: "POST",
+            url: "../Ajax/getGroups.php",
+            data: {code: code},
+            success: function(msg){
+                if(msg != ""){
+                    $("#groupSearch>input").css("border", "none");
+                }
+                else {
+                    $("#groupSearch>input").css("border", "1px solid red");
+                }
+            }
+        });
+    });
+}
+
 window.onload = function(){
     addLoginListeners();
+    groupSearch();
 }

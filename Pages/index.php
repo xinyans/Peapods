@@ -1,11 +1,3 @@
-<?php
-    session_start();
-    $_SESSION['requestPage'] = $_SERVER['REQUEST_URI'];
-    if(!isset($_SESSION['loginUsername'])){
-        $_SESSION['loginUsername'] = "-1";
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,12 +16,12 @@
         <nav>
             <a title="Home" href = "../index.php"><img src="../Resources/Peapods.png"></a>
             <section>
-                <form action = "displayGroups.php" method="post">
+                <form id = "groupSearch" src="#">
                     <input title="Group Search" type="text" name="code" placeholder="Group Code">
                 </form>
-            <a title="Create Form" href="../Misc Development/LoginTest/create.html"><img src="../Resources/createform.png"></a>
-            <a title="Dashboard" href="dashboard.php"><img src="../Resources/dashboard.png"></a>
-            <a title="Sign In" href="#"><img src="../Resources/loginguy.png"></a>
+                <a title="Create Form" href="../Misc Development/LoginTest/create.html"><img src="../Resources/createform.png"></a>
+                <a title="Dashboard" href="dashboard.php"><img src="../Resources/dashboard.png"></a>
+                <a title="Sign In" href="#"><img src="../Resources/loginguy.png"></a>
             </section>
         </nav>
         <main>
