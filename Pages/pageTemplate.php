@@ -20,28 +20,15 @@
     </head>
     <body>
         <nav>
-            <a href = "../index.php"><img src="../Resources/Peapods.png"></a>
+            <a title="Home" href = "../index.php"><img src="../Resources/Peapods.png"></a>
             <section>
-                <form action = "displayGroups.php" method="post">
-                    <input type="text" name="code" placeholder="Group Code">
+                <form id = "groupSearch" src="#">
+                    <input title="Group Search" type="text" name="code" placeholder="Group Code">
                 </form>
-            <a href="createForm.php"><img src="../Resources/createform.png"></a>
-            <a href="dashboard.php"><img src="../Resources/dashboard.png"></a>
-            <a href = "#"><img src="../Resources/loginguy.png"></a>
+                <a title="Create Form" href="../Misc Development/LoginTest/create.html"><img src="../Resources/createform.png"></a>
+                <a title="Dashboard" href="dashboard.php"><img src="../Resources/dashboard.png"></a>
+                <a title="Sign In" href="#"><img src="../Resources/loginguy.png"></a>
             </section>
-            <p>
-                <?php
-                    echo $_SESSION['loginUsername'] != "-1" ? "true" : "false";
-                ?>
-            </p>
-            <p> 
-                <?php
-                    if(isset($_SESSION['errors'])){
-                        echo $_SESSION['errors'];
-                        unset($_SESSION['errors']);
-                    }
-                ?>
-            </p>
         </nav>
         <main>
 			<article>
