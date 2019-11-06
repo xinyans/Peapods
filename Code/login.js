@@ -16,7 +16,7 @@ var register =`
         <button type="button">X</button>
         <input type="text" name="firstname" placeholder="First Name">
         <input type="text" name="lastname" placeholder="Last Name">
-        <input type="text" name="email" placeholder="Email">
+        <input type="email" name="email" placeholder="Email">
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
         <input type="submit" value="Register" name="Register"/>
