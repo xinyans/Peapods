@@ -39,6 +39,7 @@ function generateQuestion() {
         <button type="button" id="question${index}MoveUpBtn">Move Up</button>
         <button type="button" id="question${index}MoveDownBtn">Move Down</button>
         </fieldset>`
+    var question_model = `${index}`;
     return question_model;
 }
 
