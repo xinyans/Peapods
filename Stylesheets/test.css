@@ -1,0 +1,98 @@
+:root {
+    --navbarColor: #3581b8;
+    --lowerNavColor: #eaf4e8;
+    --mainColor: #fff;
+    --searchColor: #eee;
+    --testColor: red;
+    --sidePadding: 16%;
+    --loginColor: #eee;
+    --footerColor: #96939b;
+}
+
+html {
+	overflow-y: auto;
+	overflow-x: hidden;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: var(--mainColor);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 70px 1fr 50px;
+    grid-template-areas: 
+        "top"
+        "bottom"
+        "footer"
+    ;
+}
+
+/** php data */
+body>nav>p {
+    display: none;
+}
+
+body>nav {
+    position: fixed;
+    z-index: 99;
+    display: flex;
+    justify-content: space-between;
+    grid-area: top;
+    width: calc(68%);
+    height: 70px;
+    padding-left: var(--sidePadding);
+    padding-right: var(--sidePadding);
+    background-color: var(--navbarColor);
+}
+
+body>nav>section {
+    display: flex;
+    justify-content: space-around;
+    width: 340px;
+}
+
+body>nav a img {
+    height: 36px;
+    margin-top: 19px;
+}
+
+body>nav>section a img{
+    height: 40px;
+    margin-top: 15px;
+}
+
+body>nav>section>form>input {
+    margin-top: 20px;
+    width: 180px;
+    height: 20px;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 24px;
+    border: none;
+    background-color: var(--searchColor);
+    float: right;
+}
+
+body>main {
+    grid-area: bottom;
+    background-color: var(--mainColor);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "leftSide rightSide"
+    ;
+}
+
+body>main>section {
+    grid-area: leftSide;
+    height: 100%;
+    background-color: white;
+}
