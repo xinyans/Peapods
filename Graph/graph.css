@@ -8,11 +8,12 @@ body {
 main {
     width: 50%;
     height: 50%;
+    background-color: white;
     padding: 100px;
 }
 
 #graph {
-    border: 1px solid red;
+    background-color: white;
     margin: 0;
     padding: 0;
     width: 1000px;
