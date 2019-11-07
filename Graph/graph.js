@@ -284,7 +284,7 @@ window.onload = function() {
         w = h;
     }
     offsetx += 0.25 * w;
-    offsety += 0.25 * h;
+    offsety += 0.5 * h;
     w *= 0.5;
     h *= 0.5;
     this.drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy);
@@ -300,9 +300,21 @@ window.onload = function() {
         }
         if(mdown){
             inter = setInterval(function(){
-                x = w - mousex + offsetx;
-                y = h - mousey - offsety;
-                if(x < w && x > -w && y > -h){
+                x = w - mousex;
+                y = h - mousey + offsety;
+                if(y > h){
+                    y = h;
+                }
+                if(x < -w){
+                    x = -w ;
+                }
+                if(x > w){
+                    x = w;
+                }
+                if(y < 0){
+                    y = 0;
+                }
+                if(x <= w && x >= -w && y >= 0 &&  y <= h){
                     hyp = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
                     degy = Math.asin(y/h);
                     degx = Math.acos(x/h);
