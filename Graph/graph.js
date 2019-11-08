@@ -111,7 +111,7 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
     xinc = Math.floor(w / (maxx - minx + 1));
     yinc = Math.floor(h / (maxy - miny + 1));
     zinc = Math.floor(Math.sqrt(Math.pow((w * Math.cos(degx)),2) + Math.pow(h * Math.sin(degy),2)) / (maxz - minz + 1));
-    radius = Math.min(yinc, xinc, 10);
+    radius = Math.min(yinc, xinc);
 
     //Setting the background colors of sections ----------->
 
