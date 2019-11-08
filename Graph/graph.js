@@ -255,6 +255,14 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
         colors[i] = getRandomColor();
     }
 
+    dataSet.set.sort(function(a, b){
+        if(a.z < b.z){
+            return 1;
+        }
+        else {
+            return -1;
+        }
+    });
     // console.log("degx: " + (degx/2)/Math.PI * 180 + " degy: " + degy/Math.PI * 180);
     for(i = 0; i < dataSet.set.length; i++){
         item = dataSet.set[i];
