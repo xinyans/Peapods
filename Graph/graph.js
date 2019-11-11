@@ -8,14 +8,14 @@ var data = {
     "gcount": 4,
 	"set": [
         {
-            "x": 0,
+            "x": 5,
             "y": 0,
             "z": 0,
             "g": 2,
             "c":0
         },
         {
-		    "x": 1,
+		    "x": 5,
             "y": 2,
             "z": 8,
             "g": 3,
@@ -94,23 +94,75 @@ function setupCanvas(canvas) {
     return ctx;
 }
 
-function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
+//Takes a dataset and columns that are not valid and returns the top three sdev column keys
+function topThreeSdev(data, donotuse){
+    variances = [];
+    for(key in data.set[0]){
+        c = true;
+        for(k = 0; k < donotuse.length; k++)
+            if(key == donotuse[k])
+                c = false;
+        if(c)
+            variances.push([key,sdev(data, key)]);
+    }
+    //Sorting variances largest to smallest
+    variances.sort(function(a,b){return (a[1] < b[1]) ? 1 : -1;});
+    //Returning the key for those variances
+    return [variances[0][0],variances[1][0],variances[2][0]];
+}
+
+//Given a dataset and a column name this will calculate the sdev for the column
+function sdev(data, colName){
+    //Calculating the mean
+    total = 0;
+    for(i = 0; i < data.set.length; i++)
+        total += data.set[i][colName];
+    mean = total/data.set.length;
+    //Calculating the sum of variances
+    total = 0;
+    for(i = 0; i < data.set.length; i++)
+        total += Math.pow(data.set[i][colName] - mean, 2);
+    //Calculating sdev from variance
+    return Math.sqrt(total/data.set.length);
+}
+
+//Returns the minimum and maximum values for a given column
+function minmax(data, key){
+    min = Number.MAX_VALUE;
+    max = Number.MIN_VALUE;
+    for(i = 0; i < data.set.length; i++){
+        if(data.set[i][key] < min)
+            min = data.set[i][key];
+        if(data.set[i][key] > max)
+            max = data.set[i][key];
+    }
+    return[min, max];
+}
+
+//Draws the graph aka does all the graphics
+//Width and height should be the same
+function drawGraph(canvas, ctx, d, offsetx, offsety, dataSet, degx, degy, xaxis, yaxis, zaxis, group, color){
     
     //Clear any previous content in canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+
+    temp = minmax(data, xaxis);
+    minx = temp[0] - 1;
+    maxx = temp[1] + 1;
+    temp = minmax(data, yaxis);
+    miny = temp[0] - 1;
+    maxy = temp[1] + 1;
+    temp = minmax(data, zaxis);
+    minz = temp[0] - 1;
+    maxz = temp[1] + 1;
     //Retrieve bufferzones from the data
-    minx = dataSet["minx"] - 1;
-    maxx = dataSet["maxx"] + 1;
-    miny = dataSet["miny"] - 1;
-    maxy = dataSet["maxy"] + 1;
-    minz = dataSet["minz"] - 1;
-    maxz = dataSet["maxz"] + 1;
+
 
     //Getting increments which represent the size of one unit relative to the size of the canvas
-    xinc = Math.floor(w / (maxx - minx + 1));
-    yinc = Math.floor(h / (maxy - miny + 1));
-    zinc = Math.floor(Math.sqrt(Math.pow((w * Math.cos(degx)),2) + Math.pow(h * Math.sin(degy),2)) / (maxz - minz + 1));
+    xinc = Math.floor(d / (maxx - minx + 1));
+    yinc = Math.floor(d / (maxy - miny + 1));
+    zinc = Math.floor(Math.sqrt(Math.pow((d * Math.cos(degx)),2) + Math.pow(d * Math.sin(degy),2)) / (maxz - minz + 1));
     radius = Math.min(yinc, xinc);
 
     //Setting the background colors of sections ----------->
@@ -119,13 +171,13 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
     ctx.fillStyle = "#ded";
     ctx.beginPath();
     //bottom left
-    ctx.moveTo(offsetx, offsety + h);
+    ctx.moveTo(offsetx, offsety + d);
     //bottom back left
-    ctx.lineTo(offsetx + w  - w * Math.cos(degx), offsety + h  - h * Math.sin(degy));
+    ctx.lineTo(offsetx + d  - d * Math.cos(degx), offsety + d  - d * Math.sin(degy));
     //bottom back right
-    ctx.lineTo(offsetx + 2 * w  - w * Math.cos(degx), offsety + h  - h * Math.sin(degy));
+    ctx.lineTo(offsetx + 2 * d  - d * Math.cos(degx), offsety + d  - d * Math.sin(degy));
     //bottom front right
-    ctx.lineTo(offsetx + w, offsety + h);
+    ctx.lineTo(offsetx + d, offsety + d);
     ctx.fill();
     ctx.closePath();
 
@@ -133,11 +185,11 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
     ctx.fillStyle = "#ded";
     ctx.beginPath();
     //bottom left
-    ctx.moveTo(offsetx, offsety + h);
+    ctx.moveTo(offsetx, offsety + d);
     //bottom back left
-    ctx.lineTo(offsetx + w  - w * Math.cos(degx), offsety + h  - h * Math.sin(degy));
+    ctx.lineTo(offsetx + d  - d * Math.cos(degx), offsety + d  - d * Math.sin(degy));
     //top back left
-    ctx.lineTo(offsetx + w  - w * Math.cos(degx), offsety  - h * Math.sin(degy));
+    ctx.lineTo(offsetx + d  - d * Math.cos(degx), offsety  - d * Math.sin(degy));
     //top front left
     ctx.lineTo(offsetx, offsety);
     ctx.fill();
@@ -147,19 +199,19 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
     ctx.fillStyle = "#eee";
     ctx.beginPath();
     //bottom back left
-    ctx.moveTo(offsetx + w  - w * Math.cos(degx), offsety + h  - h * Math.sin(degy));
+    ctx.moveTo(offsetx + d  - d * Math.cos(degx), offsety + d  - d * Math.sin(degy));
     //top back left
-    ctx.lineTo(offsetx + w  - w * Math.cos(degx), offsety  - h * Math.sin(degy));
+    ctx.lineTo(offsetx + d  - d * Math.cos(degx), offsety  - d * Math.sin(degy));
     //top back right
-    ctx.lineTo(offsetx + 2 * w  - w * Math.cos(degx), offsety  - h * Math.sin(degy));
+    ctx.lineTo(offsetx + 2 * d  - d * Math.cos(degx), offsety  - d * Math.sin(degy));
     //bottom back right
-    ctx.lineTo(offsetx + 2 * w  - w * Math.cos(degx), offsety + h  - h * Math.sin(degy));    
+    ctx.lineTo(offsetx + 2 * d  - d * Math.cos(degx), offsety + d  - d * Math.sin(degy));    
     ctx.fill();
     ctx.closePath();
 
     //Generating the orthagonal lines for reading the graph --------------------------------->
 
-    lineincr = w / 6;
+    lineincr = d / 6;
     for(i = 0; i < 7; i++){
         if(i % 2 == 0){
             ctx.strokeStyle = "#000";
@@ -168,32 +220,32 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
             ctx.strokeStyle = "#ccc";
         }
         ctx.beginPath();
-        ctx.moveTo(offsetx + i * lineincr - (i * lineincr * Math.cos(degx)), offsety + h -  i * lineincr * Math.sin(degy));
+        ctx.moveTo(offsetx + i * lineincr - (i * lineincr * Math.cos(degx)), offsety + d -  i * lineincr * Math.sin(degy));
         ctx.lineTo((offsetx + i * lineincr - (i * lineincr * Math.cos(degx))), offsety -  i * lineincr * Math.sin(degy));
         ctx.stroke();
         ctx.closePath();
         ctx.beginPath();
-        ctx.moveTo(offsetx + i * lineincr - (i * lineincr * Math.cos(degx)), offsety + h -  i * lineincr * Math.sin(degy));
-        ctx.lineTo(offsetx + i * lineincr - (i * lineincr * Math.cos(degx)) + w, (offsety + h - i * lineincr * Math.sin(degy)) + (200 * Math.sin(degy - degy)));
+        ctx.moveTo(offsetx + i * lineincr - (i * lineincr * Math.cos(degx)), offsety + d -  i * lineincr * Math.sin(degy));
+        ctx.lineTo(offsetx + i * lineincr - (i * lineincr * Math.cos(degx)) + d, (offsety + d - i * lineincr * Math.sin(degy)) + (200 * Math.sin(degy - degy)));
         ctx.stroke();
         ctx.closePath();
     }
 
-    //Connectors --------------------------------------------------------->
+    //Back Connectors --------------------------------------------------------->
 
     //bottom left connector
     ctx.strokeStyle = "#000";
     ctx.beginPath();
-    ctx.moveTo(offsetx, offsety + h);
-    ctx.lineTo(offsetx + w  - w * Math.cos(degx), offsety + h  - h * Math.sin(degy));
+    ctx.moveTo(offsetx, offsety + d);
+    ctx.lineTo(offsetx + d  - d * Math.cos(degx), offsety + d  - d * Math.sin(degy));
     ctx.stroke();   
     ctx.closePath(); 
 
     //bottom right connector
     ctx.strokeStyle = "#000";
     ctx.beginPath();
-    ctx.moveTo(offsetx + w, offsety + h);
-    ctx.lineTo(offsetx + 2 * w  - w * Math.cos(degx), offsety + h  - h * Math.sin(degy));
+    ctx.moveTo(offsetx + d, offsety + d);
+    ctx.lineTo(offsetx + 2 * d  - d * Math.cos(degx), offsety + d  - d * Math.sin(degy));
     ctx.stroke();   
     ctx.closePath(); 
 
@@ -201,51 +253,25 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
     ctx.strokeStyle = "#000";
     ctx.beginPath();
     ctx.moveTo(offsetx, offsety);
-    ctx.lineTo(offsetx + w  - w * Math.cos(degx), offsety  - h * Math.sin(degy));
-    ctx.stroke();   
-    ctx.closePath(); 
-
-    //right top connector
-    ctx.strokeStyle = "#333";
-    ctx.beginPath();
-    ctx.moveTo(offsetx + w, offsety);
-    ctx.lineTo(offsetx + 2 * w  - w * Math.cos(degx), offsety  - h * Math.sin(degy));
+    ctx.lineTo(offsetx + d  - d * Math.cos(degx), offsety  - d * Math.sin(degy));
     ctx.stroke();   
     ctx.closePath(); 
 
     //right back pillar
     ctx.strokeStyle = "#000";
     ctx.beginPath();
-    ctx.moveTo(offsetx + 2 * w - w * Math.cos(degx), offsety - h * Math.sin(degy));
-    ctx.lineTo(offsetx + 2 * w  - w * Math.cos(degx), offsety + h  - h * Math.sin(degy));
-    ctx.stroke();   
-    ctx.closePath(); 
-
-    //right front pillar
-    ctx.strokeStyle = "#333";
-    ctx.beginPath();
-    ctx.moveTo(offsetx + w, offsety + h);
-    ctx.lineTo(offsetx + w, offsety);
+    ctx.moveTo(offsetx + 2 * d - d * Math.cos(degx), offsety - d * Math.sin(degy));
+    ctx.lineTo(offsetx + 2 * d  - d * Math.cos(degx), offsety + d  - d * Math.sin(degy));
     ctx.stroke();   
     ctx.closePath(); 
 
     //back top cross
     ctx.strokeStyle = "#000";
     ctx.beginPath();
-    ctx.moveTo(offsetx + 2 * w - w * Math.cos(degx), offsety - h * Math.sin(degy));
-    ctx.lineTo(offsetx + w - w * Math.cos(degx), offsety - h * Math.sin(degy));
+    ctx.moveTo(offsetx + 2 * d - d * Math.cos(degx), offsety - d * Math.sin(degy));
+    ctx.lineTo(offsetx + d - d * Math.cos(degx), offsety - d * Math.sin(degy));
     ctx.stroke();   
     ctx.closePath(); 
-
-    //front top cross
-    ctx.strokeStyle = "#333";
-    ctx.beginPath();
-    ctx.moveTo(offsetx, offsety);
-    ctx.lineTo(offsetx + w, offsety);
-    ctx.stroke();   
-    ctx.closePath(); 
-
-    
 
     //Placing data on the board -------------------------------------------------------------->
     groupCount = dataSet.gcount;
@@ -258,63 +284,77 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
     // console.log("degx: " + (degx/2)/Math.PI * 180 + " degy: " + degy/Math.PI * 180);
     for(i = 0; i < dataSet.set.length; i++){
         item = dataSet.set[i];
-        x = w - ((item.x - minx) * xinc) + (((item.z - minz) * Math.sin(degx/2)) * zinc);
-        y = ((item.y - miny) * yinc) + ((item.z - minz) * Math.sin(degy) * zinc);
-        c = item.g - 1;
-        if(item.c == 0){
-            item.c = colors[c];
+        x = d - ((item[xaxis] - minx) * xinc) + (((item[zaxis] - minz) * Math.sin(degx/2)) * zinc);
+        y = ((item[yaxis] - miny) * yinc) + ((item[zaxis] - minz) * Math.sin(degy) * zinc);
+        c = item[group] - 1;
+        if(item[color] == 0){
+            item[color] = colors[c];
         }
-        ctx.fillStyle = item.c;
+        ctx.fillStyle = item[color];
         ctx.beginPath();
-        if(item.z == 0){
-            ctx.arc(offsetx + x, offsety + h - y, radius, 0, 2 * Math.PI);
+        if(item[zaxis] == 0){
+            ctx.arc(offsetx + x, offsety + d - y, radius, 0, 2 * Math.PI);
         }
         else {
-            ctx.arc(offsetx + x, offsety + h - y, Math.ceil(radius/Math.sqrt(item.z)), 0, 2 * Math.PI);
+            ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius/Math.sqrt(item[zaxis])), 0, 2 * Math.PI);
         }
         ctx.fill();   
         ctx.closePath(); 
     }
+
+    //front top cross
+    ctx.strokeStyle = "#333";
+    ctx.beginPath();
+    ctx.moveTo(offsetx, offsety);
+    ctx.lineTo(offsetx + d, offsety);
+    ctx.stroke();   
+    ctx.closePath(); 
+
+    //right front pillar
+    ctx.strokeStyle = "#333";
+    ctx.beginPath();
+    ctx.moveTo(offsetx + d, offsety + d);
+    ctx.lineTo(offsetx + d, offsety);
+    ctx.stroke();   
+    ctx.closePath(); 
+
+    //right top connector
+    ctx.strokeStyle = "#333";
+    ctx.beginPath();
+    ctx.moveTo(offsetx + d, offsety);
+    ctx.lineTo(offsetx + 2 * d  - d * Math.cos(degx), offsety  - d * Math.sin(degy));
+    ctx.stroke();   
+    ctx.closePath(); 
 }
 
-function graph(){
-    dataSet = data;
+//width must be greater than or equal to height of elemnt
+//takes the dataset. Which contains a .set selector for array of data.
+//Donotuse defines the columns not to be graphed, there needs to be a color and group column
+$.fn.graph = function(dataSet, donotuse, color, group, degx, degy){
 
-    dataSet.set.sort(function(a, b){
-        if(a.z < b.z){
-            return 1;
-        }
-        else {
-            return -1;
-        }
-    });
+    //Retrieves the axes of the graph that have highest sdev
+    axis = topThreeSdev(dataSet, donotuse);
 
-    degx = Math.PI/1.5 * 1;
-    degy = Math.PI/50 * 1;
-    canvas = document.getElementById("graph");
+    //Sorting data by z axis
+    dataSet.set.sort(function(a, b){return (a[axis[0]] < b[axis[0]]) ? 1 : -1;});
+
+
+    canvas = this[0];
     ctx = setupCanvas(canvas);
 
-    offsetx = 0;
-    offsety = 0;
-
     //variable delcarations
-    w = ctx.canvas.width;
-    h = ctx.canvas.height;
+    d = ctx.canvas.height;
 
     //Size of canvas
-    if(w < h){
-        offsety = (h - w) / 2;
-        h = w;
-    }
-    else {
-        offsetx = 0;
-        w = h;
-    }
-    offsetx += 0.25 * w;
-    offsety += 0.5 * h;
-    w *= 0.5;
-    h *= 0.5;
-    this.drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy);
+    offsetx = 0.25 * d;
+    offsety = 0.5 * d;
+    d *= 0.5;
+
+    drawGraph(canvas, ctx, d, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], "g", "c");
+
+
+    /** All of the following is for the demo not final use */
+    /**
     document.onmousemove = function(event){
         mousex = event.clientX;
         mousey = event.clientY;
@@ -327,107 +367,37 @@ function graph(){
         }
         if(mdown){
             inter = setInterval(function(){
-                x = w - mousex;
-                y = h - mousey + offsety;
-                if(y > h){
-                    y = h;
+                x = d - mousex;
+                y = d - mousey + offsety;
+                if(y > d){
+                    y = d;
                 }
-                if(x < -w){
-                    x = -w ;
+                if(x < -d){
+                    x = -d ;
                 }
-                if(x > w){
-                    x = w;
+                if(x > d){
+                    x = d;
                 }
-                if(y < 0){
-                    y = 0;
+                if(d < 0){
+                    d = 0;
                 }
-                if(x <= w && x >= -w && y >= 0 &&  y <= h){
+                if(x <= d && x >= -d && y >= 0 &&  y <= d){
                     hyp = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
-                    degy = Math.asin(y/h);
-                    degx = Math.acos(x/h);
-                    drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy);
+                    degy = Math.asin(y/d);
+                    degx = Math.acos(x/d);
+                    drawGraph(canvas, ctx, d, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], "g", "c");
                 }
             }, 100);
         }
-        return false;
     });
     $("body").on("mouseup", function(){
-        
         clearInterval(inter);
-        return false;
     });
+    **/
+    /** This is the end of the demo code */
 }
 
 window.onload = function() {
-    this.graph();
-    //this.console.log(this.determinant(tmatrix));
+    $("#graph").graph(data, ["c", "g"], "c", "g", Math.PI/1, Math.PI/2);
 }
 
-
-
-/**
-//Work on conducting pca
-
-function covariance(data, indA, indB){
-    //returns covariance of the varables repreented by these indeces
-}
-
-function covarianceMatrix(data){
-    //returns the covariance matrix
-}
-
-function makeMatrix(i, matrix){
-    mat = Array.from(matrix);
-    console.log("makematrix: " + mat);
-    res = [];
-    for(l = 0; l < mat.length - 1; l++){
-        res.push([]);
-    }
-    for(row = 1; row < mat.length; row++){
-        for(col = 0; col < mat.length; col++){
-            if(col != i){
-                res[row - 1].push(mat[row][col]);
-            }
-        }
-    }
-    console.log("makematrix: " + res);
-    return res;
-}
-
-var tmatrix =    [[1,2,3,0],
-                [5,8,7,2],
-                [3,2,1,8],
-                [1,2,3,4]]
-
-function determinant(matrixA){
-    matrix = Array.from(matrixA);
-    console.log("d");
-    console.log(matrix);
-    //returns the determinant
-    if(matrix.length == 2){
-        result = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
-        console.log("d: " + result);
-        return result;
-    }
-    else {
-        result = 0;
-        flip = 1;
-        for(i = 0; i < matrix.length; i++){
-            result += flip * determinant(makeMatrix(i, matrix));
-            flip *= -1;
-        }
-        console.log("d: " + result);
-        return result;   
-    }
-}
-
-function eigenDecomposition(data){
-    //conducts eigenDecomposition on data
-    //Finds eigenvalues and eigenvectors
-    //Returns them as array
-}
-
-function dataScale(data, eigenvect, eigenval){
-    //scales the data on the new basis
-}
-*/

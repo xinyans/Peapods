@@ -3,15 +3,22 @@ var data = {
     "maxx": 10,
     "miny": 0,
     "maxy": 8,
-    "minz": 1,
+    "minz": 0,
     "maxz": 8,
-    "gcount": 2,
+    "gcount": 4,
 	"set": [
         {
-		    "x": 1,
+            "x": 5,
+            "y": 0,
+            "z": 0,
+            "g": 2,
+            "c":0
+        },
+        {
+		    "x": 5,
             "y": 2,
             "z": 8,
-            "g": 1,
+            "g": 3,
             "c":0
         },
         {
@@ -25,7 +32,7 @@ var data = {
 		    "x": 5,
             "y": 5,
             "z": 3,
-            "g": 1,
+            "g": 4,
             "c":0
         },
         {
@@ -46,7 +53,7 @@ var data = {
 		    "x": 1,
 		    "y": 2,
             "z": 9,
-            "g": 1,
+            "g": 2,
             "c":0
         },
         {
@@ -87,26 +94,48 @@ function setupCanvas(canvas) {
     return ctx;
 }
 
-function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
+function minmax(data, key){
+    min = Number.MAX_VALUE;
+    max = Number.MIN_VALUE;
+    for(i = 0; i < data.set.length; i++){
+        if(data.set[i][key] < min){
+            min = data.set[i][key];
+        }
+        if(data.set[i][key] > max){
+            max = data.set[i][key];
+        }
+    }
+    return[min, max];
+}
+
+function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy, xaxis, yaxis, zaxis, group, color){
+    
+    //Clear any previous content in canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    minx = dataSet["minx"];
-    maxx = dataSet["maxx"];
-    miny = dataSet["miny"];
-    maxy = dataSet["maxy"];
 
-    xinc = Math.floor(w / (maxx - minx + 2));
-    yinc = Math.floor(w / (maxy - miny + 2));
+    temp = minmax(data, xaxis);
+    minx = temp[0] - 1;
+    maxx = temp[1] + 1;
+    temp = minmax(data, yaxis);
+    miny = temp[0] - 1;
+    maxy = temp[1] + 1;
+    temp = minmax(data, zaxis);
+    minz = temp[0] - 1;
+    maxz = temp[1] + 1;
+    //Retrieve bufferzones from the data
 
-    radius = Math.min(yinc, xinc, 5);
 
-    // ctx.strokeStyle = "#000";
-    // ctx.beginPath();
-    // ctx.rect(offsetx, offsety, w, h);
-    // ctx.stroke();   
-    // ctx.closePath(); 
+    //Getting increments which represent the size of one unit relative to the size of the canvas
+    xinc = Math.floor(w / (maxx - minx + 1));
+    yinc = Math.floor(h / (maxy - miny + 1));
+    zinc = Math.floor(Math.sqrt(Math.pow((w * Math.cos(degx)),2) + Math.pow(h * Math.sin(degy),2)) / (maxz - minz + 1));
+    radius = Math.min(yinc, xinc);
 
-    ctx.fillStyle = "#eee";
+    //Setting the background colors of sections ----------->
+
+    //this is the bottom background color
+    ctx.fillStyle = "#ded";
     ctx.beginPath();
     //bottom left
     ctx.moveTo(offsetx, offsety + h);
@@ -119,7 +148,8 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
     ctx.fill();
     ctx.closePath();
 
-    ctx.fillStyle = "#eee";
+    //this is the left background color
+    ctx.fillStyle = "#ded";
     ctx.beginPath();
     //bottom left
     ctx.moveTo(offsetx, offsety + h);
@@ -132,8 +162,8 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
     ctx.fill();
     ctx.closePath();
 
-
-    ctx.fillStyle = "#e1e1e1";
+    //backface background-color
+    ctx.fillStyle = "#eee";
     ctx.beginPath();
     //bottom back left
     ctx.moveTo(offsetx + w  - w * Math.cos(degx), offsety + h  - h * Math.sin(degy));
@@ -145,6 +175,8 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
     ctx.lineTo(offsetx + 2 * w  - w * Math.cos(degx), offsety + h  - h * Math.sin(degy));    
     ctx.fill();
     ctx.closePath();
+
+    //Generating the orthagonal lines for reading the graph --------------------------------->
 
     lineincr = w / 6;
     for(i = 0; i < 7; i++){
@@ -165,6 +197,8 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
         ctx.stroke();
         ctx.closePath();
     }
+
+    //Connectors --------------------------------------------------------->
 
     //bottom left connector
     ctx.strokeStyle = "#000";
@@ -232,6 +266,7 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
 
     
 
+    //Placing data on the board -------------------------------------------------------------->
     groupCount = dataSet.gcount;
     colors = new Array(groupCount);
 
@@ -239,29 +274,41 @@ function drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy){
         colors[i] = getRandomColor();
     }
 
+    // console.log("degx: " + (degx/2)/Math.PI * 180 + " degy: " + degy/Math.PI * 180);
     for(i = 0; i < dataSet.set.length; i++){
         item = dataSet.set[i];
-        x = ((item.x + 0) + w - (item.z * Math.cos(degx)) * xinc);
-        y = ((item.y + 0) + (item.z * Math.sin(degy))) * yinc;
-        c = item.g - 1;
-        if(item.c == 0){
-            item.c = colors[c];
+        x = w - ((item[xaxis] - minx) * xinc) + (((item[zaxis] - minz) * Math.sin(degx/2)) * zinc);
+        y = ((item[yaxis] - miny) * yinc) + ((item[zaxis] - minz) * Math.sin(degy) * zinc);
+        c = item[group] - 1;
+        if(item[color] == 0){
+            item[color] = colors[c];
         }
-        ctx.fillStyle = item.c;
+        ctx.fillStyle = item[color];
         ctx.beginPath();
-        if(item.z == 0){
+        if(item[zaxis] == 0){
             ctx.arc(offsetx + x, offsety + h - y, radius, 0, 2 * Math.PI);
         }
         else {
-            ctx.arc(offsetx + x, offsety + h - y, Math.ceil(radius/Math.sqrt(item.z)), 0, 2 * Math.PI);
+            ctx.arc(offsetx + x, offsety + h - y, Math.ceil(radius/Math.sqrt(item[zaxis])), 0, 2 * Math.PI);
         }
         ctx.fill();   
         ctx.closePath(); 
     }
 }
 
-window.onload = function() {
+function graph(){
     dataSet = data;
+    dataSet.set.sort(function(a, b){
+        if(a.z < b.z){
+            return 1;
+        }
+        else {
+            return -1;
+        }
+    });
+
+    axis = topThreeSdev(dataSet, ["c", "g"]);
+
     degx = Math.PI/1.5 * 1;
     degy = Math.PI/50 * 1;
     canvas = document.getElementById("graph");
@@ -287,7 +334,7 @@ window.onload = function() {
     offsety += 0.5 * h;
     w *= 0.5;
     h *= 0.5;
-    this.drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy);
+    this.drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], "g", "c");
     document.onmousemove = function(event){
         mousex = event.clientX;
         mousey = event.clientY;
@@ -318,7 +365,7 @@ window.onload = function() {
                     hyp = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
                     degy = Math.asin(y/h);
                     degx = Math.acos(x/h);
-                    drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy);
+                    drawGraph(canvas, ctx, w, h, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], "g", "c");
                 }
             }, 100);
         }
@@ -329,9 +376,50 @@ window.onload = function() {
         clearInterval(inter);
         return false;
     });
+}
+
+window.onload = function() {
+    this.graph();
     //this.console.log(this.determinant(tmatrix));
 }
 
+function topThreeSdev(data, donotuse){
+    variances = [];
+    for(key in data.set[0]){
+        c = true;
+        for(k = 0; k < donotuse.length; k++){
+            if(key == donotuse[k]){
+                c = false;
+            }
+        }
+        if(c){
+            variances.push([key,sdev(data, key)]);
+        }
+    }
+    variances.sort(function(a,b){
+        if(a[1] < b[1]){
+            return 1;
+        }
+        else {
+            return -1;
+        }
+    });
+    return [variances[0][0],variances[1][0],variances[2][0]];
+}
+
+function sdev(data, colName){
+    total = 0;
+    for(i = 0; i < data.set.length; i++){
+        total += data.set[i][colName];
+    }
+    mean = total/data.set.length;
+
+    total = 0;
+    for(i = 0; i < data.set.length; i++){
+        total += Math.pow(data.set[i][colName] - mean,2);
+    }
+    return Math.sqrt(total/data.set.length);
+}
 
 
 /**
@@ -399,9 +487,4 @@ function eigenDecomposition(data){
 function dataScale(data, eigenvect, eigenval){
     //scales the data on the new basis
 }
-
-
-        x = w - ((item.x - minx + (item.z * Math.cos(degx))) * xinc);
-        y = (item.y - miny + (item.z * Math.sin(degy))) * yinc;
-
-        */
+*/
