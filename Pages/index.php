@@ -19,7 +19,7 @@
                 <form id = "groupSearch" src="#">
                     <input title="Group Search" type="text" name="code" placeholder="Group Code">
                 </form>
-                <a title="Create Form" href="../Misc Development/LoginTest/create.html"><img src="../Resources/createform.png"></a>
+                <a title="Create Form" href="createForm.php"><img src="../Resources/createform.png"></a>
                 <a title="Dashboard" href="dashboard.php"><img src="../Resources/dashboard.png"></a>
                 <a title="Sign In" href="#"><img src="../Resources/loginguy.png"></a>
             </section>

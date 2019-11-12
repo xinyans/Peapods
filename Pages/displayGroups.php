@@ -40,13 +40,13 @@
             </p>
         </nav>
         <main>
-			<article>
-				<header>
+      <article>
+        <header>
                     <canvas id = "groupcanvas"></canvas>
-				</header>
+        </header>
                 <section class = "groups">
                 </section>
             </article>
-		</main>
+    </main>
     </body>
 </html>
