@@ -55,8 +55,7 @@ p {
 */
 /* For Homepage */
 .mainContent {
-    width: 50%;
-    float: left;
+    width: 68%;
 }
 
 .noLeftSidebar {
@@ -89,8 +88,9 @@ p {
         background-color: rgb(225, 237, 226);
     }
 /* For Form Creation */
-form {
+main form {
     max-width: 700px;
+    margin: auto;
 }
 
 .creationQuestion {

@@ -25,45 +25,28 @@
 			<a title="Sign In" href="#"><img src="../Resources/loginguy.png"></a>
 			</section>
 		</nav>
-		<aside class="leftSidebar">
-			<!-- Holds the Quick Access buttons of the form -->
-			<h2>Quick Access</h2>
-		</aside>
-		<section class="mainContent">
-			<!-- Main Part of Content -->
-			<h2>Create Your Form</h2>
-			<form name="peapodForm" action="#" id="formCreationForm" method="post" onsubmit="return false;">
-				<fieldset>
-					<legend><span class="section">1</span>Basic Information</legend>
-					<label class="" for="formName">Form Name</label>
-					<input type="text" name="formName" id="formName" placeholder="50 Chars Max" maxlength="50" required autofocus>
-					<p id="noName"></p>
-					<label class="" for="dueDate">Due Date</label>
-					<input type="date" name="dueDate" id="dueDate" required>
-					<p id="noDate"></p>
-				</fieldset>
-				<fieldset id="creationQuestions">
-					<legend><span class="section">2</span>Choices of your Choice</legend>
-				</fieldset>
-				<button type="button" id="addQuestion">Add Question</button>
-				<!-- Add the submit button with javascript so that users cannot submit with javascript disabled -->
-				<!-- We will need javascript for form creation but not necessarily when filling them out -->
-				<input id="submitButton" type="submit" value="Create Form!">
-			</form>
-			
-		</section>
-		<aside class="rightSidebar">
-			<h2>Options</h2>
-			<ul>
-				<li>Tutorial</li>
-				<li>Some News</li>
-				<li>Some Notifications</li>
-				<li>FAQs</li>
-			</ul>
-		</aside>
-		<footer class="siteFooter">
-
-		</footer>
+		<main class="mainContent">
+				<!-- Main Part of Content -->
+				<h2>Create Your Form</h2>
+				<form name="peapodForm" action="#" id="formCreationForm" method="post" onsubmit="return false;">
+					<fieldset>
+						<legend><span class="section">1</span>Basic Information</legend>
+						<label class="" for="formName">Form Name</label>
+						<input type="text" name="formName" id="formName" placeholder="50 Chars Max" maxlength="50" required autofocus>
+						<p id="noName"></p>
+						<label class="" for="dueDate">Due Date</label>
+						<input type="date" name="dueDate" id="dueDate" required>
+						<p id="noDate"></p>
+					</fieldset>
+					<fieldset id="creationQuestions">
+						<legend><span class="section">2</span>Choices of your Choice</legend>
+					</fieldset>
+					<button type="button" id="addQuestion">Add Question</button>
+					<!-- Add the submit button with javascript so that users cannot submit with javascript disabled -->
+					<!-- We will need javascript for form creation but not necessarily when filling them out -->
+					<input id="submitButton" type="submit" value="Create Form!">
+				</form>
+		</main>
 	</body>
 
 </html>
