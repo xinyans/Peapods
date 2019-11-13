@@ -40,9 +40,32 @@
 }
 
 #searchBar {
-	background-color: green;
+	margin-top: 50px;
+	background: linear-gradient(to right, #eaf4e8 0px, #eaf4e8 30%, #fff 30%, #fff 100%);
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-content: space-around;
 	font-family: 'Poppins', sans-serif;
-	/* align-content: flex-start; */
+	border: 1px solid black;
+	border-radius: 15px;
+}
+
+#searchBar h1 {
+	color: black;
+	width: 30%;
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 30px;
+	height: 30px;
+	text-align: center;
+}
+
+#searchBar input {
+	font-size: 18px;
+	padding-left: 10px;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+	line-height: 30px;
+	width: 70%;
 }

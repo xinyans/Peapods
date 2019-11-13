@@ -26,8 +26,8 @@
         </nav>
         <main>
             <form id="searchBar" src="#">
-                <h1>Find Your Group:</h1>
-                <input value="Group Code"/>
+                <h1>Find Your Group</h1>
+                <input placeholder="Group Code"/>
             </form>
         </main>
     </body>
