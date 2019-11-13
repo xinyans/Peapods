@@ -1,9 +1,7 @@
-var count = 1;
-
 var creation_form_data = {
-    "name": "",
+    "name": "Form for Websys",
     "dateCreated": "",
-    "dateDue": "",
+    "dateDue": "2018-09-09",
     "questions": [
         {
             "prompt": "Something",
@@ -69,15 +67,19 @@ function creationFormRender(data){
         <p class="noType"></p>`;
         console.log(data.questions[i].typeOfQuestion)
         if(data.questions[i].typeOfQuestion == "multipleChoice"){
-            console.log(1)
+            let selected = data.questions[i].numOfChoices;
             html_string += `
             <label class="questionExtra multipleChoice" style="display: none">How many choices would you like?</label>
             <select name="numChoices" class="questionExtra multipleChoice">
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5" selected>5</option>
+            <option value="2" ${selected==2?"selected":""}>2</option>
+            <option value="3" ${selected==3?"selected":""}>3</option>
+            <option value="4" ${selected==4?"selected":""}>4</option>
+            <option value="5" ${selected==5?"selected":""}>5</option>
             </select>`;
+            for(var j=0; j<data.questions[i].numOfChoices; j++){
+                var letter = String.fromCharCode(65+j);
+                html_string += `<label>${letter}. <input type="text" name="question${i+1}Choice${letter}" placeholder="Choice ${letter}" value="${data.questions[i].choices[j].choiceContent}"></label>`;
+            }
         }
         else if(data.questions[i].typeOfQuestion == "slider"){
             console.log(2)
@@ -114,6 +116,11 @@ function creationFormRender(data){
     $questions.css("opacity", "1");
 }
 
+function addEventListeners(){
+    
+}
+
 $(window).ready(function(){
     creationFormRender(creation_form_data);
+    addEventListeners();
 });
