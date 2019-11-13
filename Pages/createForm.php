@@ -26,7 +26,7 @@
 			</section>
 		</nav>
 		<main class="mainContent">
-				<!-- Main Part of Content -->
+				<!-- 
 				<h2>Create Your Form</h2>
 				<form name="peapodForm" action="#" id="formCreationForm" method="post" onsubmit="return false;">
 					<fieldset>
@@ -42,10 +42,8 @@
 						<legend><span class="section">2</span>Choices of your Choice</legend>
 					</fieldset>
 					<button type="button" id="addQuestion">Add Question</button>
-					<!-- Add the submit button with javascript so that users cannot submit with javascript disabled -->
-					<!-- We will need javascript for form creation but not necessarily when filling them out -->
 					<input id="submitButton" type="submit" value="Create Form!">
-				</form>
+				</form> -->
 		</main>
 	</body>
 
