@@ -25,34 +25,10 @@
             </section>
         </nav>
         <main>
-            <article>
-                <header>
-                    <div class="subHeader">
-                        <h1 id="startText" class="disableSelect">We help people</h1>
-                        <h1 id="slideText" class="disableSelect">&nbsporganize courses.</h1>
-                    </div>
-                </header>
-                <section>
-                    <p id="aboutText" class="disableSelect"> Peapods is a professional <span style="color:#1561ad;">matching service</span><br />that <span style="color:#fc5226;">streamlines</span> creating <span style="color:green;">meaningful groups</span><br />for classes based on <span style="color:#1dbab4;">data profiles</span>. </p><br>
-                    <section class="iconGroup">
-                        <div>
-                            <img class="feature" src="../Resources/icons/018-magnifying glass.png"/>
-                            <p>Find the best match for you! It can be a new roommate, an exciting club that fits your interests, or an innovative project group that leads to a successful company. The sky is the limit with PeaPods, the innovative matching service!</p>
-                        </div>
-                        <div>
-                            <img class="feature" src="../Resources/icons/023-lightbulb.png"/>
-                            <p>Great groups make amazing ideas! Matching is an art and Peadpods has you covered. From pairing students for innovative research projects to finding a new partner for your next IT course, Peapods was made for everyone!</p>
-                        </div>
-                        <div>
-                            <img class="feature" src="../Resources/icons/025-cloud computing.png"/>
-                            <p>We are powered by cutting-edge technology. Peapods uses innovative machine learning and data profiles made just for you to ensure that you get the results you need to get your project done the right way!</p>
-                        </div>
-                    </section>
-                </section>
-            </article>
+            <form id="searchBar" src="#">
+                <h1>Find Your Group</h1>
+                <input placeholder="Group Code"/>
+            </form>
         </main>
-        <footer>
-            © Peapods Group. All rights reserved.
-        </footer>
     </body>
 </html>
