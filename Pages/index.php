@@ -28,6 +28,7 @@
             <form id="searchBar" src="#">
                 <h1>Find Your Group</h1>
                 <input placeholder="Group Code"/>
+                <img src="../Resources/search.png" alt="Search"/>
             </form>
         </main>
     </body>
