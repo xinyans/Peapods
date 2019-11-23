@@ -39,6 +39,35 @@
                 <input placeholder="Group Code"/>
                 <img src="../Resources/search.png" alt="Search"/>
             </form>
+            <article>
+                <section id="what">
+                    <h3>What is PeaPods? ▼</h3>
+                    <p>
+                        This is a somewhat lengthy chunk of text that I am
+                        writing to see how well it displays in the manner
+                        that I so desire. The existence of these sentences is
+                        temporary, so enjoy them while they're here! :-)
+                    </p>
+                </section>
+                <section id="how">
+                    <h3>How does it work? ▼</h3>
+                    <p>
+                        This is a somewhat lengthy chunk of text that I am
+                        writing to see how well it displays in the manner
+                        that I so desire. The existence of these sentences is
+                        temporary, so enjoy them while they're here! :-)
+                    </p>
+                </section>
+                <section id="who">
+                    <h3>Who are we? ▼</h3>
+                    <p>
+                        This is a somewhat lengthy chunk of text that I am
+                        writing to see how well it displays in the manner
+                        that I so desire. The existence of these sentences is
+                        temporary, so enjoy them while they're here! :-)
+                    </p>
+                </section>
+            </article>
         </main>
     </body>
 </html>
