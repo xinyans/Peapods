@@ -25,6 +25,15 @@
             </section>
         </nav>
         <main>
+            <header>
+                <img src="../Resources/peas.png" alt="PeaPods Logo"/>
+                <h1>
+                    <span>Collaborate. </span>
+                    <span>Learn. </span>
+                    <span>Excel. </span>
+                </h1>
+                <h2>All with the power of <span>PeaPods.</span></h2>
+            </header>
             <form id="searchBar" src="#">
                 <h1>Find Your Group</h1>
                 <input placeholder="Group Code"/>

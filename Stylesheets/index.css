@@ -40,7 +40,7 @@
 }
 
 #searchBar {
-	margin-top: 50px;
+	margin-top: 20px;
 	background: linear-gradient(to right, #eaf4e8 0px, #eaf4e8 30%, #fff 30%, #fff 100%);
 	display: flex;
 	flex-flow: row nowrap;
@@ -74,11 +74,43 @@
 	width: 70%;
 }
 
+#searchBar img {
+	height: 40px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+header {
+	line-height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Poppins', sans-serif;
+	text-align: center;
+	font-size: 1.2em;
+}
+
+@keyframes colorShow {
+	from { color: white; }
+	to { color: black; }
+}
+
+header>h1, header>h2 {
+	margin: 0;
+	padding: 0;
+}
+
+header>img {
+	transform: rotate(300deg);
+	height: 150px;
+	margin: 0;
+	padding: 0;
+}
+
 @media only screen and (min-width: 800px) {
 	#searchBar h1 { display: inline-block; }
-	#searchBar input {
-		border-radius: 0;
-	}
+	#searchBar input { border-radius: 0; }
+	header { font-size: 1.35em; }
+	header>img { height: 200px; }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -87,17 +119,12 @@
 		text-align: left;
 		margin-left: 20px;
 	}
+	header { font-size: 1.6em; }
+	header>img { height: 230px;}
 }
 
 @media only screen and (min-width: 1600px) {
 	#searchBar { width: 80%; }
-	#searchBar h1 {
-		margin-left: 30px;
-	}
-}
-
-#searchBar img {
-	height: 40px;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	#searchBar h1 { margin-left: 30px; }
+	/* header>img { margin-left: 120px;} */
 }
