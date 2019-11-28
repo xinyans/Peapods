@@ -118,6 +118,12 @@ h3 {
 	font-size: 1em;
 }
 
+section>p {
+	display: inline-block;
+	text-align: left;
+	line-height: 30px;
+}
+
 @media only screen and (min-width: 800px) {
 	#searchBar h1 { display: inline-block; }
 	#searchBar input { border-radius: 0; }
