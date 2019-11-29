@@ -9,7 +9,7 @@
         $lastName = mysqli_real_escape_string($db, $_POST['lastname']);
         $email = mysqli_real_escape_string($db, $_POST['email']);
         
-        $password = md5($password);//encrypt the password before saving in the database
+        $password = password_hash($password, "PASSWORD_BCRYPT");//encrypt the password before saving in the database
         
         $user_check_query = "SELECT * FROM userdata WHERE username='$username' LIMIT 1";
         $result = mysqli_query($db, $user_check_query);

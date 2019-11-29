@@ -398,6 +398,6 @@ $.fn.graph = function(dataSet, donotuse, color, group, degx, degy){
 }
 
 window.onload = function() {
-    $("#graph").graph(data, ["c", "g"], "c", "g", Math.PI/1, Math.PI/2);
+    $("#graph").graph(data, ["c", "g"], "c", "g", Math.PI/4, Math.PI/8);
 }
 
