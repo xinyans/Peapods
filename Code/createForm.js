@@ -107,7 +107,7 @@ function creationFormRender(data){
 
     html_string += `
         <button type="button" id="addQuestion">Add Question</button>
-        <input id="submitButton" type="submit" value="Create Form!">`;
+        <button type="button" id="submitButton">Create Form!</button>`;
 
     $("main").append(html_string);
 }
@@ -199,6 +199,11 @@ function addEventListeners(){
         var clicked_button_id = $(this).attr("id");
         if(clicked_button_id == "addQuestion"){
             creation_form_data.questions.push({"prompt": "","typeOfQuestion": ""});
+        }
+        else if(clicked_button_id == "submitButton"){
+            if(confirm("Sure about this?")){
+                alert("This should send an ajax to store the json object.");
+            }
         }
         else{
             var index = parseInt(clicked_button_id.substring(8, 9));
