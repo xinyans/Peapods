@@ -10,7 +10,6 @@
 			body,h1,h2,h3,h4,h5,h6 {font-family: 'Ubuntu', sans-serif;}
 		</style>
 		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-		<script src="../Code/fillForm.js"></script>
 	</head>
 
 	<body>
@@ -25,14 +24,8 @@
 			<a title="Sign In" href="#"><img src="../Resources/loginguy.png"></a>
 			</section>
 		</nav>
-		<main class="mainContent">
-            <h2>Fill Out the Form</h2>
-            <fieldset>
-                <legend>Form Code</legend>
-                <input placeholder="Please input the 6-digit form code">
-                <button id="formCodeSubmit">Search Form<button>
-            </fieldset>
-		</main>
-	</body>
-
+        <main class="mainContent">
+            <h2>Submission Success!</h2>
+        </main>
+    </body>
 </html>

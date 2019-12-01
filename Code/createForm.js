@@ -37,6 +37,21 @@ var creation_form_data = {
     ]
 }
 
+function submitCreatedForm(){
+    $.ajax({
+        type: "POST",
+        url: "../Ajax/ajaxCreateForm.php",
+        data: {"form": creation_form_data},
+        success: function(msg){
+            console.log("Ajax finishes with success: ", msg);
+            location.href = "../Pages/createFormSuccess.php";
+        },
+        error: function(msg, detail){
+            console.log("Ajax finishes with error: ", msg, " With detail: ", detail);
+        }
+    });
+}
+
 function creationFormRender(data){
     $("main").html("");
     var html_string = `
@@ -202,7 +217,7 @@ function addEventListeners(){
         }
         else if(clicked_button_id == "submitButton"){
             if(confirm("Sure about this?")){
-                alert("This should send an ajax to store the json object.");
+                submitCreatedForm();
             }
         }
         else{
