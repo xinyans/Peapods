@@ -122,7 +122,9 @@ function creationFormRender(data){
 
     html_string += `
         <button type="button" id="addQuestion">Add Question</button>
-        <button type="button" id="submitButton">Create Form!</button>`;
+        <button type="button" id="submitButton">Create Form!</button>
+        </fieldset>
+        </form>`;
 
     $("main").append(html_string);
 }
