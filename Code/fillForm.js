@@ -1,24 +1,38 @@
 var fill_form_data = {
-    "code": ""
+    "code": "",
+    "answers": []
 };
+
+var initialized = false;
+
+var questions = {};
 
 function fetchForm(){
     var form_code = $("#formCode").val();
+    if(form_code.length == 0){
+        alert("Form Code cannot be empty");
+        return;
+    }
     $.ajax({
         type: "GET",
         async: false,
         url: "../Ajax/ajaxFillForm.php",
         data: {"code": form_code},
         success: function(msg){
+            console.log(msg);
             var result = JSON.parse(msg);
             console.log("Ajax finishes with success: ", result);
             console.log("One: ", JSON.parse(result.formData));
-            fill_form_data.questions = JSON.parse(result.formData).questions;
+            questions = JSON.parse(result.formData).questions;
         },
         error: function(msg, detail){
             console.log("Ajax finishes with error: ", msg, " With detail: ", detail);
         }
     });
+    // Initialize answer sheet
+    for(let i=0; i<questions.length; i++){
+        fill_form_data.answers.push({"answer": ""});
+    }
 }
 
 function fillFormRender(){
@@ -33,12 +47,25 @@ function fillFormRender(){
         </fieldset>
         <fieldset id="fillQuestions">
             <legend><span class="section">2</span>Questions</legend>`;
-            console.log(fill_form_data.questions);
-    for(let i=0; i<fill_form_data.questions.length; i++){
-        let prompt = fill_form_data.questions[i].prompt;
+    
+    for(let i=0; i<questions.length; i++){
+        let prompt = questions[i].prompt;
         html_string += `<fieldset id="question${i+1}" class="creationQuestion">
             <legend>Question ${i+1}</legend>
-            <label class="questionPromptLbl">${prompt}</label>`;
+            <label class="question${i+1}PromptLbl">${prompt}</label>`;
+        if(questions[i].typeOfQuestion == "multipleChoice"){
+            for(let j=0; j<3; j++){
+                html_string += `<label><input type="radio" class="questionType" name="question${i+1}Choice${j}" 
+                value="0" ${fill_form_data.answers[i].answer==j?'checked':''} required>
+                 ${questions[i].choices[j].choiceContent}</label>`;
+            }
+        }
+        else if(questions[i].typeOfQuestion == "slider"){
+            html_string += `<input type="range" min="${questions[i].sliderMin}" max="${questions[i].sliderMax}" name="question${i+1}Slider" required>`;
+        }
+        else if(questions[i].typeOfQuestion == "textInput"){
+            html_string += `<textarea rows="5" cols="20" name="question${i+1}Text">`;
+        }
 
         html_string += `</fieldset>`;
     }
@@ -67,7 +94,7 @@ function firstRender(){
 
 function addEventListeners(){
     $("#formCodeSubmit").click(function(){
-        if(("questions" in fill_form_data) == true){
+        if(initialized){
             if(!confirm("You already have a form loaded. This action will destroy your progress on this form. Proceed?")){
                 return;
             }
@@ -76,6 +103,9 @@ function addEventListeners(){
         fillFormRender();
         addEventListeners();
     });
+    $("input").change(function(){
+        console.log($(this).val())
+    })
 }
 
 $(window).ready(function(){

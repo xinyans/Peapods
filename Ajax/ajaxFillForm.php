@@ -17,7 +17,7 @@
             $statement->bind_param("s", $code);
             $statement->execute();
             $result = $statement->get_result();
-            $formData = $result->fetch_assoc()；
+            $formData = $result->fetch_assoc();
             if(!$formData){
                 $success = array('errors'=>true,'message'=>'Form not found');
             }
