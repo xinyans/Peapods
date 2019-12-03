@@ -8,7 +8,6 @@
         $query = "SELECT * FROM userdata WHERE username='$username' LIMIT 1";
         $result = mysqli_query($db, $query);
         $user = mysqli_fetch_assoc($result);
-
         if ($user and $user['password'] == password_hash($password, "PASSWORD_BCRYPT")) {
             $cookie = md5($username.$password);
             $query = "INSERT INTO logins (loginCookie, username) VALUES ('$cookie', '$username')";
