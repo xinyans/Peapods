@@ -262,7 +262,35 @@ function groupSearch(){
     });
 }
 
+function groupSearch2(){
+    $("#searchBar").submit(function(event){
+        console.log("asdasdsa"); 
+        event.preventDefault();
+        code = $("#searchBar>input").val();
+        $.ajax({
+            type: "POST",
+            url: "../Ajax/checkCode.php",
+            data: {code: code},
+            success: function(msg){
+                if(msg != ""){
+                    if(msg == "0"){
+                        $("#searchBar>input").css("border", "none");
+                        $(location).attr('href',"../Pages/displayGroups.php?code=" + code);
+                    }
+                    else if(msg == "1"){
+                        //Add code for going to fillform here
+                    }
+                }
+                else {
+                    $("#searchBar>input").css("color", "red");
+                }
+            }
+        });
+    });
+}
+
 window.onload = function(){
     addLoginListeners();
     groupSearch();
+    //groupSearch2();
 }

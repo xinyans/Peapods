@@ -36,7 +36,7 @@
             </header>
             <form id="searchBar" action="#">
                 <h1>Find Your Group</h1>
-                <input placeholder="Group Code"/>
+                <input placeholder="Group Code" type = "text" name="code"/>
                 <img src="../Resources/search.png" alt="Search"/>
             </form>
             <article>
