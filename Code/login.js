@@ -242,12 +242,17 @@ function groupSearch(){
         code = $("#groupSearch>input").val();
         $.ajax({
             type: "POST",
-            url: "../Ajax/getGroups.php",
+            url: "../Ajax/checkCode.php",
             data: {code: code},
             success: function(msg){
                 if(msg != ""){
-                    $("#groupSearch>input").css("border", "none");
-                    $(location).attr('href',"../Pages/displayGroups.php?code=" + code);
+                    if(msg == "0"){
+                        $("#groupSearch>input").css("border", "none");
+                        $(location).attr('href',"../Pages/displayGroups.php?code=" + code);
+                    }
+                    else if(msg == "1"){
+                        //Add code for going to fillform here
+                    }
                 }
                 else {
                     $("#groupSearch>input").css("border", "1px solid red");
