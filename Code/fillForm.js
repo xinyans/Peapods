@@ -93,7 +93,7 @@ function firstRender(){
 }
 
 function addEventListeners(){
-    $("#formCodeSubmit").click(function(){
+    $("main #formCodeSubmit").click(function(){
         if(initialized){
             if(!confirm("You already have a form loaded. This action will destroy your progress on this form. Proceed?")){
                 return;
@@ -103,12 +103,14 @@ function addEventListeners(){
         fillFormRender();
         addEventListeners();
     });
-    $("input").change(function(){
+    $("main input").change(function(){
         console.log($(this).val())
     });
 }
 
-$(window).ready(function(){
+window.onload = function(){
     firstRender();
     addEventListeners();
-});
+    addLoginListeners();
+    groupSearch();
+};

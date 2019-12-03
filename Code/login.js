@@ -292,5 +292,4 @@ function groupSearch2(){
 window.onload = function(){
     addLoginListeners();
     groupSearch();
-    //groupSearch2();
 }
