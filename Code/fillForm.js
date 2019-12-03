@@ -105,7 +105,7 @@ function addEventListeners(){
     });
     $("input").change(function(){
         console.log($(this).val())
-    })
+    });
 }
 
 $(window).ready(function(){

@@ -1,9 +1,9 @@
-Make sure you have an approrpriate virtual host configured so the php works
-properly.
+-- Make sure you have an approrpriate virtual host configured so the php works
+-- properly.
 
-run the following code in your phpmyadmin to setup the database
-you can use the register function to create your own login information
-make sure to change the database login information when you pull
+-- run the following code in your phpmyadmin to setup the database
+-- you can use the register function to create your own login information
+-- make sure to change the database login information when you pull
 
 
 DROP DATABASE peapods;
