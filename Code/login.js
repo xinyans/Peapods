@@ -192,22 +192,33 @@ function addLoginListeners(){
                 //not logged in
                 $("nav>section>a:nth-child(4) img").attr("src", "../Resources/loginguy.png");
                 $("nav>section>a:nth-child(4)").click(loginClick);    
+                $("nav>section>a:nth-child(3)").click(function(event){
+                    event.preventDefault();
+                    loginClick();
+                });
+                $("nav>section>a:nth-child(2)").click(function(event){
+                    event.preventDefault();
+                    loginClick();
+                });
             }
             else {
                 console.log("logged in");
                 //logged in
                 $("nav>section>a:nth-child(4)").attr("title", "Sign Out");
                 $("nav>section>a:nth-child(4)").click(function(){
-                    cookie = sessionStorage.getItem("code");
-                    console.log(cookie);
-                    $.ajax({
-                        type: "POST",
-                        url: "../Ajax/ajaxLogout.php",
-                        data: {cookie: cookie}, 
-                        success: function(msg){
-                            addLoginListeners();
-                        }
-                    });
+                    str = window.location.href
+                    if(!(str.includes("dashboard.php") || str.includes("createForm.php"))){
+                        cookie = sessionStorage.getItem("code");
+                        console.log(cookie);
+                        $.ajax({
+                            type: "POST",
+                            url: "../Ajax/ajaxLogout.php",
+                            data: {cookie: cookie}, 
+                            success: function(msg){
+                                addLoginListeners();
+                            }
+                        });
+                    }
                 });
                 $("nav>section>a:nth-child(4) img").attr("src", "../Resources/door.png");
                 

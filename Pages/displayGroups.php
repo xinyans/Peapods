@@ -24,7 +24,7 @@
     </head>
     <body>
         <nav>
-            <a title="Home" href = "../index.php"><img src="../Resources/Peapods.png"></a>
+            <a title="Home" href = "index.php"><img src="../Resources/Peapods.png"></a>
             <section>
                 <form id = "groupSearch" src="#">
                     <input title="Group Search" type="text" name="code" placeholder="Group Code">
