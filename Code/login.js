@@ -281,7 +281,6 @@ function groupSearch(){
 
 function groupSearch2(){
     $("#searchBar").submit(function(event){
-        console.log("asdasdsa"); 
         event.preventDefault();
         code = $("#searchBar>input").val();
         $.ajax({
