@@ -16,7 +16,7 @@
     </head>
     <body>
         <nav>
-            <a title="Home" href = "index.php"><img src="../Resources/Peapods.png" alt="Home"/></a>
+            <a title="Home" href ="index.php"><img src="../Resources/Peapods.png" alt="Home"/></a>
             <section>
                 <form id="groupSearch" action="#">
                     <input title="Group Search" type="text" name="code" placeholder="Group Code"/>
@@ -124,7 +124,7 @@
                     <h3>Who are we? ▼</h3>
                     <p>
                         <strong>The PeaPods team is:</strong><br/>
-                        Peter Gramendies '20 - <em>Backend Engineer</em><br/>
+                        Peter Gramenides '20 - <em>Backend Engineer</em><br/>
                         Nicholas Meyer '21 - <em>Editor and Analytics Architect</em><br/>
                         Jolee McCluskey '22 - <em>Project Manager and Quality Assurance</em><br/>
                         Samuel Schantz '22 - <em>UX Designer</em><br/>
