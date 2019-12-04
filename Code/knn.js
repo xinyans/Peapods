@@ -1,10 +1,11 @@
 /**
+ *      data format
         {
             "name" : "a a",
             "contact" : "a",
             "g" : -1,
             "c" : -1,
-            "answers" : [],
+            "answers" : ["ASDasd", 0.83, "ASdasdas", 0.37, "asdasdasdas"],
             "data" : [0.83,0.37,0.44,0.36,0.23,0.95,0.81,0.46,0.73,0.11]
         },
  */
@@ -20,6 +21,33 @@
 
     total = Math.sqrt(total);
     return total
+ }
+
+ function formatter(dataSet, numGroups) {
+    base =
+    {
+        "formTitle": "Groups",
+        "groups": [
+        ]
+    }
+    for(i = 0; i < numGroups; i++){
+        item = {
+            "members": [
+            ]
+        }
+        for(k = 0; k < dataSet.length; k++){
+            if(dataSet[k]["g"] == i){
+                item["members"].push(
+                    {
+                        "name" : dataSet[k]["name"],
+                        "contact" : dataSet[k]["contact"] 
+                    }
+                );
+            }
+        }
+        base["groups"].push(item);
+    }
+    return JSON.stringify(base);
  }
 
  function groupify(dataSet, numGroups) {
@@ -89,13 +117,20 @@
     return dataSet;
  }
 
-function test(){
+function runAlgo(code){
     $.ajax({
         type: "POST",
         url: "../Ajax/ajaxGetData.php",
-        data: {code: "abcdef"},
+        data: {code: code},
         success: function(msg){
-            console.log(groupify(JSON.parse(msg)["data"], 4));
+            $.ajax({
+                type: "POST",
+                url: "../Ajax/ajaxReturnAlgoData.php",
+                data: {code: code, data: formatter(groupify(JSON.parse(msg)["data"], 4),4)},
+                success: function(msg){
+                    console.log(msg);
+                }
+            });
         }
     });
 }
