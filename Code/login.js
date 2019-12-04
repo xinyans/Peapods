@@ -1,7 +1,7 @@
 var login = `
-<aside class = "login">
-    <form src = "#">
-        <button type="button">X</button>
+<aside class="login">
+    <form action="#">
+        <button title="Close" type="button">X</button>
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
         <button type="button">Register</button>
@@ -11,9 +11,9 @@ var login = `
 `;
 
 var register =`
-<aside class = "register">
-    <form src="#">
-        <button type="button">X</button>
+<aside class="register">
+    <form action="#">
+        <button title="Close" type="button">X</button>
         <input type="text" name="firstname" placeholder="First Name">
         <input type="text" name="lastname" placeholder="Last Name">
         <input type="email" name="email" placeholder="Email">
@@ -183,12 +183,16 @@ function loginClick(){
 
 /** Call this function from page js file */
 function addLoginListeners(){
+    textListeners();
     $("span:nth-child(1)").css("color", "black");
     $("span:nth-child(2)").css("color", "black");
     $("span:nth-child(3)").css("color", "black");
     $("h2").css("color", "black");
     $("h2>span").fadeIn(0);
     $("h2>span").css("color", "green");
+    $("#searchBar>img").click(function() {
+        $("#searchBar").submit();
+    });
     $.ajax({
         type: "POST",
         url: "../Ajax/ajaxCheckLogin.php",
@@ -231,26 +235,6 @@ function addLoginListeners(){
             }
         }
     });
-    /**
-    if(~$("body>nav>p:nth-child(3)").html().indexOf("true")){
-        loginState = true;
-        $("nav>section>a:nth-child(4)").attr("title", "Sign Out");
-        $("nav>section>a:nth-child(4)").attr("href", "../Login/logout.php");
-        $("nav>section>a:nth-child(4) img").attr("src", "../Resources/door.png");
-    }
-    else {
-        loginState = false;
-        $("nav>section>a:nth-child(4) img").attr("src", "../Resources/loginguy.png");
-        if(check && ~$("body>nav>p:nth-child(4)").html().indexOf("1")){
-            check = false;
-            loginClick();
-        }
-    }
-    if(~$("body>nav>p:nth-child(4)").html().indexOf("a")){
-        $("body>nav>section>form>input").css("border", "1px solid red");      
-    }
-    $("nav>section>a:nth-child(4)").click(loginClick);
-    */
 }
 
 function groupSearch(){
