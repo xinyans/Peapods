@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $dbPassword = "macau1stOnlineCasino";
+    $dbPassword = "cows";
     $dbName = "peapods";
     $db = new mysqli('localhost', 'root', $dbPassword, $dbName);
     
@@ -24,25 +24,42 @@
             die("Cannot add this event.");
         }
 
-        $creator = "Xinyan Sun"; // This is the username of creator
-        $data = json_encode($_POST["form"]);
-        $query = "INSERT INTO forms (`code`, `creator`, `form_data`) VALUES (?, ?, '$data')"; // Mysteriously I could not
+        // Gets creator
+        if(isset($_SESSION['loginCookie'])){
+            $creator_cookie = $_SESSION['loginCookie'];
+            $query_result = $db->query("SELECT `username` FROM logins WHERE `loginCookie` = '$creator_cookie'");
+            $row = $query_result -> fetch_assoc();
+            $creator = $row["username"];
+        }
+        else {
+            $response = array(
+                'errors' => true,
+                'message' => 'Not logged in!'
+            );
+            echo json_encode($response);
+            die("Message from die: User not logged in.");
+        }
+
+        $data = json_encode($_POST["form"]); // Turns the array into a JSON string
+        $query = "INSERT INTO forms (`code`, `creator`, `formjson`) VALUES (?, ?, '$data')"; // Mysteriously I could not
         $statement = $db->prepare($query);
         if($statement){
             $statement->bind_param("ss", $code, $creator);
             $statement->execute();
             $statement->close();
-            $success = array('errors'=>false,'message'=>'New form creation successful','code'=>$code);
-            echo json_encode($success);
+            $response = array('errors'=>false,
+                'message'=>'New form creation successful',
+                'code'=>$code
+            );
         }
         else{
-            echo "Unexpected problem with database.";
-            $queryErrors = array(
+            $response = array(
                 'errors' => true,
+                'message' => 'Unexpected problem with database.'
             );
-            echo json_encode($queryErrors);
+            
         }
-
+        echo json_encode($response);
     }
 
     $db->close();

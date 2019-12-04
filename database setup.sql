@@ -5,7 +5,7 @@
 -- you can use the register function to create your own login information
 -- make sure to change the database login information when you pull
 
-DROP DATABASE peapods;
+DROP DATABASE IF EXISTS peapods;
 CREATE DATABASE peapods;
 USE peapods;
 CREATE TABLE userdata(
