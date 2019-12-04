@@ -1,70 +1,101 @@
 /**
-   Given data where each member has the form
-   
-    data = {
-     "firstName" : "null",
-     "lastName" : "null",
-     "color" : "null",
-     "group" : -1,
-     "stats" : [
-        5,
-        3,
-        4
-     ]
-    }
-
-    and
-
-    groupSize = 6;
-
-    will assign group on each member
+        {
+            "name" : "a a",
+            "contact" : "a",
+            "g" : -1,
+            "c" : -1,
+            "answers" : [],
+            "data" : [0.83,0.37,0.44,0.36,0.23,0.95,0.81,0.46,0.73,0.11]
+        },
  */
 
- function distance(a, b){
-    size = a["stats"].length;
+ function distance(dataSet, i, k){
+    size = dataSet[i]["data"].length;
 
     total = 0;
 
-    for(i = 0; i < size; i++){
-        total += Math.pow(a["stats"][i] - b["stats"][i],2);
+    for(a = 0; a < size; a++){
+        total += Math.pow(dataSet[i]["data"][a] - dataSet[k]["data"][a],2);
     }
 
     total = Math.sqrt(total);
+    return total
  }
 
  function groupify(dataSet, numGroups) {
-     
-    groupSize = Math.floor(dataSet.length/numGroups);
-
+    specialCase = false;
+    groupSize = Math.floor(dataSet.length/numGroups) - 1;
+    if(dataSet.length/numGroups != Math.floor(dataSet.length/numGroups)){
+        specialCase = true;
+    }
     size = dataSet.length;
 
-
+    groupVal = 0;
     for(i = 0; i < dataSet.length; i++){
-        if(dataSet[i]["group"] == -1){
-            
+        if(dataSet[i]["g"] == -1){
+            dataSet[i]["g"] = groupVal;
             tempGroup = new Array();
+            if(specialCase){
+                neighbors = new Array(groupSize + 1).fill(-1);
+                distances = new Array(groupSize + 1).fill(-1);
+                specialCase = false;
+            }
+            else {
+                neighbors = new Array(groupSize).fill(-1);
+                distances = new Array(groupSize).fill(-1);
+            }
 
-            neighbors = new Array();
+            // console.log(neighbors);
             nMax = Number.MAX_VALUE;
-
             for(k = 0; k < dataSet.length; k++){
                 if(k != i){
-                    if(dataSet[k]["group"] == -1){
-                        d = distance(dataSet[i], dataSet[k]);
-                        if(d < nMax){
+                    if(dataSet[k]["g"] == -1){
+                        d = distance(dataSet, i, k);
+                        full = true;
+                        for(z = 0; z < neighbors.length; z++){
+                            if(neighbors[z] == -1){
+                                full = false;
+                                neighbors[z] = k;
+                                distances[z] = d;
+                                break;
+                            }
+                        }
+                        nMax = 0;
+                        for(z = 0; z < distances.length; z++){
+                            if(nMax < distances[z]){
+                                nMax = distances[z];
+                            }
+                        }
+                        if(full && d < nMax){
                             for(z = 0; z < neighbors.length; z++){
-                                if(neighbors[z]["distance"] == nMax){
-                                    neighborr.
+                                if(distances[z] == nMax){
+                                    neighbors[z] = k;
+                                    distances[z] = d;
+                                    break;
                                 }
                             }
                         }
                     }
                 }
             }
-
+            for(z = 0; z < neighbors.length; z++){
+                if(neighbors[z] != -1){
+                    dataSet[neighbors[z]]["g"] = groupVal;
+                } 
+            }
+            groupVal++;
         }
     }
+    return dataSet;
  }
 
-
-
+function test(){
+    $.ajax({
+        type: "POST",
+        url: "../Ajax/ajaxGetData.php",
+        data: {code: "abcdef"},
+        success: function(msg){
+            console.log(groupify(JSON.parse(msg)["data"], 4));
+        }
+    });
+}
