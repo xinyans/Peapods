@@ -7,21 +7,15 @@ var fill_form_data = {
     "data" : []
 };
 
-var data_submit_format = {
-    "name" : "",
-    "contact" : "",
-    "c" : -1,
-    "g" : -1,
-    "answers" : [],
-    "data" : []
-};
-
 var initialized = false;
 
-var questions = {};
+var current_form_code;
+
+var questions = [];
 
 function fetchForm(){
     var form_code = $("#formCode").val();
+    current_form_code = form_code;
     if(form_code.length == 0){
         alert("Form Code cannot be empty");
         return;
@@ -42,10 +36,6 @@ function fetchForm(){
             console.log("Ajax finishes with error: ", msg, " With detail: ", detail);
         }
     });
-    // Initialize answer sheet
-    for(let i=0; i<questions.length; i++){
-        fill_form_data.answers.push({"answer": ""});
-    }
 }
 
 function fillFormRender(){
@@ -56,7 +46,7 @@ function fillFormRender(){
         <fieldset id=""><span class="section">1</span>
             <legend>Form Code</legend>
             <input id="formCode" placeholder="Please input the 6-digit form code">
-            <button id="formCodeSubmit">Search Form</button>
+            <button type="button" id="formCodeSubmit">Search Form</button>
         </fieldset>
         <fieldset id="fillQuestions">
             <legend><span class="section">2</span>Questions</legend>`;
@@ -67,9 +57,9 @@ function fillFormRender(){
             <legend>Question ${i+1}</legend>
             <label class="question${i+1}PromptLbl">${prompt}</label>`;
         if(questions[i].typeOfQuestion == "multipleChoice"){
-            for(let j=0; j<3; j++){
-                html_string += `<label><input type="radio" class="questionType" name="question${i+1}Choice${j}" 
-                value="0" ${fill_form_data.answers[i].answer==j?'checked':''} required>
+            for(let j=0; j<questions[i].choices.length; j++){
+                html_string += `<label><input type="radio" class="questionType" name="question${i+1}Choice" 
+                value="${j}" required>
                  ${questions[i].choices[j].choiceContent}</label>`;
             }
         }
@@ -77,7 +67,7 @@ function fillFormRender(){
             html_string += `<input type="range" min="${questions[i].sliderMin}" max="${questions[i].sliderMax}" name="question${i+1}Slider" required>`;
         }
         else if(questions[i].typeOfQuestion == "textInput"){
-            html_string += `<textarea rows="5" cols="20" name="question${i+1}Text">`;
+            html_string += `<textarea rows="5" cols="20" name="question${i+1}Text"></textarea>`;
         }
 
         html_string += `</fieldset>`;
@@ -87,8 +77,9 @@ function fillFormRender(){
         <button type="button" id="submitButton">Submit Form!</button>
         </fieldset>
         </form>`;
+    console.log(html_string);
 
-    $("main").append(html_string);
+    $("main").html(html_string);
 }
 
 function firstRender(){
@@ -99,7 +90,7 @@ function firstRender(){
         <fieldset id=""><span class="section">1</span>
             <legend>Form Code</legend>
             <input id="formCode" placeholder="Please input the 6-digit form code">
-            <button id="formCodeSubmit">Search Form</button>
+            <button type="button" id="formCodeSubmit">Search Form</button>
         </fieldset>
         </form>`;
     $("main").append(html_string);
@@ -112,12 +103,50 @@ function addEventListeners(){
                 return;
             }
         }
+        initialized = true;
         fetchForm();
         fillFormRender();
         addEventListeners();
     });
-    $("main input").change(function(){
-        console.log($(this).attr("name"), $(this).val());
+    $("#submitButton").click(function(){
+        if(!confirm("Sure about submitting?")){
+            return;
+        }
+        fill_form_data.name = "Some username";
+        fill_form_data.contact = "Some email address";
+        var index = 0;
+        $("#fillQuestions").find("fieldset").each(function(){
+            if(questions[index].typeOfQuestion == "multipleChoice"){
+                let selected = $(this).find("input:checked").val();
+                let normalized = selected / questions[index].numOfChoices;
+                fill_form_data.answers.push({"answer" : selected});
+                fill_form_data.data.push(normalized);
+            }
+            else if(questions[index].typeOfQuestion == "slider"){
+                let selected = $(this).find("input").val();
+                let normalized = (selected - questions[index].sliderMin) / (questions[index].sliderMax - questions[index].sliderMin);
+                fill_form_data.answers.push({"answer" : selected});
+                fill_form_data.data.push(normalized);
+            }
+            else{
+                let value = $(this).find("textarea").val();
+                fill_form_data.answers.push({"answer" : value});
+            }
+            index += 1;
+        });
+        console.log(fill_form_data);
+        $.ajax({
+            type: "POST",
+            url: "../Ajax/ajaxFillForm.php",
+            data: {"data": fill_form_data, "code": current_form_code},
+            success: function(msg){
+                console.log("Ajax finishes with success: ", msg);
+                // location.href = "../Pages/createFormSuccess.php";
+            },
+            error: function(msg, detail){
+                console.log("Ajax finishes with error: ", msg, " With detail: ", detail);
+            }
+        });
     });
 }
 
