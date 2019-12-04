@@ -7,7 +7,7 @@
         $result = mysqli_query($db, $query);
         if($result and $result->num_rows == 1){
             $printData = mysqli_fetch_assoc($result);
-            echo $printData['groupjson'];
+            echo $printData['fillform'];
         }
         else {
             //if there is no such code
@@ -21,7 +21,7 @@
    *
    *     $.ajax({
    *         type: "POST",
-   *         url: "../Ajax/getGroups.php",
+   *         url: "../Ajax/checkCode.php",
    *         data: {code: "testcode"},
    *         contentType: "application/json; charset=utf-8",
    *         dataType: "json",
@@ -30,6 +30,6 @@
    *         }
    *     });
    * 
-   *    or line of form project.websys/Ajax/getGroups.php?code=testcode
+   *    or line of form project.websys/Ajax/checkCode.php?code=testcode
     **/
 ?>

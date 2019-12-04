@@ -14,7 +14,7 @@
     </head>
     <body>
         <nav>
-            <a title="Home" href = "../index.php"><img src="../Resources/Peapods.png" alt="Home"/></a>
+            <a title="Home" href = "index.php"><img src="../Resources/Peapods.png" alt="Home"/></a>
             <section>
                 <form id="groupSearch" action="#">
                     <input title="Group Search" type="text" name="code" placeholder="Group Code"/>
@@ -36,7 +36,7 @@
             </header>
             <form id="searchBar" action="#">
                 <h1>Find Your Group</h1>
-                <input placeholder="Group Code"/>
+                <input placeholder="Group Code" type = "text" name="code"/>
                 <img src="../Resources/search.png" alt="Search"/>
             </form>
             <article>

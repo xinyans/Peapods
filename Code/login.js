@@ -192,22 +192,33 @@ function addLoginListeners(){
                 //not logged in
                 $("nav>section>a:nth-child(4) img").attr("src", "../Resources/loginguy.png");
                 $("nav>section>a:nth-child(4)").click(loginClick);    
+                $("nav>section>a:nth-child(3)").click(function(event){
+                    event.preventDefault();
+                    loginClick();
+                });
+                $("nav>section>a:nth-child(2)").click(function(event){
+                    event.preventDefault();
+                    loginClick();
+                });
             }
             else {
                 console.log("logged in");
                 //logged in
                 $("nav>section>a:nth-child(4)").attr("title", "Sign Out");
                 $("nav>section>a:nth-child(4)").click(function(){
-                    cookie = sessionStorage.getItem("code");
-                    console.log(cookie);
-                    $.ajax({
-                        type: "POST",
-                        url: "../Ajax/ajaxLogout.php",
-                        data: {cookie: cookie}, 
-                        success: function(msg){
-                            addLoginListeners();
-                        }
-                    });
+                    str = window.location.href
+                    if(!(str.includes("dashboard.php") || str.includes("createForm.php"))){
+                        cookie = sessionStorage.getItem("code");
+                        console.log(cookie);
+                        $.ajax({
+                            type: "POST",
+                            url: "../Ajax/ajaxLogout.php",
+                            data: {cookie: cookie}, 
+                            success: function(msg){
+                                addLoginListeners();
+                            }
+                        });
+                    }
                 });
                 $("nav>section>a:nth-child(4) img").attr("src", "../Resources/door.png");
                 
@@ -242,15 +253,47 @@ function groupSearch(){
         code = $("#groupSearch>input").val();
         $.ajax({
             type: "POST",
-            url: "../Ajax/getGroups.php",
+            url: "../Ajax/checkCode.php",
             data: {code: code},
             success: function(msg){
                 if(msg != ""){
-                    $("#groupSearch>input").css("border", "none");
-                    $(location).attr('href',"../Pages/displayGroups.php?code=" + code);
+                    if(msg == "0"){
+                        $("#groupSearch>input").css("border", "none");
+                        $(location).attr('href',"../Pages/displayGroups.php?code=" + code);
+                    }
+                    else if(msg == "1"){
+                        //Add code for going to fillform here
+                    }
                 }
                 else {
                     $("#groupSearch>input").css("border", "1px solid red");
+                }
+            }
+        });
+    });
+}
+
+function groupSearch2(){
+    $("#searchBar").submit(function(event){
+        console.log("asdasdsa"); 
+        event.preventDefault();
+        code = $("#searchBar>input").val();
+        $.ajax({
+            type: "POST",
+            url: "../Ajax/checkCode.php",
+            data: {code: code},
+            success: function(msg){
+                if(msg != ""){
+                    if(msg == "0"){
+                        $("#searchBar>input").css("border", "none");
+                        $(location).attr('href',"../Pages/displayGroups.php?code=" + code);
+                    }
+                    else if(msg == "1"){
+                        //Add code for going to fillform here
+                    }
+                }
+                else {
+                    $("#searchBar>input").css("color", "red");
                 }
             }
         });

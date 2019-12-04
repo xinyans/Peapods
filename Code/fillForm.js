@@ -106,7 +106,7 @@ function firstRender(){
 }
 
 function addEventListeners(){
-    $("#formCodeSubmit").click(function(){
+    $("main #formCodeSubmit").click(function(){
         if(initialized){
             if(!confirm("You already have a form loaded. This action will destroy your progress on this form. Proceed?")){
                 return;
@@ -117,11 +117,17 @@ function addEventListeners(){
         addEventListeners();
     });
     $("main input").change(function(){
+<<<<<<< HEAD
         console.log($(this).attr("name"), $(this).val());
+=======
+        console.log($(this).val())
+>>>>>>> fe019feaded6a615341294b5a0939e1ed792348f
     });
 }
 
-$(window).ready(function(){
+window.onload = function(){
     firstRender();
     addEventListeners();
-});
+    addLoginListeners();
+    groupSearch();
+};

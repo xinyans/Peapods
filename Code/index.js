@@ -1,6 +1,7 @@
 window.onload = function(){
     this.addLoginListeners();
     this.groupSearch();
+    this.groupSearch2();
     this.rsg();
     this.textListeners();
 }

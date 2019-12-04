@@ -145,7 +145,7 @@ function findIntEnd(str, start){
 }*/
 
 function addEventListeners(){
-    $("input").change(function(){
+    $("main input").change(function(){
         var changed_input_name = $(this).prop("name");
         if(changed_input_name.length < 9 || isNaN(changed_input_name.substring(8,9))){
             if(changed_input_name == "formName"){
@@ -201,7 +201,7 @@ function addEventListeners(){
         addEventListeners();
     });
 
-    $("select").change(function(){
+    $("main select").change(function(){
         var index = parseInt($(this).prop("name").substring(8, 9));
         for(var i=creation_form_data.questions[index-1].numOfChoices; i<$(this).val(); i++){
             creation_form_data.questions[index-1].choices.push({"choiceContent":""});
@@ -212,7 +212,7 @@ function addEventListeners(){
         addEventListeners();
     });
 
-    $("button").click(function(){
+    $("main button").click(function(){
         var clicked_button_id = $(this).attr("id");
         if(clicked_button_id == "addQuestion"){
             creation_form_data.questions.push({"prompt": "","typeOfQuestion": ""});
@@ -240,7 +240,9 @@ function addEventListeners(){
     })
 }
 
-$(window).ready(function(){
+window.onload = function(){
+    addLoginListeners();
+    groupSearch();
     creationFormRender(creation_form_data);
     addEventListeners();
-});
+};
