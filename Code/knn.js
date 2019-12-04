@@ -23,8 +23,20 @@
     return total
  }
 
+ var c = "";
+
  function formatter(dataSet, numGroups) {
-    console.log(dataSet);
+    base = {
+        "data": dataSet
+    }
+    console.log(base);
+    $.ajax({
+        type: "POST",
+        url: "../Ajax/ajaxReturnKNN.php",
+        data: {code: c, data: JSON.stringify(base)},
+        success: function(msg){
+        }
+    });
     base =
     {
         "formTitle": "Groups",
@@ -119,6 +131,7 @@
  }
 
 function runAlgo(code){
+    c = code;
     $.ajax({
         type: "POST",
         url: "../Ajax/ajaxGetData.php",

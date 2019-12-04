@@ -346,9 +346,9 @@ $.fn.graph = function(dataSet, donotuse, color, group, degx, degy){
     d = ctx.canvas.height;
 
     //Size of canvas
-    offsetx = 0.25 * d;
-    offsety = 0.5 * d;
-    d *= 0.5;
+    offsetx = 0;
+    offsety = 0.3 * d;
+    d *= 0.7;
 
     drawGraph(canvas, ctx, d, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], "g", "c");
 

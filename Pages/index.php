@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="../Stylesheets/login.css"/>
         <link rel="stylesheet" type="text/css" href="../Stylesheets/index.css"/>
         <script src="../Code/jquery-3.4.1.min.js"></script>
+        <script src="../Code/knn.js"></script>
         <script src="../Code/login.js"></script>
         <script src="../Code/index.js"></script>
 
