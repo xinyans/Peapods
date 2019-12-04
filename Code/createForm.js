@@ -241,8 +241,8 @@ function addEventListeners(){
 }
 
 window.onload = function(){
-    addLoginListeners();
-    groupSearch();
     creationFormRender(creation_form_data);
     addEventListeners();
+    addLoginListeners();
+    groupSearch();
 };

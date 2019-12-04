@@ -24,6 +24,7 @@
  }
 
  function formatter(dataSet, numGroups) {
+    console.log(dataSet);
     base =
     {
         "formTitle": "Groups",
