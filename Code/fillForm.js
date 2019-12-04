@@ -117,11 +117,7 @@ function addEventListeners(){
         addEventListeners();
     });
     $("main input").change(function(){
-<<<<<<< HEAD
         console.log($(this).attr("name"), $(this).val());
-=======
-        console.log($(this).val())
->>>>>>> fe019feaded6a615341294b5a0939e1ed792348f
     });
 }
 
