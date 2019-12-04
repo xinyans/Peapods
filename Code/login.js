@@ -299,7 +299,7 @@ function groupSearch2(){
                     }
                 }
                 else {
-                    $("#searchBar>input").css("color", "red");
+                    $("#searchBar").css("border", "1px solid red");
                 }
             }
         });
