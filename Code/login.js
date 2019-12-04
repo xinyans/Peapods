@@ -183,6 +183,12 @@ function loginClick(){
 
 /** Call this function from page js file */
 function addLoginListeners(){
+    $("span:nth-child(1)").css("color", "black");
+    $("span:nth-child(2)").css("color", "black");
+    $("span:nth-child(3)").css("color", "black");
+    $("h2").css("color", "black");
+    $("h2>span").fadeIn(0);
+    $("h2>span").css("color", "green");
     $.ajax({
         type: "POST",
         url: "../Ajax/ajaxCheckLogin.php",

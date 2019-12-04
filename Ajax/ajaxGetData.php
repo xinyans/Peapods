@@ -7,7 +7,7 @@
         $result = mysqli_query($db, $query);
         if($result and $result->num_rows > 0){
             $printData = mysqli_fetch_all($result);
-            echo '{"data"=[';
+            echo '{"data":[';
             $print = "";
             foreach($printData as $row){
                 $print = $print.$row[0].',';
@@ -17,25 +17,18 @@
         }
         else {
             //if there is no such code
-            echo "";
+            echo "asdsadas";
         }
         $db->close();
     }
 
-   /**
-   *     Code to make this ajax request:
-   *
-   *     $.ajax({
-   *         type: "POST",
-   *         url: "../Ajax/ajaxGetData.php",
-   *         data: {code: "abcdef"},
-   *         contentType: "application/json; charset=utf-8",
-   *         dataType: "json",
-   *         success: function(msg){
-   *             alert(msg);
-   *         }
-   *     });
-   * 
-   *    or line of form project.websys/Ajax/ajaxGetData.php?code=abcdef
-    **/
+    // $.ajax({
+    //     type: "POST",
+    //     url: "../Ajax/ajaxGetData.php",
+    //     data: {code: "abcdef"},
+    //     success: function(msg){
+    //         console.log(msg);
+    //     }
+    // });
+    // or line of form project.websys/Ajax/ajaxGetData.php?code=abcdef
 ?>
