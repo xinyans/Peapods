@@ -11,7 +11,7 @@
     
     if($dbOk And $_SERVER["REQUEST_METHOD"] == "GET"){
         $code = htmlspecialchars(trim($_GET["code"]));
-        $query = "SELECT `form_data` FROM forms WHERE `code` = ?";
+        $query = "SELECT `formjson` FROM forms WHERE `code` = ?";
         $statement = $db->prepare($query);
         if($statement){
             $statement->bind_param("s", $code);
@@ -29,29 +29,15 @@
         }
     }
     else if($dbOk And $_SERVER["REQUEST_METHOD"] == "POST"){
-        $code = substr(uniqid(), -6);
-        // Checks if the code is unique
-        $codeValidation = $db->query("SELECT * FROM forms WHERE `code` = '$code'");
-        // Tries 1000 times before exploding
-        $i = 0;
-        while($codeValidation->num_rows != 0 And $i < 1000){
-            $code = substr(uniqid(), -6);
-            $codeValidation = $db->query("SELECT * FROM forms WHERE `code` = '$code'");
-            $i = $i + 1;
-        }
-        if($i >= 1000){
-            die("Cannot add this event.");
-        }
-
-        $creator = "Xinyan Sun"; // This is the username of creator
-        $data = json_encode($_POST["form"]);
-        $query = "INSERT INTO forms (`code`, `creator`, `formjson`) VALUES (?, ?, '$data')"; // Mysteriously I could not
+        $code = $_POST["code"];
+        $data = json_encode($_POST["data"]);
+        $query = "INSERT INTO formdata (`code`, `responsejson`) VALUES (?, ?)";
         $statement = $db->prepare($query);
         if($statement){
-            $statement->bind_param("ss", $code, $creator);
+            $statement->bind_param("ss", $code, $data);
             $statement->execute();
             $statement->close();
-            $success = array('errors'=>false,'message'=>'New form creation successful','code'=>$code);
+            $success = array('errors'=>false,'message'=>'Form response recorded successful','code'=>$code);
             echo json_encode($success);
         }
         else{
