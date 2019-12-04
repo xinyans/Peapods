@@ -13,9 +13,8 @@ main {
 }
 
 #graph {
-    background-color: white;
     margin: 0;
     padding: 0;
-    width: 1000px;
+    width: 500px;
     height: 500px;
 }
