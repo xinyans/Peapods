@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $dbPassword = "macau1stOnlineCasino";
+    $dbPassword = "cows";
     $dbName = "peapods";
     $db = new mysqli('localhost', 'root', $dbPassword, $dbName);
     
@@ -22,7 +22,7 @@
                 $success = array('errors'=>true,'message'=>'Form not found');
             }
             else{
-                $success = array('errors'=>false,'message'=>'Fetch form successful','formData'=>$formData["form_data"]);
+                $success = array('errors'=>false,'message'=>'Fetch form successful','formData'=>$formData["formjson"]);
             }
             echo json_encode($success);
             $statement->close();
@@ -45,7 +45,7 @@
 
         $creator = "Xinyan Sun"; // This is the username of creator
         $data = json_encode($_POST["form"]);
-        $query = "INSERT INTO forms (`code`, `creator`, `form_data`) VALUES (?, ?, '$data')"; // Mysteriously I could not
+        $query = "INSERT INTO forms (`code`, `creator`, `formjson`) VALUES (?, ?, '$data')"; // Mysteriously I could not
         $statement = $db->prepare($query);
         if($statement){
             $statement->bind_param("ss", $code, $creator);

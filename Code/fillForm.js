@@ -1,6 +1,19 @@
 var fill_form_data = {
-    "code": "",
-    "answers": []
+    "name" : "",
+    "contact" : "",
+    "c" : -1,
+    "g" : -1,
+    "answers": [],
+    "data" : []
+};
+
+var data_submit_format = {
+    "name" : "",
+    "contact" : "",
+    "c" : -1,
+    "g" : -1,
+    "answers" : [],
+    "data" : []
 };
 
 var initialized = false;
@@ -104,7 +117,7 @@ function addEventListeners(){
         addEventListeners();
     });
     $("main input").change(function(){
-        console.log($(this).val())
+        console.log($(this).attr("name"), $(this).val());
     });
 }
 
