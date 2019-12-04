@@ -3,7 +3,7 @@
     if(isset($_REQUEST['code']) and isset($_REQUEST['data'])) {
         $code = $_REQUEST['code'];
         $data = $_REQUEST['data'];
-        $db = new mysqli('localhost', 'root', 'cows', 'peapods');
+        $db = new mysqli('localhost', 'moo', 'cows', 'peapods');
         $query = "UPDATE forms SET groupjson = '$data' WHERE code = '$code'";
         $result = mysqli_query($db, $query);
         $db->close();

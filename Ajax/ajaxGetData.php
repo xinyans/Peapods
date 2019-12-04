@@ -2,7 +2,7 @@
     session_start();
     if(isset($_REQUEST['code'])) {
         $code = $_REQUEST['code'];
-        $db = new mysqli('localhost', 'root', 'cows', 'peapods');
+        $db = new mysqli('localhost', 'moo', 'cows', 'peapods');
         $query = "SELECT responsejson FROM formdata WHERE code = '$code'";
         $result = mysqli_query($db, $query);
         if($result and $result->num_rows > 0){
