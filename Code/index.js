@@ -27,6 +27,9 @@ function rsg() {
         $("h2").css("color", "black");
         $("h2>span").fadeIn(300);
         $("h2>span").css("color", "green");
+        $("h2>span").promise().done(function() {
+            $("h2").css("animationDuration", "0ms");
+        });
     }, 2250);
 }
 

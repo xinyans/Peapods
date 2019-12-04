@@ -2,7 +2,7 @@
     session_start();
     $dbPassword = "cows";
     $dbName = "peapods";
-    $db = new mysqli('localhost', 'root', $dbPassword, $dbName);
+    $db = new mysqli('localhost', 'moo', $dbPassword, $dbName);
     
     if($db->connect_error) {
         die("Connection failed: " . $db->connect_error);

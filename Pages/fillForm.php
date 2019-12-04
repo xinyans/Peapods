@@ -29,7 +29,7 @@
         </nav>
 		<main class="mainContent">
             <h2>Fill Out the Form</h2>
-            <fieldset id="">
+            <fieldset>
                 <legend>Form Code</legend>
                 <input id="formCode" placeholder="Please input the 6-digit form code">
                 <button id="formCodeSubmit">Search Form</button>
