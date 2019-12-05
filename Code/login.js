@@ -183,7 +183,9 @@ function loginClick(){
 
 /** Call this function from page js file */
 function addLoginListeners(){
-    textListeners();
+    if(typeof textListeners === "function"){
+        textListeners();
+    }
     $("span:nth-child(1)").css("color", "black");
     $("span:nth-child(2)").css("color", "black");
     $("span:nth-child(3)").css("color", "black");

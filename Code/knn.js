@@ -127,10 +127,11 @@
             groupVal++;
         }
     }
+    console.log(dataSet);
     return dataSet;
  }
 
-function runAlgo(code){
+function runAlgo(code, groups){
     c = code;
     $.ajax({
         type: "POST",
@@ -140,7 +141,7 @@ function runAlgo(code){
             $.ajax({
                 type: "POST",
                 url: "../Ajax/ajaxReturnAlgoData.php",
-                data: {code: code, data: formatter(groupify(JSON.parse(msg)["data"], 4),4)},
+                data: {code: code, data: formatter(groupify(JSON.parse(msg)["data"], groups),groups)},
                 success: function(msg){
                     console.log(msg);
                 }

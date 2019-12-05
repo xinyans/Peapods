@@ -5,6 +5,7 @@ function displayData(){
         url: "../Ajax/getGroups.php",
         data: {code: code},
         success: function(msg){
+            console.log(msg);
             exampleData = JSON.parse(msg);
             returnHTML = "";
             //this.drawCanvas(this.exampleData["formTitle"]);
