@@ -358,7 +358,6 @@ function createGraph(elementIdentifier, code){
                     url: "../Ajax/ajaxGraphGetData.php",
                     data: {code: code},
                     success: function(msg){
-                        console.log("ajax started");
                         $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
                     }
                 });
