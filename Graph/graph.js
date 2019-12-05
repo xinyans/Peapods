@@ -2438,6 +2438,5 @@ function createGraph(elementIdentifier, code){
 
 window.onload = function() {
   createGraph("#graph", "abcdef");
-    // $("#graph").graph(data, ["c", "g", "name", "answers", "contact"], "c", "g", Math.PI/4, Math.PI/8);
 }
 
