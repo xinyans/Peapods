@@ -214,7 +214,7 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
     for(i = 0; i < data["data"].length; i++){
         item = data["data"][i];
         x = d - ((item["data"][xaxis] - minx) * xinc) + (((item["data"][zaxis] - minz) * Math.sin(degx/2)) * zinc);
-        y = ((item["data"][yaxis] - miny) * yinc) + ((item["data"][zaxis] - minz) * Math.sin(degy) * zinc);
+        y = ((item["data"][yaxis] - miny) * yinc) + ((item["data"][zaxis] - minz) * Math.sin(degy/2) * zinc);
         c = item["g"];
         if(item["g"] == -1){
             item["c"] = "#000000";
@@ -228,7 +228,7 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
             ctx.arc(offsetx + x, offsety + d - y, radius, 0, 2 * Math.PI);
         }
         else {
-            ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius * item["data"][zaxis]) + radius, 0, 2 * Math.PI);
+            ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius * (1 - item["data"][zaxis])) + radius, 0, 2 * Math.PI);
         }
         ctx.fill();   
         ctx.closePath(); 
@@ -286,7 +286,7 @@ $.fn.graph = function(dataSet, donotuse, color, group, degx, degy){
 
 
     /** All of the following is for the demo not final use */
-    /**
+    // /**
     document.onmousemove = function(event){
         mousex = event.clientX;
         mousey = event.clientY;
@@ -325,7 +325,7 @@ $.fn.graph = function(dataSet, donotuse, color, group, degx, degy){
     $("body").on("mouseup", function(){
         clearInterval(inter);
     });
-    **/
+    // **/
     /** This is the end of the demo code */
 }
 
