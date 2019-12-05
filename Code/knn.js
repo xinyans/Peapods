@@ -32,7 +32,7 @@
     $.ajax({
         type: "POST",
         url: "../Ajax/ajaxReturnKNN.php",
-        data: {code: c, data: JSON.stringify(base)},
+        data: {code: c, data: JSON.stringify(base), numGroups: numGroups},
         success: function(msg){
         }
     });
