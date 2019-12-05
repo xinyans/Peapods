@@ -16,12 +16,12 @@
 	margin-left: 0;
 	display: none;
 	color: black;
-	width: 30%;
-	font-size: 20px;
+	width: 40%;
+	font-size: 24px;
 	line-height: 30px;
-	height: 30px;
+	height: 0px;
 	text-align: center;
-	font-weight: bold;
+	font-weight: normal;
 }
 
 .group
@@ -47,13 +47,39 @@
 .submissions {
 	text-align: left;
 	float: left;
-	padding-top: 80px;
+	padding-top: 90px;
 }
 
 .code {
 	text-align: right;
 	float: right;
-	padding-top: 80px;
+	padding-top: 90px;
+}
+
+.graph
+{
+	margin-bottom: 30px !important;
+	margin-left: 40px !important;
+	padding-bottom: 0px !important;
+	height: 170px;
+}
+
+.generateGroups
+{
+	float: right !important;
+	height: 40px !important;
+	width: auto !important;
+	margin-left: -50px !important;
+	margin-top: -195px !important;
+}
+
+.deleteForm
+{
+	float: right !important; 
+	height: 40px !important; 
+	width: auto !important;
+	margin-left: -50px !important;
+	margin-top: -145px !important;
 }
 
 @media only screen and (min-width: 800px) {

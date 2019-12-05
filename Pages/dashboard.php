@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="../Stylesheets/dashboard.css">
         <script src="../Code/jquery-3.4.1.min.js"></script>
         <script src="../Code/login.js"></script>
+        <script src="../Graph/graph.js"></script>
     </head>
     <body>
         <nav>
@@ -48,17 +49,23 @@
                     $submissions = $db->query($sql_submissions)->fetch_assoc()["submissions"];
 
                     echo '<div class="dashBar">
-                          <h1>graph here</h1>
+                          <canvas class="graph" id="'. $code .'"></canvas>
                           <div class="group">
-                          <h1 class="groupname">'. $groupname .'</h2>
+                          <h1 class="groupname">'. $groupname .'</h1>
                           <div class="clearfix">
-                          <h1 class="submissions">'. $submissions .' Submissions</h3>
-                          <h1 class="code">CODE: '. $row["code"].'</h3>
-                          </div></div></div>';
+                          <h1 class="submissions">'. $submissions .' Submissions</h1>
+                          <h1 class="code">CODE: '. $code.'</h1>
+                          </div></div></div><img onclick="location.reload();" class="generateGroups" src="https://img.icons8.com/pastel-glyph/64/000000/groups.png">
+                          <img class="deleteForm" src="https://img.icons8.com/android/96/000000/trash.png">';
+
+                    echo '<script type="text/javascript">
+                         createGraph("#'. $code .'", "'. $code .'");
+                         </script>';
                 }
-                
+
                 $db->close();
             ?>
+
         </main>
     </body>
 </html>
