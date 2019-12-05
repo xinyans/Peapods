@@ -138,6 +138,7 @@ function runAlgo(code, groups){
         data: {code: code},
         success: function(msg){
             if(msg == ""){
+                console.log("this happened");
                 base = {
                     "data": []
                 }
@@ -155,7 +156,7 @@ function runAlgo(code, groups){
                     url: "../Ajax/ajaxReturnAlgoData.php",
                     data: {code: code, data: formatter(groupify(JSON.parse(msg)["data"], groups),groups)},
                     success: function(msg){
-                        console.log(msg);
+                        console.log("This too");
                     }
                 }); 
             }

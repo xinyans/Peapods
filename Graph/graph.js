@@ -351,10 +351,20 @@ function createGraph(elementIdentifier, code){
     url: "../Ajax/ajaxGraphGetData.php",
     data: {code: code},
     success: function(msg){
-        if(msg == ""){
+        if(msg == "" || JSON.parse(msg)["data"].length == 0){
             runAlgo(code, 1);
+            $.ajax({
+                type: "POST",
+                url: "../Ajax/ajaxGraphGetData.php",
+                data: {code: code},
+                success: function(msg){
+                    $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
+                }
+            });
         }
-      $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
+        else{
+            $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
+        }
     }
 });
 }
