@@ -24,16 +24,41 @@
             </section>
         </nav>
         <main>
-            <div class="dashBar">
-                <h1>graph here</h1>
-                <div class="group">
-                    <h1 class="groupname">WebSys Section 4 Groups</h2>
-                    <div class="clearfix">
-                        <h1 class="submissions">500 Submissions</h3>
-                        <h1 class="code">CODE: MXJSLZE</h3>
-                    </div>
-                </div>
-            </div>
+            <?php
+                session_start();
+
+                $db = new mysqli('localhost', 'moo', 'cows', 'peapods');
+                if ($db->connect_error) {
+                    die("Connection failed: " . $db->connect_error);
+                }
+
+                $sql_username = 'SELECT * FROM logins WHERE loginCookie="' . $_SESSION['loginCookie'] . '"';
+                $result = $db->query($sql_username);
+                $username = $result->fetch_assoc()["username"];
+
+                $sql_forms= 'SELECT * FROM forms WHERE creator="' . $username . '"';
+                $forms = $db->query($sql_forms);
+
+                while($row = $forms->fetch_assoc()) {
+                    $code = $row["code"];
+                    $groupjson = json_decode($row["groupjson"]);
+                    $groupname = $groupjson->{'formTitle'};
+
+                    $sql_submissions= 'SELECT COUNT(code) AS submissions FROM formdata WHERE code="'. $code .'"';
+                    $submissions = $db->query($sql_submissions)->fetch_assoc()["submissions"];
+
+                    echo '<div class="dashBar">
+                          <h1>graph here</h1>
+                          <div class="group">
+                          <h1 class="groupname">'. $groupname .'</h2>
+                          <div class="clearfix">
+                          <h1 class="submissions">'. $submissions .' Submissions</h3>
+                          <h1 class="code">CODE: '. $row["code"].'</h3>
+                          </div></div></div>';
+                }
+                
+                $db->close();
+            ?>
         </main>
     </body>
 </html>
