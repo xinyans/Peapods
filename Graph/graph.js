@@ -205,7 +205,7 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
         // console.log("degx: " + (degx/2)/Math.PI * 180 + " degy: " + degy/Math.PI * 180);
         for(i = 0; i < data["data"].length; i++){
             item = data["data"][i];
-            x = d - ((item["data"][xaxis] - minx) * xinc) + (((item["data"][zaxis] - minz) * Math.sin(degx)) * zinc);
+            x = d - ((item["data"][xaxis] - minx) * xinc) + (((item["data"][zaxis] - minz) * Math.sin(degx/2)) * zinc);
             y = ((item["data"][yaxis] - miny) * yinc) + ((item["data"][zaxis] - minz) * Math.sin(degy/2) * zinc);
             c = item["g"];
             if(item["g"] == -1){
@@ -265,7 +265,7 @@ $.fn.graph = function(dataSet, degx, degy){
         axis = topThreeSdev(dataSet);
     }
     else {
-        axis = [0,0,0];
+        axis = [0,1,2];
     }
 
     //Sorting data by z axis
