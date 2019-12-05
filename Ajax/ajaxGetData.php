@@ -17,7 +17,7 @@
         }
         else {
             //if there is no such code
-            echo "asdsadas";
+            echo "";
         }
         $db->close();
     }

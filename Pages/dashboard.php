@@ -10,7 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../Stylesheets/dashboard.css">
         <script src="../Code/jquery-3.4.1.min.js"></script>
         <script src="../Code/login.js"></script>
+        <script src="../Code/knn.js"></script>
         <script src="../Graph/graph.js"></script>
+        <script src="../Code/dashboard.js"></script>
     </head>
     <body>
         <nav>
@@ -43,8 +45,8 @@
                 while($row = $forms->fetch_assoc()) {
                     $code = $row["code"];
                     $groupjson = json_decode($row["groupjson"]);
-                    $groupname = $groupjson->{'formTitle'};
-
+                    //$groupname = $groupjson->{'formTitle'};
+                    $groupname = "test";
                     $sql_submissions= 'SELECT COUNT(code) AS submissions FROM formdata WHERE code="'. $code .'"';
                     $submissions = $db->query($sql_submissions)->fetch_assoc()["submissions"];
 
@@ -59,7 +61,7 @@
                           <img class="deleteForm" src="https://img.icons8.com/android/96/000000/trash.png">';
 
                     echo '<script type="text/javascript">
-                         createGraph("#'. $code .'", "'. $code .'");
+                            createGraph("#'. $code .'", "'. $code .'");
                          </script>';
                 }
 

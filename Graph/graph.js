@@ -61,7 +61,7 @@ function minmax(data, key){
 
 //Draws the graph aka does all the graphics
 //Width and height should be the same
-function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, yaxis, zaxis, groupCount, colors){
+function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, yaxis, zaxis, groupCount, colors, nonzero){
     
     //Clear any previous content in canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -72,22 +72,24 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
     // maxy = 1;
     // minz = 0;
     // maxz = 1;
+    if(nonzero){
 
-    temp = minmax(data, xaxis);
-    minx = temp[0] - .1;
-    maxx = temp[1] + .1;
-    temp = minmax(data, yaxis);
-    miny = temp[0] - .1;
-    maxy = temp[1] + 0.1;
-    temp = minmax(data, zaxis);
-    minz = temp[0] - 0.1;
-    maxz = temp[1] + 0.1;
+        temp = minmax(data, xaxis);
+        minx = temp[0] - .1;
+        maxx = temp[1] + .1;
+        temp = minmax(data, yaxis);
+        miny = temp[0] - .1;
+        maxy = temp[1] + 0.1;
+        temp = minmax(data, zaxis);
+        minz = temp[0] - 0.1;
+        maxz = temp[1] + 0.1;
 
-    //Getting increments which represent the size of one unit relative to the size of the canvas
-    xinc = Math.floor(d / (maxx - minx));
-    yinc = Math.floor(d / (maxy - miny));
-    zinc = Math.floor(Math.sqrt(Math.pow((d * Math.cos(degx)),2) + Math.pow(d * Math.sin(degy),2)) / (maxz - minz + 1));
-    radius = 4;
+        //Getting increments which represent the size of one unit relative to the size of the canvas
+        xinc = Math.floor(d / (maxx - minx));
+        yinc = Math.floor(d / (maxy - miny));
+        zinc = Math.floor(Math.sqrt(Math.pow((d * Math.cos(degx)),2) + Math.pow(d * Math.sin(degy),2)) / (maxz - minz + 1));
+        radius = 4;
+    }
 
     //Setting the background colors of sections ----------->
 
@@ -198,29 +200,31 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
     ctx.closePath(); 
 
     //Placing data on the board -------------------------------------------------------------
+    if(nonzero){
 
-    // console.log("degx: " + (degx/2)/Math.PI * 180 + " degy: " + degy/Math.PI * 180);
-    for(i = 0; i < data["data"].length; i++){
-        item = data["data"][i];
-        x = d - ((item["data"][xaxis] - minx) * xinc) + (((item["data"][zaxis] - minz) * Math.sin(degx)) * zinc);
-        y = ((item["data"][yaxis] - miny) * yinc) + ((item["data"][zaxis] - minz) * Math.sin(degy/2) * zinc);
-        c = item["g"];
-        if(item["g"] == -1){
-            item["c"] = "#000000";
+        // console.log("degx: " + (degx/2)/Math.PI * 180 + " degy: " + degy/Math.PI * 180);
+        for(i = 0; i < data["data"].length; i++){
+            item = data["data"][i];
+            x = d - ((item["data"][xaxis] - minx) * xinc) + (((item["data"][zaxis] - minz) * Math.sin(degx)) * zinc);
+            y = ((item["data"][yaxis] - miny) * yinc) + ((item["data"][zaxis] - minz) * Math.sin(degy/2) * zinc);
+            c = item["g"];
+            if(item["g"] == -1){
+                item["c"] = "#000000";
+            }
+            else {
+                item["c"] = colors[item["g"]];
+            }
+            ctx.fillStyle = item["c"];
+            ctx.beginPath();
+            if(item["data"][zaxis] == 0){
+                ctx.arc(offsetx + x, offsety + d - y, radius, 0, 2 * Math.PI);
+            }
+            else {
+                ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius * (1 - item["data"][zaxis])) + radius, 0, 2 * Math.PI);
+            }
+            ctx.fill();   
+            ctx.closePath(); 
         }
-        else {
-            item["c"] = colors[item["g"]];
-        }
-        ctx.fillStyle = item["c"];
-        ctx.beginPath();
-        if(item["data"][zaxis] == 0){
-            ctx.arc(offsetx + x, offsety + d - y, radius, 0, 2 * Math.PI);
-        }
-        else {
-            ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius * (1 - item["data"][zaxis])) + radius, 0, 2 * Math.PI);
-        }
-        ctx.fill();   
-        ctx.closePath(); 
     }
 
     //front top cross
@@ -252,9 +256,17 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
 //takes the dataset. Which contains a .set selector for array of data.
 //Donotuse defines the columns not to be graphed, there needs to be a color and group column
 $.fn.graph = function(dataSet, degx, degy){
-
+    nonzero = true;
+    if(dataSet["data"].length <= 0){
+        nonzero = false;
+    }
     //Retrieves the axes of the graph that have highest sdev
-    axis = topThreeSdev(dataSet);
+    if(nonzero){
+        axis = topThreeSdev(dataSet);
+    }
+    else {
+        axis = [0,0,0];
+    }
 
     //Sorting data by z axis
     // dataSet.set.sort(function(a, b){return (a[axis[0]] < b[axis[0]]) ? 1 : -1;});
@@ -271,16 +283,21 @@ $.fn.graph = function(dataSet, degx, degy){
     offsety = 0.3 * d;
     d *= 0.5;
     groupCount = 0;
-    for(i = 0; i < dataSet["data"].length; i++){
-        if(dataSet["data"][i]["g"] > groupCount)
-            groupCount = dataSet["data"][i]["g"];
+    if(nonzero){
+        for(i = 0; i < dataSet["data"].length; i++){
+            if(dataSet["data"][i]["g"] > groupCount)
+                groupCount = dataSet["data"][i]["g"];
+        }
+        //Retrieve bufferzones from the data
+        colors = new Array(groupCount + 1);
+        for(i = 0; i < colors.length; i++){
+            colors[i] = getRandomColor();
+        }
     }
-    //Retrieve bufferzones from the data
-    colors = new Array(groupCount + 1);
-    for(i = 0; i < colors.length; i++){
-        colors[i] = getRandomColor();
+    else {
+        colors = [];
     }
-    drawGraph(canvas, ctx, d, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], groupCount, colors);
+    drawGraph(canvas, ctx, d, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], groupCount, colors, nonzero);
 
 
     /** All of the following is for the demo not final use */
@@ -334,6 +351,9 @@ function createGraph(elementIdentifier, code){
     url: "../Ajax/ajaxGraphGetData.php",
     data: {code: code},
     success: function(msg){
+        if(msg == ""){
+            runAlgo(code, 1);
+        }
       $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
     }
 });

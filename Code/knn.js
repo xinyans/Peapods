@@ -137,14 +137,28 @@ function runAlgo(code, groups){
         url: "../Ajax/ajaxGetData.php",
         data: {code: code},
         success: function(msg){
-            $.ajax({
-                type: "POST",
-                url: "../Ajax/ajaxReturnAlgoData.php",
-                data: {code: code, data: formatter(groupify(JSON.parse(msg)["data"], groups),groups)},
-                success: function(msg){
-                    console.log(msg);
+            if(msg == ""){
+                base = {
+                    "data": []
                 }
-            });
+                $.ajax({
+                    type: "POST",
+                    url: "../Ajax/ajaxReturnKNN.php",
+                    data: {code: code, data: JSON.stringify(base), numGroups: 1},
+                    success: function(msg){
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "../Ajax/ajaxReturnAlgoData.php",
+                    data: {code: code, data: formatter(groupify(JSON.parse(msg)["data"], groups),groups)},
+                    success: function(msg){
+                        console.log(msg);
+                    }
+                }); 
+            }
         }
     });
 }
