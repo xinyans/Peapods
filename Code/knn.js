@@ -29,7 +29,6 @@
     base = {
         "data": dataSet
     }
-    console.log(base);
     $.ajax({
         type: "POST",
         url: "../Ajax/ajaxReturnKNN.php",

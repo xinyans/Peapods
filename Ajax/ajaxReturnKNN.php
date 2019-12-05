@@ -4,7 +4,7 @@
         $code = $_REQUEST['code'];
         $data = $_REQUEST['data'];
         $db = new mysqli('localhost', 'moo', 'cows', 'peapods');
-        $query = "UPDATE forms SET responsejson = '$data' WHERE code = '$code'";
+        $query = "UPDATE forms SET responsejson = '$data', fillform = '0' WHERE code = '$code'";
         $result = mysqli_query($db, $query);
         $db->close();
         echo "success";

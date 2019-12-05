@@ -2424,7 +2424,20 @@ $.fn.graph = function(dataSet, donotuse, color, group, degx, degy){
     /** This is the end of the demo code */
 }
 
+//Element identifier is the string that would go into the jquery selector
+function createGraph(elementIdentifier, code){
+  $.ajax({
+    type: "POST",
+    url: "../Ajax/ajaxGraphGetData.php",
+    data: {code: code},
+    success: function(msg){
+      $(elementIdentifier).graph(JSON.parse(msg), ["c", "g", "name", "answers", "contact"], "c", "g", Math.PI/4, Math.PI/8);
+    }
+});
+}
+
 window.onload = function() {
-    $("#graph").graph(data, ["c", "g", "name", "answers", "contact"], "c", "g", Math.PI/4, Math.PI/8);
+  createGraph("#graph", "abcdef");
+    // $("#graph").graph(data, ["c", "g", "name", "answers", "contact"], "c", "g", Math.PI/4, Math.PI/8);
 }
 
