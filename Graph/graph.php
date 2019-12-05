@@ -6,7 +6,9 @@
         <link rel="icon" type="image/png" href="resources/favicon.png">
         <link rel="stylesheet" type="text/css" href="graph.css">
         <script src="jquery-3.4.1.min.js"></script>
+        <script src="../code/knn.js"></script>
         <script src="graph.js"></script>
+
     </head>
     <body>
         <main>

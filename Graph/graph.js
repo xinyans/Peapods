@@ -1,7 +1,7 @@
 function getRandomColor(){
-    r = Math.floor(Math.random() * 255);
-    g = Math.floor(Math.random() * 255);
-    b = Math.floor(Math.random() * 255);
+    r = Math.floor(Math.random() * 200);
+    g = Math.floor(Math.random() * 200);
+    b = Math.floor(Math.random() * 200);
     r_str = r.toString(16);
     g_str = g.toString(16);
     b_str = b.toString(16);
@@ -61,7 +61,7 @@ function minmax(data, key){
 
 //Draws the graph aka does all the graphics
 //Width and height should be the same
-function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, yaxis, zaxis, group, color){
+function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, yaxis, zaxis, groupCount, colors){
     
     //Clear any previous content in canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -83,17 +83,6 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
     minz = temp[0] - 0.1;
     maxz = temp[1] + 0.1;
 
-
-    groupCount = 0;
-    for(i = 0; i < data["data"].length; i++){
-        if(data["data"][i]["g"] > groupCount)
-            groupCount = data["data"][i]["g"];
-    }
-    //Retrieve bufferzones from the data
-    colors = new Array(groupCount + 1);
-    for(i = 0; i < colors.length; i++){
-        colors[i] = getRandomColor();
-    }
     //Getting increments which represent the size of one unit relative to the size of the canvas
     xinc = Math.floor(d / (maxx - minx));
     yinc = Math.floor(d / (maxy - miny));
@@ -213,7 +202,7 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
     // console.log("degx: " + (degx/2)/Math.PI * 180 + " degy: " + degy/Math.PI * 180);
     for(i = 0; i < data["data"].length; i++){
         item = data["data"][i];
-        x = d - ((item["data"][xaxis] - minx) * xinc) + (((item["data"][zaxis] - minz) * Math.sin(degx/2)) * zinc);
+        x = d - ((item["data"][xaxis] - minx) * xinc) + (((item["data"][zaxis] - minz) * Math.sin(degx)) * zinc);
         y = ((item["data"][yaxis] - miny) * yinc) + ((item["data"][zaxis] - minz) * Math.sin(degy/2) * zinc);
         c = item["g"];
         if(item["g"] == -1){
@@ -262,7 +251,7 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
 //width must be greater than or equal to height of elemnt
 //takes the dataset. Which contains a .set selector for array of data.
 //Donotuse defines the columns not to be graphed, there needs to be a color and group column
-$.fn.graph = function(dataSet, donotuse, color, group, degx, degy){
+$.fn.graph = function(dataSet, degx, degy){
 
     //Retrieves the axes of the graph that have highest sdev
     axis = topThreeSdev(dataSet);
@@ -281,12 +270,21 @@ $.fn.graph = function(dataSet, donotuse, color, group, degx, degy){
     offsetx = 0.1 * d;
     offsety = 0.3 * d;
     d *= 0.5;
-
-    drawGraph(canvas, ctx, d, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], "g", "c");
+    groupCount = 0;
+    for(i = 0; i < dataSet["data"].length; i++){
+        if(dataSet["data"][i]["g"] > groupCount)
+            groupCount = dataSet["data"][i]["g"];
+    }
+    //Retrieve bufferzones from the data
+    colors = new Array(groupCount + 1);
+    for(i = 0; i < colors.length; i++){
+        colors[i] = getRandomColor();
+    }
+    drawGraph(canvas, ctx, d, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], groupCount, colors);
 
 
     /** All of the following is for the demo not final use */
-    // /**
+    /**
     document.onmousemove = function(event){
         mousex = event.clientX;
         mousey = event.clientY;
@@ -317,7 +315,7 @@ $.fn.graph = function(dataSet, donotuse, color, group, degx, degy){
                     hyp = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
                     degy = Math.asin(y/d);
                     degx = Math.acos(x/d);
-                    drawGraph(canvas, ctx, d, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], "g", "c");
+                    drawGraph(canvas, ctx, d, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], groupCount, colors);
                 }
             }, 100);
         }
@@ -325,7 +323,7 @@ $.fn.graph = function(dataSet, donotuse, color, group, degx, degy){
     $("body").on("mouseup", function(){
         clearInterval(inter);
     });
-    // **/
+    **/
     /** This is the end of the demo code */
 }
 
@@ -336,7 +334,7 @@ function createGraph(elementIdentifier, code){
     url: "../Ajax/ajaxGraphGetData.php",
     data: {code: code},
     success: function(msg){
-      $(elementIdentifier).graph(JSON.parse(msg), ["c", "g", "name", "answers", "contact"], "c", "g", Math.PI/4, Math.PI/8);
+      $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
     }
 });
 }
