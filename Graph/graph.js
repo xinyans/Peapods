@@ -220,7 +220,7 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
                 ctx.arc(offsetx + x, offsety + d - y, radius, 0, 2 * Math.PI);
             }
             else {
-                ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius * (1 - item["data"][zaxis])) + radius, 0, 2 * Math.PI);
+                ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius * (1 - item["data"][zaxis])), 0, 2 * Math.PI);
             }
             ctx.fill();   
             ctx.closePath(); 
@@ -346,27 +346,36 @@ $.fn.graph = function(dataSet, degx, degy){
 
 //Element identifier is the string that would go into the jquery selector
 function createGraph(elementIdentifier, code){
-  $.ajax({
-    type: "POST",
-    url: "../Ajax/ajaxGraphGetData.php",
-    data: {code: code},
-    success: function(msg){
-        if(msg == "" || JSON.parse(msg)["data"].length == 0){
-            runAlgo(code, 1);
-            $.ajax({
-                type: "POST",
-                url: "../Ajax/ajaxGraphGetData.php",
-                data: {code: code},
-                success: function(msg){
-                    $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
-                }
-            });
+    $.ajax({
+        type: "POST",
+        url: "../Ajax/checkCode.php",
+        data: {code: code},
+        success: function(msg2){
+            if(msg2 == '1'){
+                runAlgo(code, 1);
+                $.ajax({
+                    type: "POST",
+                    url: "../Ajax/ajaxGraphGetData.php",
+                    data: {code: code},
+                    success: function(msg){
+                        console.log("ajax started");
+                        $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
+                    }
+                });
+            }
+            else{
+                $.ajax({
+                    type: "POST",
+                    url: "../Ajax/ajaxGraphGetData.php",
+                    data: {code: code},
+                    success: function(msg){
+                       $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
+                    }
+                });
+            }
+     
         }
-        else{
-            $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
-        }
-    }
-});
+    });
 }
 
 window.onload = function() {
