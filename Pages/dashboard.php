@@ -50,7 +50,8 @@
                     $code = $row["code"];
                     // $groupjson = json_decode($row["groupjson"]);
                     // $groupname = $groupjson->{'formTitle'};
-                    $groupname = "Groups";
+                    $query = 'SELECT formname FROM forms WHERE CODE = "'.$code.'"';
+                    $groupname = $db->query($query)->fetch_assoc()['formname'];
                     $sql_submissions= 'SELECT COUNT(code) AS submissions FROM formdata WHERE code="'. $code .'"';
                     $submissions = $db->query($sql_submissions)->fetch_assoc()["submissions"];
 
