@@ -1,3 +1,26 @@
+<?php
+    session_start();
+    $dbPassword = "cows";
+    $dbName = "peapods";
+    $db = new mysqli('localhost', 'moo', $dbPassword, $dbName);
+    
+    if($db->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    }
+    $dbOk = true;
+    
+    if($dbOk And $_SERVER["REQUEST_METHOD"] == "GET"){
+		if(array_key_exists("code",$_GET)){
+			$code_exists = true;
+			$code = $_GET["code"];
+		}
+		else{
+			$code_exists = false;
+		}
+	}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -20,7 +43,7 @@
             <a title="Home" href = "index.php"><img src="../Resources/Peapods.png" alt="Home"/></a>
             <section>
                 <form id="groupSearch" action="#">
-                    <input title="Group Search" type="text" name="code" placeholder="Group Code"/>
+                    <input title="Group Search" type="text" name="code" placeholder="Form Code" value="<?php if($code_exists){echo $code;} ?>"/>
                 </form>
                 <a title="Create Form" href="createForm.php"><img src="../Resources/createform.png" alt="Create Form"/></a>
                 <a title="Dashboard" href="dashboard.php"><img src="../Resources/dashboard.png" alt="Dashboard"/></a>
@@ -28,12 +51,6 @@
             </section>
         </nav>
 		<main class="mainContent">
-            <h2>Fill Out the Form</h2>
-            <fieldset>
-                <legend>Form Code</legend>
-                <input id="formCode" placeholder="Please input the 6-digit form code">
-                <button id="formCodeSubmit">Search Form</button>
-            </fieldset>
 		</main>
 	</body>
 
