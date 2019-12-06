@@ -31,10 +31,6 @@
     else if($dbOk And $_SERVER["REQUEST_METHOD"] == "POST"){
         $code = $_POST["code"];
         $data = json_encode($_POST["data"], JSON_NUMERIC_CHECK);
-<<<<<<< HEAD
-        echo $data;
-=======
->>>>>>> 0286e59e689f927b361b243ce8f46c7c6ab73881
         $query = "INSERT INTO formdata (`code`, `responsejson`) VALUES (?, ?)";
         $statement = $db->prepare($query);
         if($statement){
