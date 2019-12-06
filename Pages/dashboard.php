@@ -87,20 +87,7 @@
 
                 $db->close();
             ?>
-            <script type="text/javascript">
-                // for (x = 0; x < window.codes.length; x++) { 
-                //     console.log("windowcode ", window.codes);
-                //     $("#" + window.codes[x] + "_generate").click(function() {
-                //         console.log("clicked");
-                //         for (x = 0; x < window.codes.length; x++) {
-                //             runAlgo(window.codes[x], document.getElementById(window.codes[x]+"_input").value);
-                //             //console.log("RunAlgo complete for" + window.codes[x]);
-                //             createGraph("#" + window.codes[x], window.codes[x])
-                //         }
-                //     });
-                // }
-                
-
+            <script type="text/javascript">        
                 $(".slider").on('change', function(event){
                     $("h1[id="+ event.target.id +"]").text("Groups: " + event.target.value);
                 });
