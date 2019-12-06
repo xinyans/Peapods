@@ -55,7 +55,7 @@
                     $sql_submissions= 'SELECT COUNT(code) AS submissions FROM formdata WHERE code="'. $code .'"';
                     $submissions = $db->query($sql_submissions)->fetch_assoc()["submissions"];
 
-                    echo '<div class="dashBar">
+                    echo '<div class="dashBar" id = "'. $code . '_container">
                           <canvas class="graph" id="'. $code .'"></canvas>
                           <div class="group">
                           <h1 class="groupname">'. $groupname .'</h1>
@@ -90,6 +90,11 @@
             <script type="text/javascript">        
                 $(".slider").on('change', function(event){
                     $("h1[id="+ event.target.id +"]").text("Groups: " + event.target.value);
+                });
+                $(".deleteForm").click(function(event){
+                    code = event.target.id.substring(0, 6);
+                    $("#" + code + "_container").css("display", "none");
+                    
                 });
                 $(".generateGroups").click(function(event){
                     code = event.target.id.substring(0, 6);
