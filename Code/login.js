@@ -253,7 +253,7 @@ function groupSearch(){
                         $(location).attr('href',"../Pages/displayGroups.php?code=" + code);
                     }
                     else if(msg == "1"){
-                        //Add code for going to fillform here
+                        $(location).attr('href',"../Pages/fillForm.php?code=" + code);
                     }
                 }
                 else {
@@ -279,7 +279,7 @@ function groupSearch2(){
                         $(location).attr('href',"../Pages/displayGroups.php?code=" + code);
                     }
                     else if(msg == "1"){
-                        //Add code for going to fillform here
+                        $(location).attr('href',"../Pages/fillForm.php?code=" + code);
                     }
                 }
                 else {

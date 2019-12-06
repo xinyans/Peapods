@@ -11,10 +11,11 @@ var initialized = false;
 
 var current_form_code;
 
+var form_name;
 var questions = [];
 
 function fetchForm(){
-    var form_code = $("#formCode").val();
+    var form_code = $("input[name='code']").val();
     current_form_code = form_code;
     if(form_code.length == 0){
         alert("Form Code cannot be empty");
@@ -31,6 +32,7 @@ function fetchForm(){
             console.log("Ajax finishes with success: ", result);
             console.log("One: ", JSON.parse(result.formData));
             questions = JSON.parse(result.formData).questions;
+            form_name = JSON.parse(result.formData).name;
         },
         error: function(msg, detail){
             console.log("Ajax finishes with error: ", msg, " With detail: ", detail);
@@ -40,14 +42,14 @@ function fetchForm(){
 
 function fillFormRender(){
     $("main").html("");
+
     var html_string = `
-        <h2>Fill Out the Form</h2>
+        <h2>${form_name}</h2>
         <form name="fillForm" action="#" id="fillForm" onsubmit="return false">
-        <fieldset id=""><span class="section">1</span>
-            <legend>Form Code</legend>
-            <input id="formCode" placeholder="Please input the 6-digit form code">
-            <button type="button" id="formCodeSubmit">Search Form</button>
-        </fieldset>
+        <fieldset id="personalInfo">
+            <legend><span class="section">1</span>Personal Information</legend>
+            <label>Your Name<input type="text" id="studentName" required></label>
+            <label>Your Email<input type="text" id="studentEmail" required></label>
         <fieldset id="fillQuestions">
             <legend><span class="section">2</span>Questions</legend>`;
     
@@ -82,20 +84,6 @@ function fillFormRender(){
     $("main").html(html_string);
 }
 
-function firstRender(){
-    $("main").html("");
-    var html_string = `
-        <h2>Fill Out the Form</h2>
-        <form name="fillForm" action="#" id="fillForm" onsubmit="return false">
-        <fieldset id=""><span class="section">1</span>
-            <legend>Form Code</legend>
-            <input id="formCode" placeholder="Please input the 6-digit form code">
-            <button type="button" id="formCodeSubmit">Search Form</button>
-        </fieldset>
-        </form>`;
-    $("main").append(html_string);
-}
-
 function addEventListeners(){
     $("main #formCodeSubmit").click(function(){
         if(initialized){
@@ -109,11 +97,13 @@ function addEventListeners(){
         addEventListeners();
     });
     $("#submitButton").click(function(){
-        if(!confirm("Sure about submitting?")){
+        var student_name = $("#studentName").val();
+        var student_email = $("#studentEmail").val();
+        if(!confirm(`Sure about submitting with name ${student_name} and email ${student_email}?`)){
             return;
         }
-        fill_form_data.name = "Some username";
-        fill_form_data.contact = "Some email address";
+        fill_form_data.name = student_name;
+        fill_form_data.contact = student_email;
         var index = 0;
         $("#fillQuestions").find("fieldset").each(function(){
             if(questions[index].typeOfQuestion == "multipleChoice"){
@@ -151,7 +141,8 @@ function addEventListeners(){
 }
 
 window.onload = function(){
-    firstRender();
+    fetchForm();
+    fillFormRender();
     addEventListeners();
     addLoginListeners();
     groupSearch();

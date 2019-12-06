@@ -1,12 +1,8 @@
 var creation_form_data = {
-    "name": "Form for Websys",
+    "name": "Test Form for Websys",
     "dateCreated": "",
     "dateDue": "2018-09-09",
     "questions": [
-        {
-            "prompt": "Something",
-            "typeOfQuestion": ""
-        },
         {
             "prompt": "Do you like front-end or back-end",
             "typeOfQuestion": "multipleChoice",
