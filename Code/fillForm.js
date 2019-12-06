@@ -66,7 +66,8 @@ function fillFormRender(){
             }
         }
         else if(questions[i].typeOfQuestion == "slider"){
-            html_string += `<input type="range" min="${questions[i].sliderMin}" max="${questions[i].sliderMax}" name="question${i+1}Slider" required>`;
+            html_string += `<input type="range" min="${questions[i].sliderMin}" max="${questions[i].sliderMax}" name="question${i+1}Slider" required>
+            <input type="number" name="question${i+1}Slider" required>`;
         }
         else if(questions[i].typeOfQuestion == "textInput"){
             html_string += `<textarea rows="5" cols="20" name="question${i+1}Text"></textarea>`;
@@ -131,7 +132,8 @@ function addEventListeners(){
             data: {"data": fill_form_data, "code": current_form_code},
             success: function(msg){
                 console.log("Ajax finishes with success: ", msg);
-                // location.href = "../Pages/createFormSuccess.php";
+                alert("Form submitted!");
+                location.href = "../Pages/index.php";
             },
             error: function(msg, detail){
                 console.log("Ajax finishes with error: ", msg, " With detail: ", detail);

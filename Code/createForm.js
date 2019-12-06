@@ -40,7 +40,8 @@ function submitCreatedForm(){
         data: {"form": creation_form_data},
         success: function(msg){
             console.log("Ajax finishes with success: ", msg);
-            // location.href = "../Pages/createFormSuccess.php";
+            alert("Form Creation Success!");
+            location.href = "../Pages/index.php";
         },
         error: function(msg, detail){
             console.log("Ajax finishes with error: ", msg, " With detail: ", detail);
