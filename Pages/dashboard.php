@@ -94,7 +94,14 @@
                 $(".deleteForm").click(function(event){
                     code = event.target.id.substring(0, 6);
                     $("#" + code + "_container").css("display", "none");
-                    
+                    $.ajax({
+                    type: "POST",
+                    url: "../Ajax/ajaxRemoveForm.php",
+                    data: {code: code},
+                    success: function(msg){
+                        console.log(msg);
+                    }
+                });
                 });
                 $(".generateGroups").click(function(event){
                     code = event.target.id.substring(0, 6);
