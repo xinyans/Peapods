@@ -44,7 +44,9 @@
 
                 $sql_forms= 'SELECT * FROM forms WHERE creator="' . $username . '"';
                 $forms = $db->query($sql_forms);
+                $ran = false;
                 while($row = $forms->fetch_assoc()) {
+                    $ran = true;
                     $code = $row["code"];
                     // $groupjson = json_decode($row["groupjson"]);
                     // $groupname = $groupjson->{'formTitle'};
@@ -76,6 +78,9 @@
                         </script></div>';
                     }
 
+                }
+                if($ran == false){
+                    echo "<h1 id = 'noforms'><a href = 'createForm.php'>Create a Form</a></h1>";
                 }
 
                 $db->close();
