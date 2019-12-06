@@ -44,8 +44,9 @@
 
                 while($row = $forms->fetch_assoc()) {
                     $code = $row["code"];
-                    $groupjson = json_decode($row["groupjson"]);
-                    $groupname = $groupjson->{'formTitle'};
+                    // $groupjson = json_decode($row["groupjson"]);
+                    // $groupname = $groupjson->{'formTitle'};
+                    $groupname = "Groups";
                     $sql_submissions= 'SELECT COUNT(code) AS submissions FROM formdata WHERE code="'. $code .'"';
                     $submissions = $db->query($sql_submissions)->fetch_assoc()["submissions"];
 
@@ -61,17 +62,16 @@
                           <h1 class="code">CODE: '. $code.'</h1>
                           </div></div></div><img class="generateGroups" src="https://img.icons8.com/pastel-glyph/64/000000/groups.png" id="'.$code.'_generate"></img>
                           <img class="deleteForm" src="https://img.icons8.com/android/96/000000/trash.png"></img>';
-
                     echo '<script type="text/javascript">
                             window.codes = [];
                             window.codes.push("'.$code.'");
                             createGraph("#'. $code .'", "'. $code .'");
-                         ';
+                            </script></div>';
                 }
 
                 $db->close();
             ?>
-
+            <script type="text/javascript">
                 for (x = 0; x < window.codes.length; x++) { 
                     document.getElementById(window.codes[x] + "_generate").onclick = function() {
                     for (x = 0; x < window.codes.length; x++) {
