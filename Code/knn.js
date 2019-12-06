@@ -126,7 +126,6 @@
             groupVal++;
         }
     }
-    console.log(dataSet);
     return dataSet;
  }
 
@@ -136,6 +135,7 @@ function runAlgo(code, groups){
         type: "POST",
         url: "../Ajax/ajaxGetData.php",
         data: {code: code},
+        async: false,
         success: function(msg){
             if(msg == ""){
                 base = {
@@ -155,7 +155,6 @@ function runAlgo(code, groups){
                     url: "../Ajax/ajaxReturnAlgoData.php",
                     data: {code: code, data: formatter(groupify(JSON.parse(msg)["data"], groups),groups)},
                     success: function(msg){
-                        console.log(msg);
                     }
                 }); 
             }

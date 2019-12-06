@@ -205,7 +205,7 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
         // console.log("degx: " + (degx/2)/Math.PI * 180 + " degy: " + degy/Math.PI * 180);
         for(i = 0; i < data["data"].length; i++){
             item = data["data"][i];
-            x = d - ((item["data"][xaxis] - minx) * xinc) + (((item["data"][zaxis] - minz) * Math.sin(degx)) * zinc);
+            x = d - ((item["data"][xaxis] - minx) * xinc) + (((item["data"][zaxis] - minz) * Math.sin(degx/2)) * zinc);
             y = ((item["data"][yaxis] - miny) * yinc) + ((item["data"][zaxis] - minz) * Math.sin(degy/2) * zinc);
             c = item["g"];
             if(item["g"] == -1){
@@ -220,7 +220,7 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
                 ctx.arc(offsetx + x, offsety + d - y, radius, 0, 2 * Math.PI);
             }
             else {
-                ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius * (1 - item["data"][zaxis])) + radius, 0, 2 * Math.PI);
+                ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius * (1 - item["data"][zaxis])), 0, 2 * Math.PI);
             }
             ctx.fill();   
             ctx.closePath(); 
@@ -265,7 +265,7 @@ $.fn.graph = function(dataSet, degx, degy){
         axis = topThreeSdev(dataSet);
     }
     else {
-        axis = [0,0,0];
+        axis = [0,1,2];
     }
 
     //Sorting data by z axis
@@ -346,17 +346,35 @@ $.fn.graph = function(dataSet, degx, degy){
 
 //Element identifier is the string that would go into the jquery selector
 function createGraph(elementIdentifier, code){
-  $.ajax({
-    type: "POST",
-    url: "../Ajax/ajaxGraphGetData.php",
-    data: {code: code},
-    success: function(msg){
-        if(msg == ""){
-            runAlgo(code, 1);
+    $.ajax({
+        type: "POST",
+        url: "../Ajax/checkCode.php",
+        data: {code: code},
+        success: function(msg2){
+            if(msg2 == '1'){
+                runAlgo(code, 1);
+                $.ajax({
+                    type: "POST",
+                    url: "../Ajax/ajaxGraphGetData.php",
+                    data: {code: code},
+                    success: function(msg){
+                        $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
+                    }
+                });
+            }
+            else{
+                $.ajax({
+                    type: "POST",
+                    url: "../Ajax/ajaxGraphGetData.php",
+                    data: {code: code},
+                    success: function(msg){
+                       $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
+                    }
+                });
+            }
+     
         }
-      $(elementIdentifier).graph(JSON.parse(msg), Math.PI/4, Math.PI/8);
-    }
-});
+    });
 }
 
 window.onload = function() {
