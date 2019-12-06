@@ -1,58 +1,22 @@
 <?php
     session_start();
-    $dbPassword = "cows";
-    $dbName = "peapods";
-    $db = new mysqli('localhost', 'moo', $dbPassword, $dbName);
-    
-    if($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-    }
-    $dbOk = true;
-    
-    if($dbOk And $_SERVER["REQUEST_METHOD"] == "GET"){
-        $code = htmlspecialchars(trim($_GET["code"]));
-        $query = "SELECT `formjson` FROM forms WHERE `code` = ?";
-        $statement = $db->prepare($query);
-        if($statement){
-            $statement->bind_param("s", $code);
-            $statement->execute();
-            $result = $statement->get_result();
-            $formData = $result->fetch_assoc();
-            if(!$formData){
-                $success = array('errors'=>true,'message'=>'Form not found');
-            }
-            else{
-                $success = array('errors'=>false,'message'=>'Fetch form successful','formData'=>$formData["formjson"]);
-            }
-            echo json_encode($success);
-            $statement->close();
+    if(isset($_REQUEST['code'])) {
+        $code = $_REQUEST['code'];
+        $db = new mysqli('localhost', 'moo', 'cows', 'peapods');
+        if($_SERVER['REQUEST_METHOD'] == "GET"){
+            $code = $_REQUEST['code'];
+            $query = "SELECT formjson FROM forms WHERE code = '$code'";
+            $result = mysqli_query($db, $query);
+            $data = mysqli_fetch_assoc($result);
+            echo $data['formjson'];
         }
-    }
-    else if($dbOk And $_SERVER["REQUEST_METHOD"] == "POST"){
-        $code = $_POST["code"];
-        $data = json_encode($_POST["data"], JSON_NUMERIC_CHECK);
-<<<<<<< HEAD
-        echo $data;
-=======
->>>>>>> 0286e59e689f927b361b243ce8f46c7c6ab73881
-        $query = "INSERT INTO formdata (`code`, `responsejson`) VALUES (?, ?)";
-        $statement = $db->prepare($query);
-        if($statement){
-            $statement->bind_param("ss", $code, $data);
-            $statement->execute();
-            $statement->close();
-            $success = array('errors'=>false,'message'=>'Form response recorded successful','code'=>$code);
-            echo json_encode($success);
+        else {
+            $code = $_REQUEST["code"];
+            $data = $_REQUEST["data"];
+            echo $data;
+            $query = "INSERT INTO formdata (code, responsejson) VALUES ('$code', '$data')";
+            $result = mysqli_query($db, $query);
         }
-        else{
-            echo "Unexpected problem with database.";
-            $queryErrors = array(
-                'errors' => true,
-            );
-            echo json_encode($queryErrors);
-        }
-
+        $db->close();
     }
-
-    $db->close();
 ?>
