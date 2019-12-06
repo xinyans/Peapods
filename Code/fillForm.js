@@ -149,7 +149,7 @@ function addEventListeners(){
             success: function(msg){
                 runAlgo(current_form_code, 1);
                 console.log("Ajax finishes with success: ", msg);
-                alert("Form submitted!");
+                //alert("Form submitted!");
                 location.href = "../Pages/index.php";
             },
             error: function(msg, detail){

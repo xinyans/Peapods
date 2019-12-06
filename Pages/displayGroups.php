@@ -1,11 +1,6 @@
 <?php
     session_start();
-    if($_SERVER["REQUEST_METHOD"] == "GET") {
-        $code = $_GET['code'];
-    }
-    else if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $code = $_POST['code'];
-    }
+    $code = $_REQUEST['code'];
 ?>
 
 <!DOCTYPE html>

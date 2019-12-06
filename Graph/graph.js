@@ -75,14 +75,14 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
     if(nonzero){
 
         temp = minmax(data, xaxis);
-        minx = temp[0] - .01;
-        maxx = temp[1] + .01;
+        minx = temp[0] - .1;
+        maxx = temp[1] + .1;
         temp = minmax(data, yaxis);
-        miny = temp[0] - .01;
-        maxy = temp[1] + 0.01;
+        miny = temp[0] - .02;
+        maxy = temp[1] + 0.02;
         temp = minmax(data, zaxis);
-        minz = temp[0] - 0.01;
-        maxz = temp[1] + 0.01;
+        minz = temp[0] - 0.02;
+        maxz = temp[1] + 0.02;
 
         //Getting increments which represent the size of one unit relative to the size of the canvas
         xinc = Math.floor(d / (maxx - minx));
@@ -257,8 +257,8 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
 //takes the dataset. Which contains a .set selector for array of data.
 //Donotuse defines the columns not to be graphed, there needs to be a color and group column
 $.fn.graph = function(dataSet, degx, degy){
-    console.log(this);
-    console.log(dataSet);
+    //console.log(this);
+    //console.log(dataSet);
     nonzero = true;
     if(dataSet["data"].length <= 0){
         nonzero = false;

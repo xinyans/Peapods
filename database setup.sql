@@ -20,6 +20,7 @@ USE peapods;
 CREATE TABLE forms(
     code varchar(6) NOT NULL,
     creator varchar(255) NOT NULL,
+    formname varchar(255) NOT NULL,
     formjson MEDIUMTEXT NOT NULL,
     groupjson MEDIUMTEXT,
     responsejson MEDIUMTEXT,

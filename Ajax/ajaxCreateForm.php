@@ -39,9 +39,14 @@
             echo json_encode($response);
             die("Message from die: User not logged in.");
         }
-
+        if(isset($_REQUEST['name'])){
+            $name = $_REQUEST["name"];
+        }
+        else {
+            $name = "Groups";
+        }
         $data = json_encode($_POST["form"]); // Turns the array into a JSON string
-        $query = "INSERT INTO forms (`code`, `creator`, `formjson`) VALUES (?, ?, '$data')"; // Mysteriously I could not
+        $query = "INSERT INTO forms (`code`, `formname`, `creator`, `formjson`) VALUES (?, '$name',?, '$data')"; // Mysteriously I could not
         $statement = $db->prepare($query);
         if($statement){
             $statement->bind_param("ss", $code, $creator);

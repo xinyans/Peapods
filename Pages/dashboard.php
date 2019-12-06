@@ -44,15 +44,18 @@
 
                 $sql_forms= 'SELECT * FROM forms WHERE creator="' . $username . '"';
                 $forms = $db->query($sql_forms);
+                $ran = false;
                 while($row = $forms->fetch_assoc()) {
+                    $ran = true;
                     $code = $row["code"];
                     // $groupjson = json_decode($row["groupjson"]);
                     // $groupname = $groupjson->{'formTitle'};
-                    $groupname = "Groups";
+                    $query = 'SELECT formname FROM forms WHERE CODE = "'.$code.'"';
+                    $groupname = $db->query($query)->fetch_assoc()['formname'];
                     $sql_submissions= 'SELECT COUNT(code) AS submissions FROM formdata WHERE code="'. $code .'"';
                     $submissions = $db->query($sql_submissions)->fetch_assoc()["submissions"];
 
-                    echo '<div class="dashBar">
+                    echo '<div class="dashBar" id = "'. $code . '_container">
                           <canvas class="graph" id="'. $code .'"></canvas>
                           <div class="group">
                           <h1 class="groupname">'. $groupname .'</h1>
@@ -61,9 +64,10 @@
                           </div>
                           <div class="clearfix">
                           <h1 class="submissions">'. $submissions .' Submissions</h1>
+                          <h1 id="'. $code .'_input" class="count">       </h1>
                           <h1 class="code">Code: '. $code.'</h1>
                           </div></div></div><img class="generateGroups" src="https://img.icons8.com/pastel-glyph/64/000000/groups.png" id="'.$code.'_generate"></img>
-                          <img class="deleteForm" src="https://img.icons8.com/android/96/000000/trash.png"></img>';
+                          <img class="deleteForm" src="https://img.icons8.com/android/96/000000/trash.png" id="'.$code.'_delete"></img>';
                     if($submissions > 0){
                         echo '<script type="text/javascript">
                         window.codes.push("'.$code.'");
@@ -77,21 +81,35 @@
                     }
 
                 }
+                if($ran == false){
+                    echo "<h1 id = 'noforms'><a href = 'createForm.php'>Create a Form</a></h1>";
+                }
 
                 $db->close();
             ?>
-            <script type="text/javascript">
-                for (x = 0; x < window.codes.length; x++) { 
-                    console.log("windowcode ", window.codes);
-                    $("#" + window.codes[x] + "_generate").click(function() {
-                        console.log("clicked");
-                        for (x = 0; x < window.codes.length; x++) {
-                            runAlgo(window.codes[x], document.getElementById(window.codes[x]+"_input").value);
-                            //console.log("RunAlgo complete for" + window.codes[x]);
-                            createGraph("#" + window.codes[x], window.codes[x])
-                        }
-                    });
-                }
+            <script type="text/javascript">        
+                $(".slider").on('change', function(event){
+                    $("h1[id="+ event.target.id +"]").text("Groups: " + event.target.value);
+                });
+                $(".deleteForm").click(function(event){
+                    code = event.target.id.substring(0, 6);
+                    $("#" + code + "_container").css("display", "none");
+                    $.ajax({
+                    type: "POST",
+                    url: "../Ajax/ajaxRemoveForm.php",
+                    data: {code: code},
+                    success: function(msg){
+                        console.log(msg);
+                    }
+                });
+                });
+                $(".generateGroups").click(function(event){
+                    code = event.target.id.substring(0, 6);
+                    console.log(code);
+                    val = $(".slider[id*='" + code + "']").val();
+                    runAlgo(code, val);
+                    createGraph("#" + code, code)
+                });
             </script>
 
         </main>

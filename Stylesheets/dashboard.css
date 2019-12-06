@@ -1,3 +1,15 @@
+#noforms {
+	text-align: center;
+	padding-top: 80px;
+}
+
+#noforms a {
+	border-radius: 15px;
+	border: 1px solid black;
+	padding: 20px;
+	text-decoration: none;
+}
+
 .dashBar {
 	margin-top: 20px;
 	background: linear-gradient(to right, #eaf4e8 0px, #eaf4e8 20%, #fff 20%, #fff 100%);
@@ -38,22 +50,17 @@
 	width: 90% !important;
 }
 
+.clearfix {
+	display: flex;
+	flex-flow: row nowrap;
+	padding-top: 40px;
+	justify-content: space-between;
+}
+
 .clearfix::after {
   content: "";
   clear: both;
   display: table;
-}
-
-.submissions {
-	text-align: left;
-	float: left;
-	padding-top: 40px;
-}
-
-.code {
-	text-align: right;
-	float: right;
-	padding-top: 40px;
 }
 
 .graph
