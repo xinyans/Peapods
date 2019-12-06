@@ -8,7 +8,14 @@ function displayData(){
             exampleData = JSON.parse(msg);
             returnHTML = "";
             //this.drawCanvas(this.exampleData["formTitle"]);
-            $("article>header").html(exampleData["formTitle"]);
+            $.ajax({
+                type: "POST",
+                url: "../Ajax/ajaxGetFormTitle.php",
+                data: {code: code},
+                success: function(msg2){
+                    $("article>header").html(msg2);                    
+                }
+            });
             data = exampleData["groups"]
             for(group = 0; group < data.length; group++){
                 returnHTML += "<section class = \"group\"><header> Group ";

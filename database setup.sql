@@ -41,6 +41,7 @@ CREATE TABLE logins(
     loginCookie varchar(35) NOT NULL,
     username varchar(255) NOT NULL,
     CONSTRAINT row_unique UNIQUE (username, loginCookie)
+<<<<<<< HEAD
 );
 USE peapods;
 INSERT INTO userdata (lastname, firstname, username, password, email) VALUES ('ADMIN', 'ISTRATOR', 'Administrator', 'pass', 'a@a.com');
@@ -119,3 +120,6 @@ INSERT INTO `formdata` (`id`, `code`, `responsejson`) VALUES (NULL, 'abcdef', '{
 INSERT INTO `formdata` (`id`, `code`, `responsejson`) VALUES (NULL, 'abcdef', '{ "name" : "Lorean Ludwig", "contact" :"Lorea@rpi.edu", "g" : -1, "c" : -1, "answers" : [], "data" :[0.19, 0.11, 0.5, 0.83, 0.81, 0.35, 0.62, 0.52, 0.95, 0.76, 0.96, 0.27, 0.29, 0.7, 0.65]}');
 INSERT INTO `formdata` (`id`, `code`, `responsejson`) VALUES (NULL, 'abcdef', '{ "name" : "Georgia Terranova", "contact" :"Georg@rpi.edu", "g" : -1, "c" : -1, "answers" : [], "data" :[0.81, 0.91, 0.6, 0.51, 0.61, 0.96, 0.4, 0.15, 0.42, 0.21, 0.83, 0.34, 0.0, 0.39, 0.26]}');
 INSERT INTO `formdata` (`id`, `code`, `responsejson`) VALUES (NULL, 'abcdef', '{ "name" : "Mark Utz", "contact" :"Mark4@rpi.edu", "g" : -1, "c" : -1, "answers" : [], "data" :[0.82, 0.41, 0.67, 0.84, 0.75, 0.9, 0.19, 0.46, 0.41, 0.18, 0.74, 0.64, 1.0, 0.99, 0.43]}');
+=======
+);
+>>>>>>> 962b6c82199f7a30aef2c22f33a0e852e124a4a5
