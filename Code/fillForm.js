@@ -25,14 +25,14 @@ function fetchForm(){
         type: "GET",
         async: false,
         url: "../Ajax/ajaxFillForm.php",
-        data: {"code": form_code},
+        data: {code: form_code},
         success: function(msg){
             console.log(msg);
             var result = JSON.parse(msg);
             console.log("Ajax finishes with success: ", result);
-            console.log("One: ", JSON.parse(result.formData));
-            questions = JSON.parse(result.formData).questions;
-            form_name = JSON.parse(result.formData).name;
+            console.log("One: ", (result));
+            questions = (result).questions;
+            form_name = (result).name;
         },
         error: function(msg, detail){
             console.log("Ajax finishes with error: ", msg, " With detail: ", detail);
@@ -144,8 +144,9 @@ function addEventListeners(){
         $.ajax({
             type: "POST",
             url: "../Ajax/ajaxFillForm.php",
-            data: {"data": fill_form_data, "code": current_form_code},
+            data: {data: JSON.stringify(fill_form_data), code: current_form_code},
             success: function(msg){
+                runAlgo(current_form_code, 1);
                 console.log("Ajax finishes with success: ", msg);
                 alert("Form submitted!");
                 location.href = "../Pages/index.php";
