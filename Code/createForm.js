@@ -1,18 +1,21 @@
 var creation_form_data = {
-    "name": "Test Form for Websys",
+    "name": "Template Form for Websys",
     "dateCreated": "",
     "dateDue": "2018-09-09",
     "questions": [
         {
             "prompt": "Do you like front-end or back-end",
             "typeOfQuestion": "multipleChoice",
-            "numOfChoices": 3,
+            "numOfChoices": 4,
             "choices": [
                 {
                     "choiceContent": "Front End"
                 },
                 {
                     "choiceContent": "Back End"
+                },
+                {
+                    "choiceContent": "Full Stack"
                 },
                 {
                     "choiceContent": "Do not know"
@@ -24,6 +27,12 @@ var creation_form_data = {
             "typeOfQuestion": "slider",
             "sliderMin": 1,
             "sliderMax": 5
+        },
+        {
+            "prompt": "What do you think should the A threshold be for this course?",
+            "typeOfQuestion": "slider",
+            "sliderMin": 93,
+            "sliderMax": 120
         },
         {
             "prompt": "Any Comments?",

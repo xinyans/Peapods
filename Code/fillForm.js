@@ -66,11 +66,11 @@ function fillFormRender(){
             }
         }
         else if(questions[i].typeOfQuestion == "slider"){
-            html_string += `<input type="range" min="${questions[i].sliderMin}" max="${questions[i].sliderMax}" name="question${i+1}Slider" required>
-            <input type="number" name="question${i+1}Slider" required>`;
+            html_string += `<input class="sliderBar" type="range" min="${questions[i].sliderMin}" max="${questions[i].sliderMax}" name="question${i+1}Slider" required>
+            <span>${questions[i].sliderMin}</span><span style="float:right">${questions[i].sliderMax}</span>`;
         }
         else if(questions[i].typeOfQuestion == "textInput"){
-            html_string += `<textarea rows="5" cols="20" name="question${i+1}Text"></textarea>`;
+            html_string += `<textarea style="width: 100%" rows="5" cols="20" name="question${i+1}Text"></textarea>`;
         }
 
         html_string += `</fieldset>`;
@@ -100,21 +100,32 @@ function addEventListeners(){
     $("#submitButton").click(function(){
         var student_name = $("#studentName").val();
         var student_email = $("#studentEmail").val();
+        if(student_name == ""){
+            alert("Fill in your name!");
+            return;
+        }
+        if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(student_email))){
+            alert("Invalid email!");
+            return;
+        }
         if(!confirm(`Sure about submitting with name ${student_name} and email ${student_email}?`)){
             return;
         }
         fill_form_data.name = student_name;
         fill_form_data.contact = student_email;
         var index = 0;
+        var errorMsg = "";
         $("#fillQuestions").find("fieldset").each(function(){
             if(questions[index].typeOfQuestion == "multipleChoice"){
                 let selected = $(this).find("input:checked").val();
+                if(!selected) errorMsg += `Please Fill out question${index+1}.\n`;
                 let normalized = selected / questions[index].numOfChoices;
                 fill_form_data.answers.push({"answer" : selected});
                 fill_form_data.data.push(normalized);
             }
             else if(questions[index].typeOfQuestion == "slider"){
                 let selected = $(this).find("input").val();
+                if(!selected) errorMsg += `Please Fill out question${index+1}.\n`;
                 let normalized = (selected - questions[index].sliderMin) / (questions[index].sliderMax - questions[index].sliderMin);
                 fill_form_data.answers.push({"answer" : selected});
                 fill_form_data.data.push(normalized);
@@ -125,6 +136,10 @@ function addEventListeners(){
             }
             index += 1;
         });
+        if(errorMsg != ""){
+            alert(errorMsg);
+            return;
+        }
         console.log(fill_form_data);
         $.ajax({
             type: "POST",
