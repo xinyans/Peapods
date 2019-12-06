@@ -103,7 +103,7 @@
                     <p>
                         &emsp;&emsp;&emsp;&emsp;PeaPods' determination of who will work best in your group(s) is
                         fueled by the information supplied by each potential group member. Upon submission of
-                        the group form, the discreet data from the form, such as the multiple-choice letters
+                        the group form, the discrete data from the form, such as the multiple-choice letters
                         chosen or the slider values selected, will be read. These data are then plotted in our
                         K-Nearest-Neighbors (KNN) algorithm, which weighs and compares each value against the
                         values that everyone else within the group supplied. As more people continue to complete
