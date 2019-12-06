@@ -27,6 +27,9 @@
             </section>
         </nav>
         <main>
+            <script type="text/javascript">
+                window.codes = [];
+            </script>
             <?php
                 session_start();
 
@@ -41,7 +44,6 @@
 
                 $sql_forms= 'SELECT * FROM forms WHERE creator="' . $username . '"';
                 $forms = $db->query($sql_forms);
-
                 while($row = $forms->fetch_assoc()) {
                     $code = $row["code"];
                     // $groupjson = json_decode($row["groupjson"]);
@@ -62,26 +64,34 @@
                           <h1 class="code">Code: '. $code.'</h1>
                           </div></div></div><img class="generateGroups" src="https://img.icons8.com/pastel-glyph/64/000000/groups.png" id="'.$code.'_generate"></img>
                           <img class="deleteForm" src="https://img.icons8.com/android/96/000000/trash.png"></img>';
-                    echo '<script type="text/javascript">
-                            window.codes = [];
-                            window.codes.push("'.$code.'");
-                            createGraph("#'. $code .'", "'. $code .'");
-                            </script></div>';
+                    if($submissions > 0){
+                        echo '<script type="text/javascript">
+                        window.codes.push("'.$code.'");
+                        createGraph("#'. $code .'", "'. $code .'");
+                        </script></div>';
+                    }
+                    else {
+                        echo '<script type="text/javascript">
+                        createGraph("#'. $code .'", "'. $code .'");
+                        </script></div>';
+                    }
+
                 }
 
                 $db->close();
             ?>
             <script type="text/javascript">
                 for (x = 0; x < window.codes.length; x++) { 
-                    document.getElementById(window.codes[x] + "_generate").onclick = function() {
-                    for (x = 0; x < window.codes.length; x++) {
-                        runAlgo(window.codes[x], document.getElementById(window.codes[x]+"_input").value);
-                        //console.log("RunAlgo complete for" + window.codes[x]);
-                        createGraph("#" + window.codes[x], window.codes[x])
-                    }
-                };
-                } 
-                
+                    console.log("windowcode ", window.codes);
+                    $("#" + window.codes[x] + "_generate").click(function() {
+                        console.log("clicked");
+                        for (x = 0; x < window.codes.length; x++) {
+                            runAlgo(window.codes[x], document.getElementById(window.codes[x]+"_input").value);
+                            //console.log("RunAlgo complete for" + window.codes[x]);
+                            createGraph("#" + window.codes[x], window.codes[x])
+                        }
+                    });
+                }
             </script>
 
         </main>
