@@ -257,8 +257,8 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
 //takes the dataset. Which contains a .set selector for array of data.
 //Donotuse defines the columns not to be graphed, there needs to be a color and group column
 $.fn.graph = function(dataSet, degx, degy){
-    console.log(this);
-    console.log(dataSet);
+    //console.log(this);
+    //console.log(dataSet);
     nonzero = true;
     if(dataSet["data"].length <= 0){
         nonzero = false;

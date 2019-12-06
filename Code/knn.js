@@ -130,7 +130,7 @@
  }
 
 function runAlgo(code, groups){
-    console.log("ran with code", code);
+    // console.log("ran with code", code);
     c = code;
     $.ajax({
         type: "POST",

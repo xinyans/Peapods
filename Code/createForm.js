@@ -50,8 +50,8 @@ function submitCreatedForm(){
         data: {"form": creation_form_data, "name":creation_form_data["name"]},
         success: function(msg){
             console.log("Ajax finishes with success: ", msg);
-            alert("Form Creation Success!");
-            location.href = "../Pages/index.php";
+            // alert("Form Creation Success!");
+            location.href = "../Pages/dashboard.php";
         },
         error: function(msg, detail){
             console.log("Ajax finishes with error: ", msg, " With detail: ", detail);
@@ -225,9 +225,10 @@ function addEventListeners(){
             creation_form_data.questions.push({"prompt": "","typeOfQuestion": ""});
         }
         else if(clicked_button_id == "submitButton"){
-            if(confirm("Sure about this?")){
-                submitCreatedForm();
-            }
+            // if(confirm("Sure about this?")){
+            //     submitCreatedForm();
+            // }
+            submitCreatedForm();
         }
         else{
             var index = parseInt(clicked_button_id.substring(8, 9));
