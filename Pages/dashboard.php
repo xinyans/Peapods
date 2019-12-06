@@ -59,7 +59,7 @@
                           </div>
                           <div class="clearfix">
                           <h1 class="submissions">'. $submissions .' Submissions</h1>
-                          <h1 class="code">CODE: '. $code.'</h1>
+                          <h1 class="code">Code: '. $code.'</h1>
                           </div></div></div><img class="generateGroups" src="https://img.icons8.com/pastel-glyph/64/000000/groups.png" id="'.$code.'_generate"></img>
                           <img class="deleteForm" src="https://img.icons8.com/android/96/000000/trash.png"></img>';
                     echo '<script type="text/javascript">
@@ -76,7 +76,7 @@
                     document.getElementById(window.codes[x] + "_generate").onclick = function() {
                     for (x = 0; x < window.codes.length; x++) {
                         runAlgo(window.codes[x], document.getElementById(window.codes[x]+"_input").value);
-                        console.log("RunAlgo complete for" + window.codes[x]);
+                        //console.log("RunAlgo complete for" + window.codes[x]);
                         createGraph("#" + window.codes[x], window.codes[x])
                     }
                 };
