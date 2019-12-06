@@ -75,14 +75,14 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
     if(nonzero){
 
         temp = minmax(data, xaxis);
-        minx = temp[0] - .1;
-        maxx = temp[1] + .1;
+        minx = temp[0] - .01;
+        maxx = temp[1] + .01;
         temp = minmax(data, yaxis);
-        miny = temp[0] - .1;
-        maxy = temp[1] + 0.1;
+        miny = temp[0] - .01;
+        maxy = temp[1] + 0.01;
         temp = minmax(data, zaxis);
-        minz = temp[0] - 0.1;
-        maxz = temp[1] + 0.1;
+        minz = temp[0] - 0.01;
+        maxz = temp[1] + 0.01;
 
         //Getting increments which represent the size of one unit relative to the size of the canvas
         xinc = Math.floor(d / (maxx - minx));
