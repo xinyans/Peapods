@@ -45,8 +45,7 @@
                 while($row = $forms->fetch_assoc()) {
                     $code = $row["code"];
                     $groupjson = json_decode($row["groupjson"]);
-                    //$groupname = $groupjson->{'formTitle'};
-                    $groupname = "test";
+                    $groupname = $groupjson->{'formTitle'};
                     $sql_submissions= 'SELECT COUNT(code) AS submissions FROM formdata WHERE code="'. $code .'"';
                     $submissions = $db->query($sql_submissions)->fetch_assoc()["submissions"];
 
@@ -54,19 +53,36 @@
                           <canvas class="graph" id="'. $code .'"></canvas>
                           <div class="group">
                           <h1 class="groupname">'. $groupname .'</h1>
+                          <div class="slidecontainer">
+                          <input type="range" min="1" max="'. $submissions .'" value="'. (int)($submissions/2) .'" class="slider" id="'. $code .'_input">
+                          </div>
                           <div class="clearfix">
                           <h1 class="submissions">'. $submissions .' Submissions</h1>
                           <h1 class="code">CODE: '. $code.'</h1>
-                          </div></div></div><img onclick="location.reload();" class="generateGroups" src="https://img.icons8.com/pastel-glyph/64/000000/groups.png">
-                          <img class="deleteForm" src="https://img.icons8.com/android/96/000000/trash.png">';
+                          </div></div></div><img class="generateGroups" src="https://img.icons8.com/pastel-glyph/64/000000/groups.png" id="'.$code.'_generate"></img>
+                          <img class="deleteForm" src="https://img.icons8.com/android/96/000000/trash.png"></img>';
 
                     echo '<script type="text/javascript">
+                            window.codes = [];
+                            window.codes.push("'.$code.'");
                             createGraph("#'. $code .'", "'. $code .'");
-                         </script>';
+                         ';
                 }
 
                 $db->close();
             ?>
+
+                for (x = 0; x < window.codes.length; x++) { 
+                    document.getElementById(window.codes[x] + "_generate").onclick = function() {
+                    for (x = 0; x < window.codes.length; x++) {
+                        runAlgo(window.codes[x], document.getElementById(window.codes[x]+"_input").value);
+                        console.log("RunAlgo complete for" + window.codes[x]);
+                        createGraph("#" + window.codes[x], window.codes[x])
+                    }
+                };
+                } 
+                
+            </script>
 
         </main>
     </body>

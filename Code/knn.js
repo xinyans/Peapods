@@ -155,6 +155,7 @@ function runAlgo(code, groups){
                     url: "../Ajax/ajaxReturnAlgoData.php",
                     data: {code: code, data: formatter(groupify(JSON.parse(msg)["data"], groups),groups)},
                     success: function(msg){
+                        console.log("rxprctrd");
                     }
                 }); 
             }
