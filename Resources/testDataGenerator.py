@@ -60,7 +60,7 @@ def rdg(entries, parameterCount):
         aftercontact = ", \"g\" : -1, \"c\" : -1, \"answers\" : [], \"data\" :"
         base2 = "}');"
         a = []
-        name = names[ri(0, len(names) - 1)];
+        name = names[ri(0, len(names) - 1)]
         for i in range(0, parameterCount):
             a.append(ri(0, 101)/100)
         print(base, "\"",name, "\"",aftername, "\"",name[0:5].replace(" ","4"),"@rpi.edu","\"", aftercontact, str(a), base2, sep = "")
