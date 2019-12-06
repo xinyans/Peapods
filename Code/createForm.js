@@ -43,10 +43,11 @@ var creation_form_data = {
 }
 
 function submitCreatedForm(){
+    console.log("msg",creation_form_data["name"]);
     $.ajax({
         type: "POST",
         url: "../Ajax/ajaxCreateForm.php",
-        data: {"form": creation_form_data},
+        data: {"form": creation_form_data, "name":creation_form_data["name"]},
         success: function(msg){
             console.log("Ajax finishes with success: ", msg);
             alert("Form Creation Success!");
