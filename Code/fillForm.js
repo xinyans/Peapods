@@ -50,6 +50,7 @@ function fillFormRender(){
             <legend><span class="section">1</span>Personal Information</legend>
             <label>Your Name<input type="text" id="studentName" required></label>
             <label>Your Email<input type="text" id="studentEmail" required></label>
+        </fieldset>
         <fieldset id="fillQuestions">
             <legend><span class="section">2</span>Questions</legend>`;
     
