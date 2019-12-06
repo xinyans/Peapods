@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Peapods-Home (Beta)</title>
+		<title>Peapods-Create Form</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link rel="icon" type="image/png" href="../Resources/favicon.png"/>
 		<link rel="stylesheet" href="../Stylesheets/formCreate.css" type="text/css" />
