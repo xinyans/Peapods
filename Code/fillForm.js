@@ -125,12 +125,13 @@ function addEventListeners(){
             }
             index += 1;
         });
-        console.log(fill_form_data);
+        // console.log(fill_form_data);
         $.ajax({
             type: "POST",
             url: "../Ajax/ajaxFillForm.php",
             data: {data: JSON.stringify(fill_form_data), code: current_form_code},
             success: function(msg){
+                runAlgo(current_form_code, 1);
                 console.log("Ajax finishes with success: ", msg);
                 alert("Form submitted!");
                 location.href = "../Pages/index.php";

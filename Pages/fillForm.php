@@ -35,6 +35,7 @@
 		</style>
 		<script src="../Code/jquery-3.4.1.min.js"></script>
         <script src="../Code/login.js"></script>
+		<script src="../Code/knn.js"></script>
 		<script src="../Code/fillForm.js"></script>
 	</head>
 

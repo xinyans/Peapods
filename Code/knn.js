@@ -130,6 +130,7 @@
  }
 
 function runAlgo(code, groups){
+    console.log("ran with code", code);
     c = code;
     $.ajax({
         type: "POST",
@@ -154,7 +155,7 @@ function runAlgo(code, groups){
                     type: "POST",
                     url: "../Ajax/ajaxReturnAlgoData.php",
                     data: {code: code, data: formatter(groupify(JSON.parse(msg)["data"], groups),groups)},
-                    success: function(msg){
+                    success: function(msg2){
                     }
                 }); 
             }

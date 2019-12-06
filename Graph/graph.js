@@ -220,7 +220,8 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
                 ctx.arc(offsetx + x, offsety + d - y, radius, 0, 2 * Math.PI);
             }
             else {
-                ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius * (1 - item["data"][zaxis])), 0, 2 * Math.PI);
+                // ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius), 0, 2 * Math.PI);
+                ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius * (1 - item["data"][zaxis]/3)) + 1, 0, 2 * Math.PI);
             }
             ctx.fill();   
             ctx.closePath(); 
@@ -256,6 +257,8 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
 //takes the dataset. Which contains a .set selector for array of data.
 //Donotuse defines the columns not to be graphed, there needs to be a color and group column
 $.fn.graph = function(dataSet, degx, degy){
+    console.log(this);
+    console.log(dataSet);
     nonzero = true;
     if(dataSet["data"].length <= 0){
         nonzero = false;
