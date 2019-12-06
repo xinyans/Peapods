@@ -50,22 +50,17 @@
 	width: 90% !important;
 }
 
+.clearfix {
+	display: flex;
+	flex-flow: row nowrap;
+	padding-top: 40px;
+	justify-content: space-between;
+}
+
 .clearfix::after {
   content: "";
   clear: both;
   display: table;
-}
-
-.submissions {
-	text-align: left;
-	float: left;
-	padding-top: 40px;
-}
-
-.code {
-	text-align: right;
-	float: right;
-	padding-top: 40px;
 }
 
 .graph
