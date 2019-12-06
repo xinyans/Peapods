@@ -40,7 +40,6 @@
 .group>table {
     grid-area: groups;
     width: calc(100% - 40px);
-    border: collapse;
     float: right;
     text-align: center;
     background-color: white;

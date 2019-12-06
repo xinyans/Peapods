@@ -221,7 +221,6 @@ function addLoginListeners(){
                     str = window.location.href
                     if(!(str.includes("dashboard.php") || str.includes("createForm.php"))){
                         cookie = sessionStorage.getItem("code");
-                        console.log(cookie);
                         $.ajax({
                             type: "POST",
                             url: "../Ajax/ajaxLogout.php",
