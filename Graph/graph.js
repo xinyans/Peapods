@@ -66,12 +66,6 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
     //Clear any previous content in canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // minx = 0;
-    // maxx = 1;
-    // miny = 0;
-    // maxy = 1;
-    // minz = 0;
-    // maxz = 1;
     if(nonzero){
 
         temp = minmax(data, xaxis);
@@ -202,7 +196,6 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
     //Placing data on the board -------------------------------------------------------------
     if(nonzero){
 
-        // console.log("degx: " + (degx/2)/Math.PI * 180 + " degy: " + degy/Math.PI * 180);
         for(i = 0; i < data["data"].length; i++){
             item = data["data"][i];
             x = d - ((item["data"][xaxis] - minx) * xinc) + (((item["data"][zaxis] - minz) * Math.sin(degx/2)) * zinc);
@@ -220,7 +213,6 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
                 ctx.arc(offsetx + x, offsety + d - y, radius, 0, 2 * Math.PI);
             }
             else {
-                // ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius), 0, 2 * Math.PI);
                 ctx.arc(offsetx + x, offsety + d - y, Math.ceil(radius * (1 - item["data"][zaxis]/3)) + 1, 0, 2 * Math.PI);
             }
             ctx.fill();   
@@ -256,9 +248,7 @@ function drawGraph(canvas, ctx, d, offsetx, offsety, data, degx, degy, xaxis, ya
 //width must be greater than or equal to height of elemnt
 //takes the dataset. Which contains a .set selector for array of data.
 //Donotuse defines the columns not to be graphed, there needs to be a color and group column
-$.fn.graph = function(dataSet, degx, degy){
-    //console.log(this);
-    //console.log(dataSet);
+$.fn.graph = function(dataSet, degx, degy) {
     nonzero = true;
     if(dataSet["data"].length <= 0){
         nonzero = false;
@@ -270,10 +260,6 @@ $.fn.graph = function(dataSet, degx, degy){
     else {
         axis = [0,1,2];
     }
-
-    //Sorting data by z axis
-    // dataSet.set.sort(function(a, b){return (a[axis[0]] < b[axis[0]]) ? 1 : -1;});
-
 
     canvas = this[0];
     ctx = setupCanvas(canvas);
@@ -301,50 +287,6 @@ $.fn.graph = function(dataSet, degx, degy){
         colors = [];
     }
     drawGraph(canvas, ctx, d, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], groupCount, colors, nonzero);
-
-
-    /** All of the following is for the demo not final use */
-    /**
-    document.onmousemove = function(event){
-        mousex = event.clientX;
-        mousey = event.clientY;
-    }
-    var inter;
-    var mdown = false;
-    $("body").on("mousedown", function(event){
-        if(event.target.id == "graph" ){
-            mdown = true;
-        }
-        if(mdown){
-            inter = setInterval(function(){
-                x = d - mousex;
-                y = d - mousey + offsety;
-                if(y > d){
-                    y = d;
-                }
-                if(x < -d){
-                    x = -d ;
-                }
-                if(x > d){
-                    x = d;
-                }
-                if(d < 0){
-                    d = 0;
-                }
-                if(x <= d && x >= -d && y >= 0 &&  y <= d){
-                    hyp = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
-                    degy = Math.asin(y/d);
-                    degx = Math.acos(x/d);
-                    drawGraph(canvas, ctx, d, offsetx, offsety, dataSet, degx, degy, axis[2], axis[1], axis[0], groupCount, colors);
-                }
-            }, 100);
-        }
-    });
-    $("body").on("mouseup", function(){
-        clearInterval(inter);
-    });
-    **/
-    /** This is the end of the demo code */
 }
 
 //Element identifier is the string that would go into the jquery selector
@@ -375,7 +317,6 @@ function createGraph(elementIdentifier, code){
                     }
                 });
             }
-     
         }
     });
 }
