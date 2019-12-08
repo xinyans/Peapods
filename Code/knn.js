@@ -129,8 +129,7 @@
     return dataSet;
  }
 
-function runAlgo(code, groups){
-    // console.log("ran with code", code);
+function runAlgo(code, groups) {
     c = code;
     $.ajax({
         type: "POST",

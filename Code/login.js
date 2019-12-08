@@ -44,16 +44,6 @@ function loginClick(){
             //if register button is clicked
             //Implement perform ajax register
 
-            /**
-             * Get data here
-             * 
-             * username = 
-             * password = 
-             * email = 
-             * firstname =  
-             * lastname = 
-             */
-
             password    = $("aside>form>input[name='password']").val();
             username    = $("aside>form>input[name='username']").val();
             email       = $("aside>form>input[name='email']").val();

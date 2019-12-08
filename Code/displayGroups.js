@@ -7,7 +7,6 @@ function displayData(){
         success: function(msg){
             exampleData = JSON.parse(msg);
             returnHTML = "";
-            //this.drawCanvas(this.exampleData["formTitle"]);
             $.ajax({
                 type: "POST",
                 url: "../Ajax/ajaxGetFormTitle.php",
