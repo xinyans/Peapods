@@ -13,15 +13,4 @@
     }
     session_unset();
     session_destroy();
-
-    /**
-     * $.ajax({
-     *      type: "POST",
-     *      url: "../Ajax/ajaxLogout.php",
-     *      data: {cookie: "cookiedata"}, 
-     *      success: function(msg){
-     *          alert(msg);
-     *      }
-     *  });
-     */
 ?>

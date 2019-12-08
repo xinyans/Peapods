@@ -15,21 +15,4 @@
         }
         $db->close();
     }
-
-   /**
-   *     Code to make this ajax request:
-   *
-   *     $.ajax({
-   *         type: "POST",
-   *         url: "../Ajax/checkCode.php",
-   *         data: {code: "testcode"},
-   *         contentType: "application/json; charset=utf-8",
-   *         dataType: "json",
-   *         success: function(msg){
-   *             alert(msg);
-   *         }
-   *     });
-   * 
-   *    or line of form project.websys/Ajax/checkCode.php?code=testcode
-    **/
 ?>

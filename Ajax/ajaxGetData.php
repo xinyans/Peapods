@@ -21,14 +21,4 @@
         }
         $db->close();
     }
-
-    // $.ajax({
-    //     type: "POST",
-    //     url: "../Ajax/ajaxGetData.php",
-    //     data: {code: "abcdef"},
-    //     success: function(msg){
-    //         console.log(msg);
-    //     }
-    // });
-    // or line of form project.websys/Ajax/ajaxGetData.php?code=abcdef
 ?>
