@@ -31,7 +31,7 @@ body {
     ;
 }
 
-/** php data */
+/* PHP data */
 body>nav>p {
     display: none;
 }

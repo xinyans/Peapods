@@ -1,6 +1,4 @@
-/*
-    General Settings, HTML native tags
-*/
+/* General Settings, HTML native tags */
 html {
     margin: 0;
 }
@@ -15,9 +13,8 @@ p {
     color: red;
     font-style: italic;
 }
-/*
-    Header and Navigation Bar
-*/
+
+/* Header and Navigation Bar */
 .siteHeader {
     width: 100%;
     background-color: rgb(99, 185, 104);
@@ -34,9 +31,9 @@ p {
     height: 80px;
 }
 
-    #logo:hover {
-        cursor: pointer;
-    }
+#logo:hover {
+    cursor: pointer;
+}
 
 .navBtn {
     font-size: 30px;
@@ -47,13 +44,14 @@ p {
     transition: 0.3s;
 }
 
-    .navBtn:hover {
-        background-color: rgb(132, 165, 167);
-    }
+.navBtn:hover {
+    background-color: rgb(132, 165, 167);
+}
+
 /*
     Main Content
+    For Homepage 
 */
-/* For Homepage */
 .mainContent {
     width: 68%;
 }
@@ -80,41 +78,20 @@ p {
     transition: 0.3s;
 }
 
-    .formList li:nth-child(even):hover {
-        background-color: rgb(225, 237, 226);
-    }
+.formList li:nth-child(even):hover {
+    background-color: rgb(225, 237, 226);
+}
 
-    .formList li:nth-child(odd):hover {
-        background-color: rgb(225, 237, 226);
-    }
+.formList li:nth-child(odd):hover {
+    background-color: rgb(225, 237, 226);
+}
+
 /* For Form Creation */
 main form {
     max-width: 700px;
     margin: auto;
 }
-/*
-.creationQuestion {
-    opacity: 0;
-    transition: all 0.3s;
-}
 
-
-.creationQuestion.out {
-    animation: removed-item-animation 0.3s cubic-bezier(0.55, -0.04, 0.91, 0.94) forwards;
-    // transform origin is moved to the bottom left corner
-    transform-origin: 50% 50%;
-}
-
-@keyframes removed-item-animation {
-    0% {
-        opacity: 1;
-}
-    100% {
-        opacity: 0;
-        transform: translateX(300px);
-    }
-}
-*/
 h2 {
     text-align: center;
 }
@@ -167,7 +144,6 @@ fieldset {
     border: none;
 }
 
-
 .section {
     background-color: #5fcf80;
     color: #fff;
@@ -199,9 +175,7 @@ fieldset {
     margin-bottom: 10px;
  }
 
-/*
-    Sidebar
-*/
+/* Sidebar */
 .leftSidebar {
     width: 25%;
     float: left;
@@ -216,23 +190,25 @@ fieldset {
     text-align: left;
     font-size: 1.5em;
 }
+
 .bodyRight {
     float: right;
     font-size: 1.5em;
 }
+
 .bodyCenter {
     text-align: center;
     font-size: 1.5em;
 }
+
 .error {
     float: left;
     font-style: italic;
     font-variant: small-caps;
     font-size: 1.8em;
 }
-/*
-    Unversal Style
-*/
+
+/* Universal Style */
 .clearfix {
     content: "Something";
     display: block;
@@ -240,7 +216,6 @@ fieldset {
     height: 0;
     visibility: hidden;
 }
-
 
 /* From w3school */
 .sliderBar {
@@ -252,24 +227,24 @@ fieldset {
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
-  }
-  
-  .sliderBar:hover {
+}
+
+.sliderBar:hover {
     opacity: 1;
-  }
-  
-  .sliderBar::-webkit-slider-thumb {
+}
+
+.sliderBar::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
     height: 25px;
     background: #4CAF50;
     cursor: pointer;
-  }
-  
-  .sliderBar::-moz-range-thumb {
+}
+
+.sliderBar::-moz-range-thumb {
     width: 25px;
     height: 25px;
     background: #4CAF50;
     cursor: pointer;
-  }
+}
