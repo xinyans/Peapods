@@ -48,8 +48,6 @@
                 while($row = $forms->fetch_assoc()) {
                     $ran = true;
                     $code = $row["code"];
-                    // $groupjson = json_decode($row["groupjson"]);
-                    // $groupname = $groupjson->{'formTitle'};
                     $query = 'SELECT formname FROM forms WHERE CODE = "'.$code.'"';
                     $groupname = $db->query($query)->fetch_assoc()['formname'];
                     $sql_submissions= 'SELECT COUNT(code) AS submissions FROM formdata WHERE code="'. $code .'"';
@@ -111,7 +109,6 @@
                     createGraph("#" + code, code)
                 });
             </script>
-
         </main>
     </body>
 </html>
