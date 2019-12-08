@@ -12,13 +12,4 @@
     else {
         echo "failure";
     }
-
-    // $.ajax({
-    //     type: "POST",
-    //     url: "../Ajax/ajaxReturnAlgoData.php",
-    //     data: {code: "abcdef", data = "AsdasdasdJSONJSON"},
-    //     success: function(msg){
-    //         console.log(msg);
-    //     }
-    // });
 ?>

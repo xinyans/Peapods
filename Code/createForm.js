@@ -135,21 +135,6 @@ function creationFormRender(data){
 
     $("main").append(html_string);
 }
-/*
-function findIntEnd(str, start){
-    var end = start + 1;
-    while(end <= str.length){
-        if(str.substring(end-1, end) >= '0' && str.substring(end-1, end) <= '9'){
-            end += 1;
-        }
-        else{
-            break;
-        }
-        console.log("stht")
-    }
-    console.log("Answer: ", end);
-    return end;
-}*/
 
 function addEventListeners(){
     $("main input").change(function(){
@@ -225,9 +210,6 @@ function addEventListeners(){
             creation_form_data.questions.push({"prompt": "","typeOfQuestion": ""});
         }
         else if(clicked_button_id == "submitButton"){
-            // if(confirm("Sure about this?")){
-            //     submitCreatedForm();
-            // }
             submitCreatedForm();
         }
         else{

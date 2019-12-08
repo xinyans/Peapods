@@ -8,14 +8,4 @@
             echo "";
         }
     }
-
-    /**
-     * $.ajax({
-     *      type: "POST",
-     *      url: "../Ajax/ajaxCheckLogin.php",
-     *      success: function(msg){
-     *          alert(msg);
-     *      }
-     *  });
-     */
 ?>

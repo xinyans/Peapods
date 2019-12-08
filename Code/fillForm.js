@@ -48,8 +48,8 @@ function fillFormRender(){
         <form name="fillForm" action="#" id="fillForm" onsubmit="return false">
         <fieldset id="personalInfo">
             <legend><span class="section">1</span>Personal Information</legend>
-            <label>Your Name<input type="text" id="studentName" required></label>
-            <label>Your Email<input type="text" id="studentEmail" required></label>
+            <label>Your Name<input type="text" id="studentName" maxlength="20" required></label>
+            <label>Your Email<input type="text" id="studentEmail" maxlength="20" required></label>
         </fieldset>
         <fieldset id="fillQuestions">
             <legend><span class="section">2</span>Questions</legend>`;
@@ -149,7 +149,6 @@ function addEventListeners(){
             success: function(msg){
                 runAlgo(current_form_code, 1);
                 console.log("Ajax finishes with success: ", msg);
-                //alert("Form submitted!");
                 location.href = "../Pages/index.php";
             },
             error: function(msg, detail){

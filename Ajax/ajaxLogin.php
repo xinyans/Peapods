@@ -20,15 +20,4 @@
         }
         $db->close();
     }
-
-    /**
-     * $.ajax({
-     *      type: "POST",
-     *      url: "../Ajax/ajaxLogin.php",
-     *      data: {username: "username", password: "password"},
-     *      success: function(msg){
-     *          alert(msg);
-     *      }
-     *  });
-     */
 ?>
