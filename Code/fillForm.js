@@ -105,6 +105,12 @@ function addEventListeners(){
             alert("Fill in your name!");
             return;
         }
+        if(student_name.length > 40){
+            alert("Student name too long");
+        }
+        if(student_email.length > 40){
+            alert("Student email too long");
+        }
         if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(student_email))){
             alert("Invalid email!");
             return;
