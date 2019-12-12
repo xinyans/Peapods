@@ -9,7 +9,7 @@
         $result = mysqli_query($db, $query);
         $user = mysqli_fetch_assoc($result);
         if ($user and password_verify($password, $user['password'])) {
-            $cookie = md5($username.$password);
+            $cookie = password_hash($username, PASSWORD_BCRYPT);
             $query = "INSERT INTO logins (loginCookie, username) VALUES ('$cookie', '$username')";
             mysqli_query($db, $query);
             echo $cookie;

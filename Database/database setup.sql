@@ -38,7 +38,7 @@ CREATE TABLE formdata(
 );
 USE peapods;
 CREATE TABLE logins(
-    loginCookie varchar(35) NOT NULL,
+    loginCookie varchar(255) NOT NULL,
     username varchar(255) NOT NULL,
     CONSTRAINT row_unique UNIQUE (username, loginCookie)
 );
