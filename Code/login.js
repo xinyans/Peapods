@@ -93,6 +93,7 @@ function loginClick(){
                     data: {password: password, username: username, firstname: firstname, lastname: lastname, email: email},
                     success: function(msg){
                         if(msg != ""){
+                            console.log(msg)
                             /** If sucessful login the user */
                             $.ajax({
                                 type: "POST",
@@ -211,12 +212,17 @@ function addLoginListeners(){
                     str = window.location.href
                     if(!(str.includes("dashboard.php") || str.includes("createForm.php"))){
                         cookie = sessionStorage.getItem("code");
+                        console.log("trying...")
                         $.ajax({
                             type: "POST",
                             url: "../Ajax/ajaxLogout.php",
                             data: {cookie: cookie}, 
                             success: function(msg){
+                                console.log("success", msg)
                                 addLoginListeners();
+                            },
+                            error: function(msg){
+                                console.log("error", msg)
                             }
                         });
                     }

@@ -11,8 +11,11 @@
             $fillForm = 1;
         }
         $db = new mysqli('localhost', 'moo', 'cows', 'peapods');
-        $query = "UPDATE forms SET responsejson = '$data', fillform = '$fillForm' WHERE code = '$code'";
-        $result = mysqli_query($db, $query);
+        $query = "UPDATE forms SET responsejson = ?, fillform = ? WHERE code = ?";
+        $statement = $db->prepare($query);
+        $statement->bind_param("sss", $data, $fillForm, $code);
+        $statement->execute();
+        $result = $statement->get_result();
         $db->close();
         echo "success";
     }

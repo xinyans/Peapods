@@ -3,10 +3,13 @@
     if(isset($_REQUEST['code'])) {
         $code = $_REQUEST['code'];
         $db = new mysqli('localhost', 'moo', 'cows', 'peapods');
-        $query = "SELECT responsejson FROM forms WHERE code = '$code' LIMIT 1";
-        $result = mysqli_query($db, $query);
+        $query = "SELECT responsejson FROM forms WHERE code = ? LIMIT 1";
+        $statement = $db->prepare($query);
+        $statement->bind_param("s", $code);
+        $statement->execute();
+        $result = $statement->get_result();
         if($result){
-            $printData = mysqli_fetch_assoc($result);
+            $printData = $result->fetch_assoc();
             echo $printData["responsejson"];
         }
         else {

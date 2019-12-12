@@ -11,17 +11,22 @@
         
         $password = password_hash($password, PASSWORD_BCRYPT);//encrypt the password before saving in the database
         
-        $user_check_query = "SELECT * FROM userdata WHERE username='$username' LIMIT 1";
-        $result = mysqli_query($db, $user_check_query);
-        $user = mysqli_fetch_assoc($result);
+        $user_check_query = "SELECT * FROM userdata WHERE username=? LIMIT 1";
+        $statement = $db->prepare($user_check_query);
+        $statement->bind_param("s", $username);
+        $statement->execute();
+        $result = $statement->get_result();
+        $user = $result->fetch_assoc();
         
         if ($user) { // if user exists
-          echo "";
+          echo $user["username"];
         }
         else {
-          $querys = "INSERT INTO userdata (lastName, firstName, username, password, email) 
-          VALUES('$lastName', '$firstName', '$username', '$password', '$email')";
-          $db->query($querys); 
+          $querys = "INSERT INTO userdata (`lastName`, `firstName`, `username`, `password`, `email`) 
+          VALUES(?,?,?,?,?)";
+          $statement = $db->prepare($querys);
+          $statement->bind_param("sssss", $lastName, $firstName, $username, $password, $email);
+          $statement->execute();
           echo md5($username.$password);
         }
         $db->close();

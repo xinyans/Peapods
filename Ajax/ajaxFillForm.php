@@ -10,12 +10,14 @@
             $data = mysqli_fetch_assoc($result);
             echo $data['formjson'];
         }
-        else {
+        else if($_SERVER['REQUEST_METHOD'] == "POST"){
             $code = $_REQUEST["code"];
             $data = $_REQUEST["data"];
             echo $data;
-            $query = "INSERT INTO formdata (code, responsejson) VALUES ('$code', '$data')";
-            $result = mysqli_query($db, $query);
+            $query = "INSERT INTO formdata (code, responsejson) VALUES (?,?)";
+            $statement = $db->prepare($query);
+            $statement->bind_param("ss", $code, $data);
+            $statement->execute();
         }
         $db->close();
     }

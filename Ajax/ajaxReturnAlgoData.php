@@ -4,8 +4,11 @@
         $code = $_REQUEST['code'];
         $data = $_REQUEST['data'];
         $db = new mysqli('localhost', 'moo', 'cows', 'peapods');
-        $query = "UPDATE forms SET groupjson = '$data' WHERE code = '$code'";
-        $result = mysqli_query($db, $query);
+        $query = "UPDATE forms SET groupjson = ? WHERE code = ?";
+        $statement = $db->prepare($query);
+        $statement->bind_param("ss", $data, $code);
+        $statement->execute();
+        $result = $statement->getresult();
         $db->close();
         echo "success";
     }
